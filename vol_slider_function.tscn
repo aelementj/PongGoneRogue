@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3wmqt1rv7e2b"]
+
+[ext_resource type="Script" path="res://VolSliderFunction.gd" id="1_lxatk"]
+
+[node name="VolSliderFunction" type="HSlider"]
+custom_minimum_size = Vector2(250, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+value = 1.0
+script = ExtResource("1_lxatk")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]
