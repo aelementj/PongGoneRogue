@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlmc77cnij2ks"]
+[gd_scene load_steps=6 format=3 uid="uid://dlmc77cnij2ks"]
 
 [ext_resource type="Script" path="res://OptionsMenu.gd" id="1_wa6sv"]
+[ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="1_y0r30"]
 [ext_resource type="Script" path="res://OptionFunctionality.gd" id="3_13uo8"]
 [ext_resource type="FontFile" uid="uid://dnpkfghmefjyi" path="res://assets/MinimalPixel v2.ttf" id="3_yosbk"]
 [ext_resource type="PackedScene" uid="uid://d3wmqt1rv7e2b" path="res://vol_slider_function.tscn" id="4_addom"]
@@ -14,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_y0r30")
 script = ExtResource("1_wa6sv")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -93,6 +95,7 @@ alignment = 1
 
 [node name="Fullscreen" type="Label" parent="MarginContainer2/SubOptions/Video/Lables"]
 layout_mode = 2
+theme = ExtResource("1_y0r30")
 text = "Fullscreen"
 horizontal_alignment = 3
 
@@ -138,8 +141,6 @@ horizontal_alignment = 3
 
 [node name="Master" parent="MarginContainer2/SubOptions/Audio/Lables" instance=ExtResource("4_addom")]
 layout_mode = 2
-step = 0.001
-value = 1.0
 bus_name = "Master"
 
 [node name="MusicLabel" type="Label" parent="MarginContainer2/SubOptions/Audio/Lables"]
@@ -150,8 +151,6 @@ text = "Music"
 
 [node name="Music" parent="MarginContainer2/SubOptions/Audio/Lables" instance=ExtResource("4_addom")]
 layout_mode = 2
-step = 0.001
-value = 1.0
 bus_name = "Music"
 
 [node name="SoundFXLabel" type="Label" parent="MarginContainer2/SubOptions/Audio/Lables"]
@@ -162,8 +161,6 @@ text = "SoundFX"
 
 [node name="SoundFX" parent="MarginContainer2/SubOptions/Audio/Lables" instance=ExtResource("4_addom")]
 layout_mode = 2
-step = 0.001
-value = 1.0
 bus_name = "SoundFX"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMain" to="." method="_on_back_to_main_pressed"]
