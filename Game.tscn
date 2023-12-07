@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://wxra4xie4e4h"]
+
+[ext_resource type="Texture2D" uid="uid://cdbh74sfrxm6s" path="res://assets/1075236488.png" id="1_jms1a"]
+
+[node name="GameStart" type="Node2D"]
+
+[node name="1075236488" type="Sprite2D" parent="."]
+position = Vector2(528, 312)
+texture = ExtResource("1_jms1a")
+centered = false
