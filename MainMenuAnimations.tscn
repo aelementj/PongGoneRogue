@@ -361,6 +361,7 @@ animations = [{
 }]
 
 [node name="Planet Rotation" type="AnimatedSprite2D"]
+texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_vwxvr")
 animation = &"PlanetAnimation"
 autoplay = "PlanetAnimation"

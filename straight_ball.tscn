@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://8mjijrh7hcgc"]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_2yic4"]
+[ext_resource type="Texture2D" uid="uid://cdbh74sfrxm6s" path="res://assets/1075236488.png" id="2_xrftv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ai0de"]
+radius = 29.2658
+
+[node name="StraightBall" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(0.564, 0.5)
+disable_mode = 2
+slide_on_ceiling = false
+wall_min_slide_angle = 0.0
+floor_stop_on_slope = false
+floor_block_on_wall = false
+script = ExtResource("1_2yic4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1.19209e-07, 0)
+scale = Vector2(0.5, 0.494)
+texture = ExtResource("2_xrftv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.83, 0.83)
+shape = SubResource("CircleShape2D_ai0de")
