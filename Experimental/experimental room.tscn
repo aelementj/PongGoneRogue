@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bapahxdlb1ghm"]
+
+[ext_resource type="Script" path="res://Experimental/experimental room.gd" id="1_xewjp"]
+
+[node name="experimental roo,m" type="Node2D"]
+script = ExtResource("1_xewjp")
+
+[node name="Camera2D" type="Camera2D" parent="."]
