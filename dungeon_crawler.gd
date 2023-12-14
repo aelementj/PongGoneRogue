@@ -3,12 +3,13 @@ extends Node2D
 # Exported variables for easy tweaking in the Godot editor
 @export var roomWidth: int = 10
 @export var roomLength: int = 10
-@export var tileSize: float = 32.0
+@export var tileSize: float = 16.0
 
 # Preload the PackedScene for the tile and walls
 var tileScene: PackedScene = preload("res://Experimental/tile.tscn")
 var sideWallScene: PackedScene = preload("res://Experimental/wall.tscn")
 var bottomWallScene: PackedScene = preload("res://Experimental/bottom_wall.tscn")
+var topWallScene: PackedScene = preload("res://Experimental/top_wall.tscn")
 
 func _ready():
 	# Call the generateRoom() function when the node is ready
@@ -29,15 +30,20 @@ func generateRoom() -> void:
 	for x in range(roomWidth):
 		for y in range(roomLength):
 			# Determine if the current tile is at the bottom edge of the room
-			var isBottomEdge = y == roomLength - 1
+			var isBottomEdge: bool = y == roomLength - 1
+			var isTopEdge: bool = y == 0
 
-			# Instantiate a tile or wall node from the preloaded scene based on whether it's at the bottom edge
+			# Instantiate a tile or wall node from the preloaded scene based on whether it's at the bottom or top edge
 			var tile_node: Node
+
 			if isBottomEdge:
 				tile_node = bottomWallScene.instantiate()
+			elif isTopEdge:
+				tile_node = topWallScene.instantiate()
 			else:
 				# Determine if the current tile is at the side edge of the room
-				var isSideEdge = x == 0 or x == roomWidth - 1
+				var isSideEdge: bool = x == 0 or x == roomWidth - 1
+
 				if isSideEdge:
 					tile_node = sideWallScene.instantiate()
 				else:
