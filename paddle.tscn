@@ -8,6 +8,8 @@
 size = Vector2(96.077, 12)
 
 [node name="Node2D" type="RigidBody2D"]
+position = Vector2(4.76837e-07, 0)
+scale = Vector2(0.49799, 0.563693)
 gravity_scale = 0.0
 lock_rotation = true
 script = ExtResource("1_5s64m")

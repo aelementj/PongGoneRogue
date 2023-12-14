@@ -1,8 +1,8 @@
 extends Node2D
 
 # Exported variables for easy tweaking in the Godot editor
-@export var roomWidth: int = 10
-@export var roomLength: int = 10
+@export var roomWidth: int = 60
+@export var roomLength: int = 38
 @export var tileSize: float = 16.0
 
 # Preload the PackedScene for the tile and walls
@@ -55,3 +55,10 @@ func generateRoom() -> void:
 			# Set the position of the tile and add it as a child to the current node
 			tile_node.global_position = roomTopLeft + tile_position
 			add_child(tile_node)
+
+			# Add collision shapes to walls
+			if tile_node is CollisionObject2D:
+				tile_node.collision_layer = 1  # Set the collision layer as needed
+				tile_node.collision_mask = 1   # Set the collision mask as needed
+				tile_node.collision_shape_owner_add_shape(tile_node.get_node("CollisionShape2D").shape)
+				tile_node.collision_shape_owner_set_transform(tile_node.get_node("CollisionShape2D").transform)

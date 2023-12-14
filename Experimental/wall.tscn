@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://2n5f8i8ac8hp"]
+[gd_scene load_steps=3 format=3 uid="uid://2n5f8i8ac8hp"]
 
-[ext_resource type="Texture2D" uid="uid://c3bq7d24vr4n6" path="res://Experimental/tile120.png" id="1_bjdo7"]
+[ext_resource type="Texture2D" uid="uid://b67enu37q74lm" path="res://Experimental/tile124.png" id="1_fgi0k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw6fm"]
+size = Vector2(16, 16)
 
 [node name="wall" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_bjdo7")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_fgi0k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_lw6fm")
