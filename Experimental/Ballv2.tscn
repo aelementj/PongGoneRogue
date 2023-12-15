@@ -6,7 +6,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_267f0"]
 radius = 50.0
 
-[node name="RigidBody2D" type="CharacterBody2D"]
+[node name="RigidBody2D" type="CharacterBody2D" groups=["ball"]]
+collision_mask = 10
 script = ExtResource("1_uo7d2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -17,3 +18,13 @@ texture = ExtResource("2_f2ni1")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.3, 0.3)
 shape = SubResource("CircleShape2D_267f0")
+
+[node name="Area2D" type="Area2D" parent="." groups=["ball"]]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.3, 0.3)
+shape = SubResource("CircleShape2D_267f0")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

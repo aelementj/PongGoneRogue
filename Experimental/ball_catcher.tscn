@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://qidv54oofrp4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4smh"]
+size = Vector2(16, 16)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_463b5"]
+
+[node name="BallCatcher" type="Node2D" groups=["ball_catcher"]]
+
+[node name="Area2D" type="Area2D" parent="." groups=["ball_catcher"]]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_g4smh")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = SubResource("CanvasTexture_463b5")

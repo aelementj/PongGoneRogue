@@ -10,6 +10,7 @@ var tileScene: PackedScene = preload("res://Experimental/tile.tscn")
 var sideWallScene: PackedScene = preload("res://Experimental/wall.tscn")
 var bottomWallScene: PackedScene = preload("res://Experimental/bottom_wall.tscn")
 var topWallScene: PackedScene = preload("res://Experimental/top_wall.tscn")
+var ballCatcherScene: PackedScene = preload("res://Experimental/ball_catcher.tscn")
 
 func _ready():
 	# Call the generateRoom() function when the node is ready
@@ -56,9 +57,13 @@ func generateRoom() -> void:
 			tile_node.global_position = roomTopLeft + tile_position
 			add_child(tile_node)
 
-			# Add collision shapes to walls
-			if tile_node is CollisionObject2D:
-				tile_node.collision_layer = 1  # Set the collision layer as needed
-				tile_node.collision_mask = 1   # Set the collision mask as needed
-				tile_node.collision_shape_owner_add_shape(tile_node.get_node("CollisionShape2D").shape)
-				tile_node.collision_shape_owner_set_transform(tile_node.get_node("CollisionShape2D").transform)
+	# Instantiate the ball_catcher line
+	for x in range(roomWidth):
+		var ballCatcher: Node2D = ballCatcherScene.instantiate()
+
+		# Calculate the position of the ball_catcher relative to the top-left corner
+		var ballCatcherPosition = Vector2(x * tileSize - tileSize / 2, (roomLength - 1) * tileSize + tileSize * -4.7)
+
+		# Set the position of the ball_catcher and add it as a child to the current node
+		ballCatcher.global_position = roomTopLeft + ballCatcherPosition
+		add_child(ballCatcher)

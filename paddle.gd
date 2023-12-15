@@ -19,3 +19,16 @@ func _physics_process(delta):
 	# Stop the object when no keys are pressed
 	if movement == Vector2.ZERO:
 		linear_velocity = Vector2.ZERO
+
+func _on_Paddle_body_entered(body):
+	# Check if the colliding body is the ball
+	if body.is_in_group("ball"):
+		# Check the relative motion of the ball and the paddle
+		var relative_velocity = linear_velocity - body.linear_velocity
+		var dot_product = relative_velocity.dot(linear_velocity.normalized())
+
+		# If the dot product is negative, the ball is moving towards the paddle
+		# Prevent the paddle from being carried along by the ball
+		if dot_product < 0:
+			linear_velocity = Vector2.ZERO
+
