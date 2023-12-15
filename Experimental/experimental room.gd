@@ -2,6 +2,7 @@ extends Node2D
 
 var dungeonGenerator: Node2D
 var player: Node2D
+var ball: Ballv2
 
 func _ready():
 	# Instantiate and add the dungeon generator
@@ -10,6 +11,9 @@ func _ready():
 
 	# Call a function to initiate the player
 	initPlayer()
+
+	# Call a function to initiate the ball
+	initBall()
 
 func initPlayer() -> void:
 	# Instantiate and add the player
@@ -24,3 +28,13 @@ func initPlayer() -> void:
 
 	# Add the player as a child of the main scene
 	add_child(player)
+
+func initBall() -> void:
+	# Instantiate and add the ball
+	ball = preload("res://Experimental/Ballv2.tscn").instantiate()
+	
+	# Initialize the ball's position and velocity
+	ball.initialize_ball(player.global_position, dungeonGenerator.roomLength, dungeonGenerator.tileSize)
+
+	# Add the ball as a child of the main scene
+	add_child(ball)
