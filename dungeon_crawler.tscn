@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://dungeon_crawler.gd" id="1_gl1yk"]
 
-[node name="DungeonCrawler" type="Node2D"]
+[node name="DungeonCrawler" type="Node2D" groups=["dungeon_generator"]]
 script = ExtResource("1_gl1yk")

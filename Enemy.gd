@@ -1,19 +1,28 @@
 extends CharacterBody2D
 
-@export var move_speed: float = 30  # Adjust this value as needed
-@export var move_duration: float = 1.0  # Adjust this value as needed
-@export var stop_duration: float = 0.5  # Adjust this value as needed
-@export var hits_to_destroy: int = 3  # Number of hits needed to destroy the enemy
+@export var move_speed: float = 30
+@export var move_duration: float = 1.0
+@export var stop_duration: float = 0.5
+@export var hits_to_destroy: int = 3
+@export var bullet_spawn_interval: float = 2.0
+@export var bullet_speed: float = 100
+@export var bullet_scene: PackedScene
 
 var original_direction: Vector2 = Vector2.RIGHT
 var current_direction: Vector2 = Vector2.RIGHT
 var timer: float = 0.0
 var is_moving: bool = true
-var hits_remaining: int = 3  # Initialize the hits_remaining variable
+var hits_remaining: int = 3
+var dungeon_generator: Node2D
 
 func _ready():
 	original_direction = [Vector2.RIGHT, Vector2.LEFT][randi() % 2]
 	current_direction = original_direction
+	$Timer.start()
+	bullet_scene = preload("res://Experimental/Bullet.tscn")
+
+	dungeon_generator = get_tree().get_nodes_in_group("dungeon_generator")[0]
+	assert(dungeon_generator, "Dungeon generator not found!")
 
 func _physics_process(delta):
 	if is_moving:
@@ -38,16 +47,25 @@ func _physics_process(delta):
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("ball"):
-		# If hit by the ball, stop for a brief moment
 		is_moving = false
 		timer = stop_duration
-
-		# Decrease hits_remaining when hit by the ball
 		hits_remaining -= 1
 
 		if hits_remaining <= 0:
-			# If hits_remaining is zero or negative, queue_free the enemy
 			queue_free()
 		else:
-			# Reset is_moving to true after the timer expires
 			timer = stop_duration
+
+# Timer callback to spawn bullets
+func _on_Timer_timeout():
+	spawn_bullet()
+
+func spawn_bullet():
+	# Instantiate a bullet
+	var bullet = bullet_scene.instantiate()
+	# Set the bullet's initial position to the position of the enemy plus an offset to the right
+	bullet.global_position = global_position + Vector2(10, 0)  # Adjust the offset as needed
+
+	get_parent().add_child(bullet)
+	
+

@@ -53,3 +53,4 @@ func initEnemy() -> void:
 	
 	# Add the enemy as a child of the main scene
 	add_child(enemy)
+	

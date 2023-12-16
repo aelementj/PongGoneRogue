@@ -62,7 +62,7 @@ func generateRoom() -> void:
 		var ballCatcher: Node2D = ballCatcherScene.instantiate()
 
 		# Calculate the position of the ball_catcher relative to the top-left corner
-		var ballCatcherPosition = Vector2(x * tileSize - tileSize / 2, (roomLength - 1) * tileSize + tileSize * -4.7)
+		var ballCatcherPosition = Vector2(x * tileSize - tileSize / 2, (roomLength - 1) * tileSize + tileSize * -4.0)
 
 		# Set the position of the ball_catcher and add it as a child to the current node
 		ballCatcher.global_position = roomTopLeft + ballCatcherPosition
