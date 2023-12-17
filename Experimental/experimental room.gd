@@ -42,7 +42,9 @@ func initBall() -> void:
 
 	# Add the ball as a child of the main scene
 	add_child(ball)
-	
+
+	# Pass a reference to the paddle to the ball
+	ball.set_paddle_reference(player)
 
 func initEnemy() -> void:
 	# Instantiate and add the enemy
@@ -51,7 +53,6 @@ func initEnemy() -> void:
 	# Set the enemy's initial position (adjust as needed)
 	var moveUpDistance = (dungeonGenerator.roomLength) * -6
 	enemy.translate(Vector2(0, moveUpDistance))
-	
+
 	# Add the enemy as a child of the main scene
 	add_child(enemy)
-	
