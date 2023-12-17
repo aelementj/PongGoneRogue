@@ -1,3 +1,5 @@
+#experimental room.gd
+
 extends Node2D
 
 var dungeonGenerator: Node2D

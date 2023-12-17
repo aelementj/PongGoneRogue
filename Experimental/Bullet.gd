@@ -22,7 +22,7 @@ func _process(delta):
 		queue_free()
 
 func _on_area_entered(area):
-	if area.is_in_group("player"):
+	if area.is_in_group("paddle"):
 		queue_free()
 		
 	if area.is_in_group("bullet_catcher"):

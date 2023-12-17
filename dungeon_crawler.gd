@@ -1,3 +1,5 @@
+#dungeon_crawler.tscn
+
 extends Node2D
 
 # Exported variables for easy tweaking in the Godot editor
