@@ -10,14 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Pong Gone Rogue"
-run/main_scene="res://mainmenu.tscn"
+config/name="Restart&NextLevel"
+run/main_scene="res://ui.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
-
-[audio]
-
-buses/default_bus_layout="res://Music/default_bus_layout.tres"
 
 [rendering]
 
