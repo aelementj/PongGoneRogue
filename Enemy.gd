@@ -64,7 +64,7 @@ func spawn_bullet():
 	# Instantiate a bullet
 	var bullet = bullet_scene.instantiate()
 	# Set the bullet's initial position to the position of the enemy plus an offset to the right
-	bullet.global_position = global_position + Vector2(10, 0)  # Adjust the offset as needed
+	bullet.global_position = global_position  + Vector2(10, dungeon_generator.tileSize * 3)  # Adjust the offset as needed
 
 	get_parent().add_child(bullet)
 	

@@ -5,9 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mmhb"]
 size = Vector2(16, 16)
 
-[node name="bottom_wall" type="Node2D"]
+[node name="bottom_wall" type="Node2D" groups=["bullet_catcher"]]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=["bullet_catcher"]]
 collision_layer = 8
 collision_mask = 3
 
@@ -15,4 +15,14 @@ collision_mask = 3
 texture = ExtResource("1_cnlx1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_1mmhb")
+
+[node name="Area2D" type="Area2D" parent="." groups=["bullet_catcher"]]
+collision_layer = 32
+collision_mask = 32
+
+[node name="Sprite2D2" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_cnlx1")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_1mmhb")

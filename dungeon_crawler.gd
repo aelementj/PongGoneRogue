@@ -12,6 +12,16 @@ var bottomWallScene: PackedScene = preload("res://Experimental/bottom_wall.tscn"
 var topWallScene: PackedScene = preload("res://Experimental/top_wall.tscn")
 var ballCatcherScene: PackedScene = preload("res://Experimental/ball_catcher.tscn")
 
+# Getter functions for exported variables
+func getRoomWidth() -> int:
+	return roomWidth
+
+func getRoomLength() -> int:
+	return roomLength
+
+func getTileSize() -> float:
+	return tileSize
+
 func _ready():
 	# Call the generateRoom() function when the node is ready
 	generateRoom()

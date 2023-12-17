@@ -42,6 +42,7 @@ func initBall() -> void:
 
 	# Add the ball as a child of the main scene
 	add_child(ball)
+	
 
 func initEnemy() -> void:
 	# Instantiate and add the enemy

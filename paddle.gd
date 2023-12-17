@@ -1,6 +1,7 @@
 extends RigidBody2D
 
 @export var speed = 30000
+var lives: int = 3
 
 func _ready():
 	# Set linear_damp to zero for less resistance
@@ -11,8 +12,10 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("ui_left"):
 		movement.x -= 1
+		print(movement)
 	elif Input.is_action_pressed("ui_right"):
 		movement.x += 1
+		print(movement)
 		
 	linear_velocity = movement.normalized() * speed * delta
 
@@ -31,4 +34,16 @@ func _on_Paddle_body_entered(body):
 		# Prevent the paddle from being carried along by the ball
 		if dot_product < 0:
 			linear_velocity = Vector2.ZERO
-
+	
+	
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("bullet"):
+		# Bullet hit the paddle
+			lives -= 1
+			if lives <= 0:
+	# Game over or handle losing logic
+				print("Game Over")
+				queue_free()
+			else:
+				print("Lives Remaining:", lives)
+				
