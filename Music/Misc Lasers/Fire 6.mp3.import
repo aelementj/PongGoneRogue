@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bctks6yedhu6h"
+path="res://.godot/imported/Fire 6.mp3-ce7adbf3ca6b43386b308efef99c1914.mp3str"
+
+[deps]
+
+source_file="res://Music/Misc Lasers/Fire 6.mp3"
+dest_files=["res://.godot/imported/Fire 6.mp3-ce7adbf3ca6b43386b308efef99c1914.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cnv3kuonllp43"
+path="res://.godot/imported/sfx_switch.ogg-31cb0d7e9b0d32543487073232c834b8.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/sfx ssad/sfx_switch.ogg"
+dest_files=["res://.godot/imported/sfx_switch.ogg-31cb0d7e9b0d32543487073232c834b8.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

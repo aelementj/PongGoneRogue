@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://l4yv4fjjrwqh"
+path="res://.godot/imported/Jingle_Achievement_00.mp3-ce99909c2e1aed3cdaf41c4c740c7976.mp3str"
+
+[deps]
+
+source_file="res://Music/8-Bit Sound Library/8-Bit Sound Library/Mp3/Jingle_Achievement_00.mp3"
+dest_files=["res://.godot/imported/Jingle_Achievement_00.mp3-ce99909c2e1aed3cdaf41c4c740c7976.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

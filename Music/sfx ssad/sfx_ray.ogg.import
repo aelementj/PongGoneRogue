@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bxjflqm6v3i7a"
+path="res://.godot/imported/sfx_ray.ogg-df38f9e126d1714369ca8476388741aa.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/sfx ssad/sfx_ray.ogg"
+dest_files=["res://.godot/imported/sfx_ray.ogg-df38f9e126d1714369ca8476388741aa.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

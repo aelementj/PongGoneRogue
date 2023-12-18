@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://5wgod3y7purf"
+path="res://.godot/imported/sfx_explosionNormal.ogg-405bda7afe6c936226c146e110dc22cd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/sfx ssad/sfx_explosionNormal.ogg"
+dest_files=["res://.godot/imported/sfx_explosionNormal.ogg-405bda7afe6c936226c146e110dc22cd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

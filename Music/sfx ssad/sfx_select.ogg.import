@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dmectfgpcmhfk"
+path="res://.godot/imported/sfx_select.ogg-dc00f7313acfcc96c94f8a9d7e4bfafd.oggvorbisstr"
+
+[deps]
+
+source_file="res://Music/sfx ssad/sfx_select.ogg"
+dest_files=["res://.godot/imported/sfx_select.ogg-dc00f7313acfcc96c94f8a9d7e4bfafd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

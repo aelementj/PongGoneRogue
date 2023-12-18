@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjd0ts1t2fnbg"
+path="res://.godot/imported/Hero_Death_00.mp3-c423c3d29d0370c6e9c8890ac386e17f.mp3str"
+
+[deps]
+
+source_file="res://Music/8-Bit Sound Library/8-Bit Sound Library/Mp3/Hero_Death_00.mp3"
+dest_files=["res://.godot/imported/Hero_Death_00.mp3-c423c3d29d0370c6e9c8890ac386e17f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

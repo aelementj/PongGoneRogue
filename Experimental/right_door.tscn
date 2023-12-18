@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmxjbq5231wih"]
+
+[ext_resource type="Texture2D" uid="uid://64kh16rkd05v" path="res://Experimental/tile122.png" id="1_gmqkj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ibum1"]
+size = Vector2(16, 16)
+
+[node name="right door" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
+texture = ExtResource("1_gmqkj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_ibum1")

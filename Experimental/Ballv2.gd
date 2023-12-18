@@ -49,6 +49,8 @@ func _physics_process(delta):
 
 		if current_speed > max_speed:
 			velocity = velocity.normalized() * max_speed
+		
+		$Bounce.play()
 
 
 

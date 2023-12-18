@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dfy6rb12lojsd"
+path="res://.godot/imported/Climb_Rope_Loop_00.mp3-6b2b36e2643901c747b5ead53da5e487.mp3str"
+
+[deps]
+
+source_file="res://Music/8-Bit Sound Library/8-Bit Sound Library/Mp3/Climb_Rope_Loop_00.mp3"
+dest_files=["res://.godot/imported/Climb_Rope_Loop_00.mp3-6b2b36e2643901c747b5ead53da5e487.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

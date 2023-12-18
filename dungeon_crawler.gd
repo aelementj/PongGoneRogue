@@ -1,9 +1,9 @@
-#dungeon_crawler.tscn
+# dungeon_crawler.tscn
 
 extends Node2D
 
 # Exported variables for easy tweaking in the Godot editor
-@export var roomWidth: int = 60
+@export var roomWidth: int = 62  # Increase the width by 2 tiles
 @export var roomLength: int = 38
 @export var tileSize: float = 16.0
 
@@ -63,7 +63,7 @@ func generateRoom() -> void:
 					tile_node = tileScene.instantiate()
 
 			# Calculate the position of the tile relative to the top-left corner
-			var tile_position = Vector2(x * tileSize, y * tileSize)
+			var tile_position = Vector2((x - 0.5) * tileSize, y * tileSize)  # Adjust for the increased width
 
 			# Set the position of the tile and add it as a child to the current node
 			tile_node.global_position = roomTopLeft + tile_position
@@ -74,7 +74,7 @@ func generateRoom() -> void:
 		var ballCatcher: Node2D = ballCatcherScene.instantiate()
 
 		# Calculate the position of the ball_catcher relative to the top-left corner
-		var ballCatcherPosition = Vector2(x * tileSize - tileSize / 2, (roomLength - 1) * tileSize + tileSize * -4.0)
+		var ballCatcherPosition = Vector2((x - 0.5) * tileSize - tileSize / 10, (roomLength - 1) * tileSize + tileSize * -4.0)  # Adjust for the increased width
 
 		# Set the position of the ball_catcher and add it as a child to the current node
 		ballCatcher.global_position = roomTopLeft + ballCatcherPosition

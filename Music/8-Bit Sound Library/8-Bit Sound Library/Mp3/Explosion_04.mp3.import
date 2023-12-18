@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bq6gpg5n18d8j"
+path="res://.godot/imported/Explosion_04.mp3-bce56b7f3b6687198c877f909983c146.mp3str"
+
+[deps]
+
+source_file="res://Music/8-Bit Sound Library/8-Bit Sound Library/Mp3/Explosion_04.mp3"
+dest_files=["res://.godot/imported/Explosion_04.mp3-bce56b7f3b6687198c877f909983c146.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

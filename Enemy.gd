@@ -1,3 +1,5 @@
+#nemy
+
 extends CharacterBody2D
 
 @export var move_speed: float = 30
@@ -7,6 +9,8 @@ extends CharacterBody2D
 @export var bullet_spawn_interval: float = 2.0
 @export var bullet_speed: float = 100
 @export var bullet_scene: PackedScene
+@export var destruction_sound: AudioStreamPlayer
+@export var low_health_sound: AudioStreamPlayer
 
 var original_direction: Vector2 = Vector2.RIGHT
 var current_direction: Vector2 = Vector2.RIGHT
@@ -28,6 +32,8 @@ func _ready():
 
 	initial_move_speed = move_speed
 	initial_bullet_spawn_interval = bullet_spawn_interval
+	destruction_sound = $Death
+	low_health_sound = $Hit
 
 func _physics_process(delta):
 	if is_moving:
@@ -57,11 +63,13 @@ func _on_area_2d_area_entered(area):
 		hits_remaining -= 1
 
 		if hits_remaining <= 0:
-			queue_free()
+			destruction_sound.play()
+			$Timer2.start()
 		else:
 			timer = stop_duration
 			# Update move_speed and bullet_spawn_interval based on hits_remaining
 			update_enemy_parameters()
+			low_health_sound.play()
 
 # Timer callback to spawn bullets
 func _on_Timer_timeout():
@@ -80,3 +88,7 @@ func update_enemy_parameters():
 	move_speed = initial_move_speed + (initial_move_speed / initial_hits_to_destroy) * (initial_hits_to_destroy - hits_remaining + 1)
 	bullet_spawn_interval = initial_bullet_spawn_interval - (initial_bullet_spawn_interval / initial_hits_to_destroy) * (initial_hits_to_destroy - hits_remaining + 1)
 	$Timer.wait_time = bullet_spawn_interval
+
+
+func _on_timer_2_timeout():
+	queue_free()
