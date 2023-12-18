@@ -43,7 +43,8 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_yosbk")
 theme_override_font_sizes/font_size = 38
-text = "Options"
+text = "
+Options"
 horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
@@ -60,7 +61,9 @@ icon_alignment = 1
 vertical_icon_alignment = 2
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -119,6 +122,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer2/SubOptions"]
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 
 [node name="Audio" type="HBoxContainer" parent="MarginContainer2/SubOptions"]
