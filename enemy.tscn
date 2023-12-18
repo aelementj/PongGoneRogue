@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpiicuiivv1bn"]
+
+[ext_resource type="Texture2D" uid="uid://cbp8r54mexk83" path="res://assets/Alien_03_f1.png" id="1_55dwn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sq10g"]
+
+[node name="enemy" type="Sprite2D"]
+texture_filter = 1
+scale = Vector2(-11.9255, 14.402)
+texture = ExtResource("1_55dwn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+scale = Vector2(0.693861, 0.692308)
+shape = SubResource("RectangleShape2D_sq10g")

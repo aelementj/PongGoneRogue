@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://ckooumxkkljsg"]
+[gd_scene load_steps=8 format=3 uid="uid://ckooumxkkljsg"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_rhkky"]
 [ext_resource type="Texture2D" uid="uid://di3fr6e65hee0" path="res://assets/Space Background (1).png" id="1_y4p7s"]
 [ext_resource type="FontFile" uid="uid://dnpkfghmefjyi" path="res://assets/MinimalPixel v2.ttf" id="2_wkvoj"]
 [ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="3_01cl8"]
 [ext_resource type="Texture2D" uid="uid://b6arsa7eug46e" path="res://assets/LogoFinale!.png" id="3_ymxie"]
-[ext_resource type="PackedScene" uid="uid://dlmc77cnij2ks" path="res://options_menu.tscn" id="5_kgrdg"]
 [ext_resource type="AudioStream" uid="uid://byipvx6anxo2a" path="res://Music/Density & Time - MAZE  NO COPYRIGHT 8-bit Music.mp3" id="7_xbyx1"]
 [ext_resource type="PackedScene" uid="uid://4ksbyakwivij" path="res://MainMenuAnimations.tscn" id="8_ri1g4"]
 
@@ -87,12 +86,6 @@ layout_direction = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="OptionsMenu" parent="." instance=ExtResource("5_kgrdg")]
-visible = false
-layout_mode = 1
-offset_left = -8.0
-offset_right = -8.0
 
 [node name="MainMenuBGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_xbyx1")

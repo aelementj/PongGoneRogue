@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bapahxdlb1ghm"]
+
+[ext_resource type="Script" path="res://Experimental/experimental_room.gd" id="1_pen06"]
+[ext_resource type="Script" path="res://Experimental/experimental room.gd" id="1_xewjp"]
+[ext_resource type="PackedScene" uid="uid://cr4nejl7pdnt5" path="res://pause_menu.tscn" id="3_tsxly"]
+
+[node name="ExperimentalRoom" type="Node"]
+script = ExtResource("1_pen06")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_xewjp")
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node2D"]
+
+[node name="PauseMenu" parent="Node2D/CanvasLayer" instance=ExtResource("3_tsxly")]
+offset_left = -32.0
+offset_top = -40.0
+offset_right = -32.0
+offset_bottom = -40.0
+metadata/_edit_use_anchors_ = true

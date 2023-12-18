@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bapahxdlb1ghm"]
+
+[ext_resource type="Script" path="res://Experimental/GameScene.gd" id="1_mcx17"]
+[ext_resource type="Script" path="res://Experimental/game_manager.gd" id="1_vcdrp"]
+[ext_resource type="PackedScene" uid="uid://cr4nejl7pdnt5" path="res://pause_menu.tscn" id="3_tsxly"]
+[ext_resource type="Script" path="res://game_scene_pause_menu.gd" id="4_8gtbx"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_vcdrp")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("1_mcx17")
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Node2D"]
+
+[node name="PauseMenu" parent="Node2D/CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("3_tsxly")]
+script = ExtResource("4_8gtbx")
+game_manager = NodePath("../../..")

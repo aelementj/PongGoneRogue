@@ -1,0 +1,101 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr4nejl7pdnt5"]
+
+[ext_resource type="Script" path="res://game_scene_pause_menu.gd" id="1_j5yyp"]
+[ext_resource type="PackedScene" uid="uid://dhgeaqud8yak5" path="res://Experimental/options_menu.tscn" id="2_t8i5o"]
+[ext_resource type="Script" path="res://Experimental/options_menu.gd" id="3_r2dpf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8nuyn"]
+bg_color = Color(0.529412, 0.529412, 0.529412, 0.4)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_j5yyp")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 392.0
+offset_top = 144.0
+offset_right = -352.0
+offset_bottom = -136.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8nuyn")
+
+[node name="OptionsMenu" parent="Panel" instance=ExtResource("2_t8i5o")]
+visible = false
+layout_mode = 1
+script = ExtResource("3_r2dpf")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.203804
+offset_bottom = -20.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Pause
+"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.117647
+anchor_top = 0.23913
+anchor_right = 0.882353
+anchor_bottom = 0.934783
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Resume" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Resume"
+
+[node name="Restart" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Restart"
+
+[node name="Option" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Option"
+
+[node name="Main Menu" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 20
+text = "Main Menu"
+
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Option" to="." method="_on_option_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]

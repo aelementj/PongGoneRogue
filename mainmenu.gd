@@ -6,7 +6,11 @@ extends Control
 @onready var Exit = $MarginContainer/VBoxContainer/Exit as Button
 @onready var options_menu = $OptionsMenu as OptionsMenu
 @onready var margin_container = $MarginContainer as MarginContainer
+<<<<<<< Updated upstream
 @onready var Game = load("res://Game.tscn") as PackedScene
+=======
+@onready var Game = preload("res://Experimental/experimental room.tscn") as PackedScene
+>>>>>>> Stashed changes
 
 func _ready():
 	handle_connecting_signals()
