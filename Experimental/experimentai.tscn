@@ -1,6 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://33pcoa4qbhe7"]
+[gd_scene load_steps=4 format=3 uid="uid://1ye3tb4cl4wr"]
 
-[ext_resource type="Script" path="res://Experimental/experimentai.gd" id="1_k5lpo"]
+[sub_resource type="GDScript" id="GDScript_r8akd"]
+script/source = "
+extends CharacterBody2D
+
+var SPEED = 300
+
+func _physics_process(delta):
+	
+	var input_vector = Vector2.ZERO
+	
+	input_vector.x = Input.get_action_strength(\"ui_right\") - Input.get_action_strength(\"ui_left\")
+	input_vector.y = Input.get_action_strength(\"ui_down\") - Input.get_action_strength(\"ui_up\")
+	
+	input_vector.normalized()
+	
+	if input_vector:
+		velocity = input_vector * SPEED
+		move_and_slide()
+		
+	
+"
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8xnnp"]
 
@@ -8,7 +28,7 @@
 size = Vector2(60, 7)
 
 [node name="experimentai" type="CharacterBody2D"]
-script = ExtResource("1_k5lpo")
+script = SubResource("GDScript_r8akd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1.90735e-06, 0.5)
