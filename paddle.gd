@@ -12,9 +12,12 @@ var dash_duration: float = 0.2
 var dash_timer: float = 0.0
 var dash_cooldown_timer: float = 0.0
 
+var level_generator: Node2D
+
 func _ready():
 	# Set linear_damp to zero for less resistance
 	linear_damp = 0.0
+	level_generator = get_node("Level Generator")
 
 func _physics_process(delta):
 	var movement = Vector2.ZERO
@@ -78,13 +81,24 @@ func _on_area_2d_area_entered(area):
 		# Bullet hit the paddle
 		lives -= 1
 		if lives <= 0:
-			# Game over or handle losing logic
 			print("Game Over")
-			queue_free()
+			# Game over or handle losing logic
+			$PlayerDeath.play()
+			if level_generator:
+				level_generator._on_player_death()
+			
+			$Timer.start()
+			
 		else:
 			print("Lives Remaining:", lives)
+			$PlayerHit.play()
 
 func start_dash(direction: Vector2) -> void:
 	is_dashing = true
 	dash_timer = dash_duration
 	global_position += direction * dash_speed
+
+
+
+func _on_timer_timeout():
+	queue_free()

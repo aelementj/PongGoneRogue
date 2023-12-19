@@ -78,9 +78,11 @@ func _on_ball_touched_area_entered(area):
 		# Instead of queue_free, hide or deactivate the ball
 		hide()
 		$Timer.start()
+		$BallPickUp.play()
 
 func _on_timer_timeout():
 	$Timer.stop()
 	# After the timer, reinitialize or show the ball
 	ball_caught()
 	show()  # or any other method to activate the ball
+	$BallServe.play()

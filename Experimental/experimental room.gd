@@ -8,6 +8,8 @@ var ball: Ballv2
 var enemy: Node2D
 var leftDoorScene: PackedScene = preload("res://Experimental/left_door.tscn")
 var rightDoorScene: PackedScene = preload("res://Experimental/right_door.tscn")
+var gameoverControl: Control
+
 
 func _ready():
 	# Instantiate and add the dungeon generator
@@ -26,7 +28,9 @@ func _ready():
 
 	# Call a function to initiate the enemy
 	initEnemy()
-
+	
+	gameoverControl = $Control
+	
 func initPlayer() -> void:
 	# Instantiate and add the player
 	player = preload("res://paddle.tscn").instantiate()
@@ -43,11 +47,10 @@ func initPlayer() -> void:
 
 	# Initialize doors
 	initDoors()
-
-
+	
 func initDoors() -> void:
 	# Initialize left doors
-	for i in range(5):
+	for i in range(3):
 		var leftDoor: Node2D = leftDoorScene.instantiate()
 		var leftDoorPosition = Vector2(
 			(-(dungeonGenerator.getRoomWidth() * dungeonGenerator.getTileSize()) + 32) / 2,
@@ -57,7 +60,7 @@ func initDoors() -> void:
 		add_child(leftDoor)
 
 	# Initialize right doors
-	for i in range(5):
+	for i in range(3):
 		var rightDoor: Node2D = rightDoorScene.instantiate()
 		var rightDoorPosition = Vector2(
 			((dungeonGenerator.getRoomWidth() * dungeonGenerator.getTileSize()) - 32) / 2,
@@ -90,3 +93,8 @@ func initEnemy() -> void:
 
 	# Add the enemy as a child of the main scene
 	add_child(enemy)
+
+func _on_player_death():
+	# Player has died, show the game over panel
+	gameoverControl.visible = true
+	print("Game over panel shown")

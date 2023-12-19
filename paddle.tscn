@@ -1,6 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwa2yntvmh0dp"]
+[gd_scene load_steps=10 format=3 uid="uid://dwa2yntvmh0dp"]
 
 [ext_resource type="Script" path="res://paddle.gd" id="1_5s64m"]
+[ext_resource type="AudioStream" uid="uid://mjaapxqfn1ci" path="res://Music/sfx ssad/sfx_explosionFlash.ogg" id="2_5m16c"]
+[ext_resource type="AudioStream" uid="uid://cdwp6wk36v04m" path="res://Music/sfx ssad/sfx_hurt.ogg" id="3_uxr68"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_r41lj"]
 
@@ -77,5 +79,17 @@ position = Vector2(-9.57523e-07, 0)
 shape = SubResource("RectangleShape2D_3aek4")
 metadata/_edit_group_ = true
 
+[node name="PlayerDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_5m16c")
+bus = &"SoundFX"
+
+[node name="PlayerHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_uxr68")
+bus = &"SoundFX"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+
 [connection signal="body_entered" from="." to="." method="_on_Paddle_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

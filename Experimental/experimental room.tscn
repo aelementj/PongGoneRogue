@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bapahxdlb1ghm"]
+[gd_scene load_steps=6 format=3 uid="uid://bapahxdlb1ghm"]
 
 [ext_resource type="Script" path="res://Experimental/game_manager.gd" id="1_dt50y"]
 [ext_resource type="Script" path="res://Experimental/experimental room.gd" id="1_xewjp"]
 [ext_resource type="PackedScene" uid="uid://dq4n2xnhmuhf4" path="res://PauseMenu.tscn" id="2_vosgn"]
+[ext_resource type="PackedScene" uid="uid://bwxynd5772xxt" path="res://GameOverRestart.tscn" id="3_4sj4c"]
+[ext_resource type="Script" path="res://GameOverRestart.gd" id="4_of3kq"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_dt50y")
@@ -10,9 +12,25 @@ script = ExtResource("1_dt50y")
 [node name="Level Generator" type="Node2D" parent="."]
 script = ExtResource("1_xewjp")
 
+[node name="Control" parent="Level Generator" instance=ExtResource("3_4sj4c")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -192.0
+offset_top = -136.0
+offset_right = 192.0
+offset_bottom = 192.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_of3kq")
+
 [node name="Camera2D" type="Camera2D" parent="Level Generator"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Control" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("2_vosgn")]
 game_manager = NodePath("../..")

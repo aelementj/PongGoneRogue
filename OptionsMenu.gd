@@ -12,5 +12,39 @@ func _ready():
 func _on_back_to_main_pressed() -> void:
 	back_main_menu.emit()
 	set_process(false)
+	$HoverSFX.play()
+
+func _on_back_to_main_mouse_entered():
+	$HoverSFX.play()
 
 
+func _on_fullscreen_mouse_entered():
+	$HoverSFX.play()
+
+
+func _on_borderless_mouse_entered():
+	$HoverSFX.play()
+
+
+func _on_master_mouse_entered():
+	$HoverSFX.play()
+
+
+func _on_music_mouse_entered():
+	$HoverSFX.play()
+
+
+func _on_sound_fx_mouse_entered():
+	$HoverSFX.play()
+
+
+func _on_sound_fx_drag_ended(value_changed):
+	$Select.play()
+
+
+func _on_music_drag_ended(value_changed):
+	$Select2.play()
+
+
+func _on_master_drag_ended(value_changed):
+	$Select3.play()

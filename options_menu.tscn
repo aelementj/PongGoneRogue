@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlmc77cnij2ks"]
+[gd_scene load_steps=9 format=3 uid="uid://dlmc77cnij2ks"]
 
 [ext_resource type="Script" path="res://OptionsMenu.gd" id="1_wa6sv"]
 [ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="1_y0r30"]
 [ext_resource type="Script" path="res://OptionFunctionality.gd" id="3_13uo8"]
 [ext_resource type="FontFile" uid="uid://dnpkfghmefjyi" path="res://assets/MinimalPixel v2.ttf" id="3_yosbk"]
 [ext_resource type="PackedScene" uid="uid://d3wmqt1rv7e2b" path="res://vol_slider_function.tscn" id="4_addom"]
+[ext_resource type="AudioStream" uid="uid://cdjhdiqx337oq" path="res://Music/8-Bit Sound Library/8-Bit Sound Library/Mp3/Menu_Navigate_01.mp3" id="6_gjceo"]
+[ext_resource type="AudioStream" uid="uid://dko2c6xkdhcch" path="res://Music/sfx ssad/sfx_toggle.ogg" id="7_u6p4x"]
+[ext_resource type="AudioStream" uid="uid://dmectfgpcmhfk" path="res://Music/sfx ssad/sfx_select.ogg" id="8_kj6uh"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -167,6 +170,34 @@ text = "SoundFX"
 layout_mode = 2
 bus_name = "SoundFX"
 
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_gjceo")
+bus = &"SoundFX"
+
+[node name="Toggle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_u6p4x")
+bus = &"SoundFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kj6uh")
+bus = &"SoundFX"
+
+[node name="Select2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kj6uh")
+bus = &"Music"
+
+[node name="Select3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_kj6uh")
+
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/BackToMain" to="." method="_on_back_to_main_mouse_entered"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMain" to="." method="_on_back_to_main_pressed"]
+[connection signal="mouse_entered" from="MarginContainer2/SubOptions/Video/Checks/Fullscreen" to="." method="_on_fullscreen_mouse_entered"]
 [connection signal="toggled" from="MarginContainer2/SubOptions/Video/Checks/Fullscreen" to="MarginContainer2" method="_on_fullscreen_toggled"]
+[connection signal="mouse_entered" from="MarginContainer2/SubOptions/Video/Checks/Borderless" to="." method="_on_borderless_mouse_entered"]
 [connection signal="toggled" from="MarginContainer2/SubOptions/Video/Checks/Borderless" to="MarginContainer2" method="_on_borderless_toggled"]
+[connection signal="drag_ended" from="MarginContainer2/SubOptions/Audio/Lables/Master" to="." method="_on_master_drag_ended"]
+[connection signal="mouse_entered" from="MarginContainer2/SubOptions/Audio/Lables/Master" to="." method="_on_master_mouse_entered"]
+[connection signal="drag_ended" from="MarginContainer2/SubOptions/Audio/Lables/Music" to="." method="_on_music_drag_ended"]
+[connection signal="mouse_entered" from="MarginContainer2/SubOptions/Audio/Lables/Music" to="." method="_on_music_mouse_entered"]
+[connection signal="drag_ended" from="MarginContainer2/SubOptions/Audio/Lables/SoundFX" to="." method="_on_sound_fx_drag_ended"]
+[connection signal="mouse_entered" from="MarginContainer2/SubOptions/Audio/Lables/SoundFX" to="." method="_on_sound_fx_mouse_entered"]

@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dq4n2xnhmuhf4"]
+[gd_scene load_steps=9 format=3 uid="uid://dq4n2xnhmuhf4"]
 
 [ext_resource type="Script" path="res://PauseMenu.gd" id="1_xrvwm"]
 [ext_resource type="PackedScene" uid="uid://dlmc77cnij2ks" path="res://options_menu.tscn" id="2_djkby"]
 [ext_resource type="Script" path="res://Experimental/options_menu.gd" id="3_5pl25"]
+[ext_resource type="FontFile" uid="uid://dnpkfghmefjyi" path="res://assets/MinimalPixel v2.ttf" id="4_78l5i"]
+[ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="5_rsjgt"]
+[ext_resource type="AudioStream" uid="uid://cdjhdiqx337oq" path="res://Music/8-Bit Sound Library/8-Bit Sound Library/Mp3/Menu_Navigate_01.mp3" id="6_fq0i6"]
+[ext_resource type="AudioStream" uid="uid://dko2c6xkdhcch" path="res://Music/sfx ssad/sfx_toggle.ogg" id="7_dkllk"]
+[ext_resource type="AudioStream" uid="uid://dmectfgpcmhfk" path="res://Music/sfx ssad/sfx_select.ogg" id="8_1skiq"]
 
 [node name="Control" type="Control"]
 process_mode = 2
@@ -43,6 +48,7 @@ offset_bottom = 88.0
 [node name="Label" type="Label" parent="Panel/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("4_78l5i")
 theme_override_font_sizes/font_size = 40
 text = "Pause"
 horizontal_alignment = 1
@@ -67,21 +73,29 @@ alignment = 1
 [node name="Resume" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("5_rsjgt")
+theme_override_fonts/font = ExtResource("4_78l5i")
 text = "Resume"
 
 [node name="Options" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("5_rsjgt")
+theme_override_fonts/font = ExtResource("4_78l5i")
 text = "Options"
 
 [node name="Restart" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("5_rsjgt")
+theme_override_fonts/font = ExtResource("4_78l5i")
 text = "Restart"
 
 [node name="Back to Main" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("5_rsjgt")
+theme_override_fonts/font = ExtResource("4_78l5i")
 text = "Back to Main"
 
 [node name="Container" type="Container" parent="."]
@@ -89,7 +103,30 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_fq0i6")
+bus = &"SoundFX"
+
+[node name="Toggle" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_dkllk")
+bus = &"SoundFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_1skiq")
+bus = &"SoundFX"
+
+[node name="Select2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_1skiq")
+bus = &"Music"
+
+[node name="Select3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_1skiq")
+
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_mouse_entered"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_mouse_entered"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_mouse_entered"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="mouse_entered" from="Panel/HBoxContainer/VBoxContainer/Back to Main" to="." method="_on_back_to_main_mouse_entered"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Back to Main" to="." method="_on_back_to_main_pressed"]
