@@ -4957,7 +4957,7 @@ layer_2/tile_data = PackedInt32Array(1441797, 196608, 3, 720902, 131072, 1, 9830
 position = Vector2(480, 376)
 
 [node name="BallBody1" parent="." instance=ExtResource("5_r61s7")]
-position = Vector2(480, 360)
+position = Vector2(480, 336)
 
 [node name="TouchInputs" parent="." instance=ExtResource("5_0dknr")]
 position = Vector2(96, 448)

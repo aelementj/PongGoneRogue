@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt4v4qdpip3h8"]
+[gd_scene load_steps=9 format=3 uid="uid://dt4v4qdpip3h8"]
 
 [ext_resource type="Script" path="res://Game/Player/PlayerBody.gd" id="1_p3u1d"]
 
@@ -6,6 +6,23 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mhnc"]
 size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0vwg"]
+size = Vector2(80, 4)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_5hpub"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vtdqc"]
+a = Vector2(-16, 0)
+b = Vector2(16, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_o3d6q"]
+a = Vector2(9.26765, -6.48928)
+b = Vector2(-15.7569, -2.77837)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_5738u"]
+a = Vector2(15.7569, -2.77838)
+b = Vector2(-9.26765, -6.48928)
 
 [node name="PlayerBody" type="CharacterBody2D"]
 script = ExtResource("1_p3u1d")
@@ -17,7 +34,34 @@ texture = SubResource("CanvasTexture_g77fi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2mhnc")
 
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_m0vwg")
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(1.90735e-06, -20)
+scale = Vector2(80, 8)
+texture = SubResource("CanvasTexture_5hpub")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -23)
+shape = SubResource("SegmentShape2D_vtdqc")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-24, -15)
+rotation = -0.174533
+scale = Vector2(1, 1)
+shape = SubResource("SegmentShape2D_o3d6q")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(24, -15)
+rotation = 0.174533
+scale = Vector2(1, 1)
+shape = SubResource("SegmentShape2D_5738u")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dhe740i8uowko"]
+[gd_scene load_steps=12 format=3 uid="uid://dhe740i8uowko"]
 
 [ext_resource type="Texture2D" uid="uid://b4bx3gfs2bnq7" path="res://icon.svg" id="1_jq68y"]
 
@@ -18,9 +18,32 @@ gradient = SubResource("Gradient_2yaoc")
 width = 128
 height = 128
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xxqau"]
+
+[sub_resource type="Gradient" id="Gradient_4bp2t"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ybcy1"]
+gradient = SubResource("Gradient_4bp2t")
+width = 1
+height = 1
+fill_from = Vector2(0, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vytqa"]
+
+[sub_resource type="Gradient" id="Gradient_62hqw"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_arjwi"]
+gradient = SubResource("Gradient_62hqw")
+width = 1
+height = 1
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 1)
+metadata/_snap_enabled = true
+
 [node name="TouchInputs" type="Node2D"]
 
 [node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2(0, 8)
 scale = Vector2(1, 0.5)
 texture_normal = ExtResource("1_jq68y")
 texture_pressed = SubResource("GradientTexture2D_uhlx3")
@@ -28,9 +51,24 @@ passby_press = true
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2(144, 0)
+position = Vector2(144, 8)
 scale = Vector2(1, 0.5)
 texture_normal = ExtResource("1_jq68y")
 texture_pressed = SubResource("GradientTexture2D_rfuxa")
 passby_press = true
 action = "ui_right"
+
+[node name="Dash" type="TouchScreenButton" parent="."]
+position = Vector2(688.104, -4.76837e-07)
+scale = Vector2(80, 80)
+texture_normal = SubResource("PlaceholderTexture2D_xxqau")
+texture_pressed = SubResource("GradientTexture2D_ybcy1")
+action = "dash"
+
+[node name="Launch" type="TouchScreenButton" parent="."]
+position = Vector2(592.104, 8)
+rotation = 0.00163134
+scale = Vector2(72, 64)
+texture_normal = SubResource("PlaceholderTexture2D_vytqa")
+texture_pressed = SubResource("GradientTexture2D_arjwi")
+action = "ui_accept"
