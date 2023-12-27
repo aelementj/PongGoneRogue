@@ -1,14 +1,14 @@
 extends CharacterBody2D
+class_name PlayerBody
 
-# Declare member variables here. Examples:
 var speed : float = 200.0
-var teleport_distance : float = 50.0  # Adjust this to your desired teleport distance
-var teleport_cooldown : float = 3.0  # Cooldown in seconds
+var teleport_distance : float = 100.0
+var teleport_cooldown : float = 3.0
 var can_teleport : bool = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+signal shoot_ball
+
 func _process(delta):
-	# Process input and update player movement
 	process_input()
 
 # Process player input
@@ -20,7 +20,6 @@ func process_input():
 	elif Input.is_action_pressed("ui_right"):
 		direction.x += 1
 
-	# Teleport on spacebar press if the cooldown is over
 	if can_teleport and Input.is_action_just_pressed("dash"):
 		teleport(direction)
 		start_teleport_cooldown()
@@ -29,18 +28,23 @@ func process_input():
 
 	move_and_slide()
 
+	if Input.is_action_pressed("ui_accept")  and Global.has_ball():
+		print(Global.ball_count)
+		emit_signal("shoot_ball")
+		Global.ball_count -= 1  # Decrement the ball count after shooting
+		print(Global.ball_count)
+
 # Teleport function
 func teleport(direction: Vector2):
 	var teleport_position : Vector2 = position + direction.normalized() * teleport_distance
 
-	# Check if the teleport position is valid (not colliding with anything)
 	if is_teleport_position_valid(teleport_position):
 		position = teleport_position
 
 # Check if the teleport position is valid (not colliding with anything)
 func is_teleport_position_valid(position: Vector2) -> bool:
 	var collision : KinematicCollision2D = move_and_collide(position - global_position)
-	return collision == null  # If there is no collision, the position is valid
+	return collision == null
 
 # Start cooldown timer
 func start_teleport_cooldown():
@@ -50,3 +54,4 @@ func start_teleport_cooldown():
 # Called when the timer completes (cooldown is over)
 func _on_timer_timeout():
 	can_teleport = true
+
