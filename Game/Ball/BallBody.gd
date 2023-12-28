@@ -54,7 +54,7 @@ func _on_player_shoot_ball():
 		initial_player_y = get_parent().get_node("PlayerBody").position.y
 		position.y = initial_player_y - 20
 		
-		velocity = Vector2(20, -initial_ball_speed)
+		velocity = Vector2(0, -initial_ball_speed)
 		visible = true
 
 
