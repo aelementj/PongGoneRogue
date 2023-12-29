@@ -18,3 +18,7 @@ func has_ball() -> bool:
 	var hasBall : bool = ball_count > 0
 	print("Player has at least one ball: ", hasBall)
 	return hasBall
+
+func reset_balls():
+	ball_count = 1
+	print("Balls reset to one.")

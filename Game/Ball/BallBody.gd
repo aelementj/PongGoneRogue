@@ -36,10 +36,10 @@ func _process(delta):
 
 		if initial_ball_speed > min_ball_speed:
 			collision_count += 1
+			print("Current Ball Speed:", initial_ball_speed)
 			if collision_count % 2 == 0:
 				initial_ball_speed -= speed_reduction
 				velocity = velocity.normalized() * initial_ball_speed
-				print("Current Ball Speed:", initial_ball_speed)
 		else:
 			velocity *= speed_multiplier
 			print("Current Ball Speed:", velocity)
