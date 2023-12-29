@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bkvdhlmnkrel1"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://cw5pdtq0teuyj"]
 
 [ext_resource type="Texture2D" uid="uid://b73i435caqdv8" path="res://assets/Tilesets/v1.1 dungeon crawler 16X16 pixel pack/v1.1 dungeon crawler 16X16 pixel pack/full tilemap.png" id="1_4jhrh"]
 [ext_resource type="Texture2D" uid="uid://r5cxvpbd7jox" path="res://assets/Tilesets/Pixel Crawler - FREE - 1.8/Pixel Crawler - FREE - 1.8/Environment/Dungeon Prison/Assets/Tiles.png" id="2_3tn7p"]
