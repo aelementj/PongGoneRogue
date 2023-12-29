@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://br2a0ngsh5a74"]
+[gd_scene load_steps=7 format=3 uid="uid://br2a0ngsh5a74"]
 
 [ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Scrapped/SpawnMap.tscn" id="1_hem2p"]
+[ext_resource type="TileSet" uid="uid://cw5pdtq0teuyj" path="res://assets/Tilesets/Stage1.tres" id="2_737lp"]
 [ext_resource type="PackedScene" uid="uid://fnmjcgnw0nmd" path="res://Game/Stage 1/Doors.tscn" id="2_iplf0"]
 [ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/PlayerBody.tscn" id="4_4r7lc"]
 [ext_resource type="PackedScene" uid="uid://d1l85h8uosjis" path="res://Game/Ball/BallBody.tscn" id="5_r61s7"]
@@ -9,6 +10,7 @@
 [node name="SpawnRoom" type="Node2D"]
 
 [node name="SpawnMap" parent="." instance=ExtResource("1_hem2p")]
+tile_set = ExtResource("2_737lp")
 layer_3/tile_data = PackedInt32Array()
 
 [node name="Doors1" parent="SpawnMap" instance=ExtResource("2_iplf0")]
