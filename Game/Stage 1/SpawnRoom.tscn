@@ -1,17 +1,28 @@
 [gd_scene load_steps=7 format=3 uid="uid://br2a0ngsh5a74"]
 
-[ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Scrapped/SpawnMap.tscn" id="1_hem2p"]
+[ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Stage 1/Room 00.tscn" id="1_thn1q"]
 [ext_resource type="PackedScene" uid="uid://fnmjcgnw0nmd" path="res://Game/Stage 1/Doors.tscn" id="2_iplf0"]
-[ext_resource type="TileSet" uid="uid://cw5pdtq0teuyj" path="res://assets/Tilesets/Stage1.tres" id="2_wrh15"]
 [ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/PlayerBody.tscn" id="4_4r7lc"]
 [ext_resource type="PackedScene" uid="uid://d1l85h8uosjis" path="res://Game/Ball/BallBody.tscn" id="5_r61s7"]
 [ext_resource type="PackedScene" uid="uid://7m1y0376rbvh" path="res://Game/GeneralRoomFeatures/ball_catcher.tscn" id="7_upq1u"]
 
-[node name="SpawnRoom" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_1guah"]
+script/source = "extends Node2D
 
-[node name="SpawnMap" parent="." instance=ExtResource("1_hem2p")]
-tile_set = ExtResource("2_wrh15")
-layer_3/tile_data = PackedInt32Array()
+
+func _ready():
+	# Access the autoloaded singleton
+	DoorGlobal.instance.connect(\"initiated_doors_count_changed\", _on_initiated_doors_count_changed)
+
+func _on_initiated_doors_count_changed(count):
+	# Do something with the updated count
+	print(\"Number of initiated doors: \", count)
+"
+
+[node name="SpawnRoom" type="Node2D"]
+script = SubResource("GDScript_1guah")
+
+[node name="SpawnMap" parent="." instance=ExtResource("1_thn1q")]
 
 [node name="Doors1" parent="SpawnMap" instance=ExtResource("2_iplf0")]
 position = Vector2(192, 128)
@@ -22,11 +33,11 @@ position = Vector2(480, 128)
 [node name="Doors3" parent="SpawnMap" instance=ExtResource("2_iplf0")]
 position = Vector2(768, 128)
 
-[node name="PlayerBody" parent="." instance=ExtResource("4_4r7lc")]
+[node name="PlayerBody" parent="SpawnMap" instance=ExtResource("4_4r7lc")]
 position = Vector2(480, 405)
 
-[node name="BallBody1" parent="." instance=ExtResource("5_r61s7")]
+[node name="BallBody1" parent="SpawnMap" instance=ExtResource("5_r61s7")]
 position = Vector2(480, 376)
 
-[node name="Ball Catcher" parent="." instance=ExtResource("7_upq1u")]
+[node name="Ball Catcher" parent="SpawnMap" instance=ExtResource("7_upq1u")]
 position = Vector2(480, 424)

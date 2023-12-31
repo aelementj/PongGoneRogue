@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ekt20dpyqf7w"]
 
 [ext_resource type="Script" path="res://Game/Stage 1/RoomSelectionTest/room_selection_test.gd" id="1_su4y5"]
-[ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Scrapped/SpawnMap.tscn" id="2_m8e50"]
+[ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Stage 1/Room 00.tscn" id="2_m8e50"]
 
 [node name="RoomSelectionTest" type="Node"]
 script = ExtResource("1_su4y5")

@@ -22,3 +22,4 @@ func has_ball() -> bool:
 func reset_balls():
 	ball_count = 1
 	print("Balls reset to one.")
+	
