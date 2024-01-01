@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt4v4qdpip3h8"]
+
+[ext_resource type="PackedScene" uid="uid://cl6yptsb1vtb5" path="res://Game/Player/PlayerBody.tscn" id="1_3pyux"]
+[ext_resource type="PackedScene" uid="uid://b2ebdovl23cwd" path="res://Game/Player/Paddle.tscn" id="2_8y4gq"]
+[ext_resource type="PackedScene" uid="uid://d1l85h8uosjis" path="res://Game/Ball/BallBody.tscn" id="3_ug7qh"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PlayerBody" parent="." instance=ExtResource("1_3pyux")]
+
+[node name="Paddle" parent="." instance=ExtResource("2_8y4gq")]
+
+[node name="BallBody" parent="." instance=ExtResource("3_ug7qh")]
+position = Vector2(0, -40)

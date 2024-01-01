@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2ebdovl23cwd"]
+
+[ext_resource type="Script" path="res://Game/Player/Paddle.gd" id="1_qx5ly"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_maaxm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oppy8"]
+size = Vector2(80, 2)
+
+[node name="Paddle" type="CharacterBody2D"]
+script = ExtResource("1_qx5ly")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1.90735e-06, -18)
+scale = Vector2(80, 12)
+texture = SubResource("CanvasTexture_maaxm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(0, -16)
+build_mode = 1
+polygon = PackedVector2Array(-40, 3, -28, -5, -8, -10, 8, -10, 28, -5, 40, 3)
+one_way_collision = true
+one_way_collision_margin = 25.0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_oppy8")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0

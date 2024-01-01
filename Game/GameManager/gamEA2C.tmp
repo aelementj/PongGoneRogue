@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkcvk78b6vw02"]
+
+[ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_2hssr"]
+[ext_resource type="PackedScene" uid="uid://br2a0ngsh5a74" path="res://Game/Stage 1/SpawnRoom.tscn" id="2_52n3e"]
+[ext_resource type="PackedScene" uid="uid://dhe740i8uowko" path="res://Game/Controls/TouchInputs.tscn" id="3_k4uav"]
+[ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="4_cu0mg"]
+
+[node name="GameManagerv1" type="Node"]
+script = ExtResource("1_2hssr")
+
+[node name="SpawnRoom" parent="." instance=ExtResource("2_52n3e")]
+
+[node name="TouchInputs2" parent="SpawnRoom" instance=ExtResource("3_k4uav")]
+
+[node name="Camera2D2" type="Camera2D" parent="SpawnRoom"]
+anchor_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_cu0mg")]
+process_mode = 2
+visible = false
+game_manager = NodePath("../..")

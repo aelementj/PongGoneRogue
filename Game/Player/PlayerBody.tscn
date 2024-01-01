@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dt4v4qdpip3h8"]
+[gd_scene load_steps=5 format=3 uid="uid://cl6yptsb1vtb5"]
 
 [ext_resource type="Script" path="res://Game/Player/PlayerBody.gd" id="1_p3u1d"]
 
@@ -7,14 +7,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mhnc"]
 size = Vector2(16, 16)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m0vwg"]
-size = Vector2(80, 4)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_5hpub"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kadhn"]
 
 [node name="PlayerBody" type="CharacterBody2D"]
+collision_layer = 0
 script = ExtResource("1_p3u1d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,26 +20,8 @@ texture = SubResource("CanvasTexture_g77fi")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2mhnc")
 
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
-position = Vector2(0, -11)
-shape = SubResource("RectangleShape2D_m0vwg")
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-
-[node name="Sprite2D2" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(1.90735e-06, -20)
-scale = Vector2(80, 8)
-texture = SubResource("CanvasTexture_5hpub")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CharacterBody2D"]
-position = Vector2(0, -11)
-build_mode = 1
-polygon = PackedVector2Array(-40, 3, -32, -5, -16, -13, 16, -13, 32, -5, 40, 3)
-one_way_collision = true
-one_way_collision_margin = 25.0
 
 [node name="Area2D" type="Area2D" parent="." groups=["Player"]]
 collision_layer = 256

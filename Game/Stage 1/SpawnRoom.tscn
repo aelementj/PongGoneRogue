@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://br2a0ngsh5a74"]
+[gd_scene load_steps=6 format=3 uid="uid://br2a0ngsh5a74"]
 
 [ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Stage 1/Room 00.tscn" id="1_thn1q"]
 [ext_resource type="PackedScene" uid="uid://fnmjcgnw0nmd" path="res://Game/Stage 1/Doors.tscn" id="2_iplf0"]
-[ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/PlayerBody.tscn" id="4_4r7lc"]
-[ext_resource type="PackedScene" uid="uid://d1l85h8uosjis" path="res://Game/Ball/BallBody.tscn" id="5_r61s7"]
+[ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="3_prijx"]
 [ext_resource type="PackedScene" uid="uid://7m1y0376rbvh" path="res://Game/GeneralRoomFeatures/ball_catcher.tscn" id="7_upq1u"]
 
 [sub_resource type="GDScript" id="GDScript_1guah"]
@@ -33,11 +32,8 @@ position = Vector2(480, 128)
 [node name="Doors3" parent="SpawnMap" instance=ExtResource("2_iplf0")]
 position = Vector2(768, 128)
 
-[node name="PlayerBody" parent="SpawnMap" instance=ExtResource("4_4r7lc")]
+[node name="PlayerBody" parent="SpawnMap" instance=ExtResource("3_prijx")]
 position = Vector2(480, 405)
-
-[node name="BallBody1" parent="SpawnMap" instance=ExtResource("5_r61s7")]
-position = Vector2(480, 376)
 
 [node name="Ball Catcher" parent="SpawnMap" instance=ExtResource("7_upq1u")]
 position = Vector2(480, 424)
