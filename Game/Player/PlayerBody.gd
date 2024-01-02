@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name PlayerBody
 
 var speed: float = 200.0
-var teleport_distance: float = 100.0
+var teleport_distance: float = 50.0
 var teleport_cooldown: float = 3.0
 var can_teleport: bool = true
 
@@ -41,14 +41,17 @@ func process_input():
 func teleport(direction: Vector2):
 	var teleport_position: Vector2 = position + direction.normalized() * teleport_distance
 
-	if is_teleport_position_valid(teleport_position):
+	# Check if the destination position is valid
+	if is_valid_teleport_position(teleport_position):
 		position = teleport_position
 
-# Check if the teleport position is valid (not colliding with anything)
-func is_teleport_position_valid(position: Vector2) -> bool:
-	# Use move_and_collide without subtracting global_position
-	var collision: KinematicCollision2D = move_and_collide(position)
-	return collision == null
+# Check if the teleport position is valid (not colliding with obstacles)
+func is_valid_teleport_position(teleport_position: Vector2) -> bool:
+	var collision_info = move_and_collide(teleport_position - position)
+	
+	# Check if there is no collision (collision_info will be null if no collision occurred)
+	return collision_info == null
+
 
 # Start cooldown timer
 func start_teleport_cooldown():
@@ -58,3 +61,7 @@ func start_teleport_cooldown():
 # Called when the timer completes (cooldown is over)
 func _on_timer_timeout():
 	can_teleport = true
+
+func is_moving() -> bool:
+	var moving: bool = velocity.length() > 0.1
+	return moving
