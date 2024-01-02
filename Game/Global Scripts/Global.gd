@@ -31,3 +31,4 @@ func set_player_reference(player_node: Node):
 # Function to get the player reference
 func get_player_reference() -> Node:
 	return player_reference
+

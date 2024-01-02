@@ -23,6 +23,7 @@ buses/default_bus_layout="res://Music/default_bus_layout.tres"
 
 Global="*res://Game/Global Scripts/Global.gd"
 DoorGlobal="*res://Game/Global Scripts/DoorGlobal.gd"
+EnemyGlobal="*res://Game/Global Scripts/EnemyGlobal.gd"
 
 [display]
 
@@ -44,11 +45,12 @@ pointing/emulate_touch_from_mouse=true
 
 [layer_names]
 
-2d_physics/layer_1="Player"
-2d_physics/layer_2="Wall"
+2d_physics/layer_1="Wall"
+2d_physics/layer_2="Player"
 2d_physics/layer_3="Doors"
 2d_physics/layer_4="Ball"
 2d_physics/layer_5="Bullet"
+2d_physics/layer_6="Enemy"
 2d_physics/layer_9="BallCatcher"
 
 [rendering]

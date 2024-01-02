@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=3 uid="uid://jshsl3wma2d6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ux25k"]
+size = Vector2(2, 392)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w6iso"]
+size = Vector2(2, 384)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_vmdvk"]
+a = Vector2(400, 0)
+b = Vector2(-432, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkc51"]
+size = Vector2(2, 392)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ddk2"]
+size = Vector2(2, 384)
+
+[node name="Wall" type="StaticBody2D" groups=["Wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(72, 232)
+shape = SubResource("RectangleShape2D_ux25k")
+debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(896, 232)
+shape = SubResource("RectangleShape2D_w6iso")
+debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(496, 48)
+shape = SubResource("SegmentShape2D_vmdvk")
+debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(496, 424)
+shape = SubResource("SegmentShape2D_vmdvk")
+debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
+
+[node name="Area2D" type="Area2D" parent="." groups=["Wall"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(80.25, 232)
+shape = SubResource("RectangleShape2D_mkc51")
+debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(888, 232)
+shape = SubResource("RectangleShape2D_2ddk2")
+debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(496, 56)
+shape = SubResource("SegmentShape2D_vmdvk")
+debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(496, 416)
+shape = SubResource("SegmentShape2D_vmdvk")
+debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)

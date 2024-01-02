@@ -57,8 +57,11 @@ func _on_player_shoot_ball():
 		velocity = Vector2(0, -initial_ball_speed)
 		visible = true
 
-
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Player"):
 		hide()
 		Global.add_ball()
+
+func _on_enemy_hit_area_entered(area):
+	if area.is_in_group("Enemy"):
+		print("Enemy Hit")
