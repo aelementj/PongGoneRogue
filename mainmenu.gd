@@ -20,6 +20,7 @@ func _on_options_pressed() -> void:
 	margin_container.visible = false
 	options_menu.set_process(true)
 	options_menu.visible = true
+	
 
 
 func _on_exit_pressed() -> void:
