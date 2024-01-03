@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cetaq8bj820gm"
-path="res://.godot/imported/Character_2_32x32_RPGMAKER.png-15948359b0d9c5ad43f2e093b0916fc4.ctex"
+uid="uid://bd6ukgra2v77u"
+path="res://.godot/imported/run_horizontal_48x48_2.png-cd9ef6d6bb7c78aa31e8213e0ae87d68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tilesets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Old/mv/Character_2_32x32_RPGMAKER.png"
-dest_files=["res://.godot/imported/Character_2_32x32_RPGMAKER.png-15948359b0d9c5ad43f2e093b0916fc4.ctex"]
+source_file="res://assets/Tilesets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Old/run_horizontal_48x48_2.png"
+dest_files=["res://.godot/imported/run_horizontal_48x48_2.png-cd9ef6d6bb7c78aa31e8213e0ae87d68.ctex"]
 
 [params]
 

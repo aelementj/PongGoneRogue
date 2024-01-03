@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doku6q0iuf588"
-path="res://.godot/imported/run_horizontal_16x16_2.png-ff2f1fd172e83d3944a38d2036ec375b.ctex"
+uid="uid://bjbbj1fjmgpdm"
+path="res://.godot/imported/idle_16x16_2.png-a870eb7b2cd7afcb0542e457618f26a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tilesets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Old/run_horizontal_16x16_2.png"
-dest_files=["res://.godot/imported/run_horizontal_16x16_2.png-ff2f1fd172e83d3944a38d2036ec375b.ctex"]
+source_file="res://assets/Tilesets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Old/idle_16x16_2.png"
+dest_files=["res://.godot/imported/idle_16x16_2.png-a870eb7b2cd7afcb0542e457618f26a1.ctex"]
 
 [params]
 

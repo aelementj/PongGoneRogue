@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6s8k7pkvftdp"
-path="res://.godot/imported/Tileset_16x16_9.png-6accfb16129deb7149944a5917527691.ctex"
+uid="uid://ce4kq5q3oxmq6"
+path="res://.godot/imported/Tileset_32x32_1.png-31ca8bece86fc047dad0f60db5d60aa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tilesets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Old/Tileset_16x16_9.png"
-dest_files=["res://.godot/imported/Tileset_16x16_9.png-6accfb16129deb7149944a5917527691.ctex"]
+source_file="res://assets/Tilesets/Modern_Interiors_Free_v2.2/Modern tiles_Free/Characters_free/Old/Tileset_32x32_1.png"
+dest_files=["res://.godot/imported/Tileset_32x32_1.png-31ca8bece86fc047dad0f60db5d60aa3.ctex"]
 
 [params]
 
