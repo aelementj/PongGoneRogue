@@ -12,6 +12,7 @@ func _ready():
 	# Assuming the player is a child of the main scene root
 	Global.set_player_reference(self)
 
+
 func _process(delta):
 	process_input()
 
@@ -52,7 +53,6 @@ func is_valid_teleport_position(teleport_position: Vector2) -> bool:
 	# Check if there is no collision (collision_info will be null if no collision occurred)
 	return collision_info == null
 
-
 # Start cooldown timer
 func start_teleport_cooldown():
 	can_teleport = false
@@ -65,3 +65,17 @@ func _on_timer_timeout():
 func is_moving() -> bool:
 	var moving: bool = velocity.length() > 0.1
 	return moving
+
+# Function to handle being hit by a bullet
+func _on_hit_by_bullet(body):
+	if body.is_in_group("Bullet"):
+		Global.decrease_player_lives()
+		print("Player hit by a bullet. Remaining lives: ", Global.get_player_lives())
+		body.queue_free()  # Remove the bullet from the scene
+		
+		if Global.get_player_lives() <= 0:
+			trigger_player_defeated()
+
+# Function to trigger player defeated event
+func trigger_player_defeated():
+	queue_free()

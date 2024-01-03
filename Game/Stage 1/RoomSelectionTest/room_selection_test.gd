@@ -21,7 +21,8 @@ func _ready():
 		"res://Game/Stage 1/Room 08.tscn",
 		"res://Game/Stage 1/Room 09.tscn",
 		"res://Game/Stage 1/Room 10.tscn",
-		"res://Game/Stage 1/Room 11.tscn"
+		"res://Game/Stage 1/Room 11.tscn",
+		"res://Game/Stage 1/Room 12.tscn"
 	]
 
 # Function to instantiate a new room

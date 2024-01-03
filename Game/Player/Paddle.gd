@@ -25,7 +25,7 @@ func _process(delta):
 func follow_player():
 	var direction: Vector2 = Vector2.ZERO
 
-	if player and player.has_method("is_moving") and player.is_moving():
+	if is_player_valid() and player.has_method("is_moving") and player.is_moving():
 		direction = (player.global_position - global_position).normalized()
 
 		velocity = direction * speed
@@ -47,6 +47,10 @@ func follow_player():
 		velocity = Vector2.ZERO
 		following_enabled = false
 
+# Function to check if the player is valid (still instanced in the scene)
+func is_player_valid() -> bool:
+	return player != null
+
 # Function to check position fluctuation
 func check_position_fluctuation():
 	var position_change: Vector2 = global_position - previous_position
@@ -64,7 +68,6 @@ func is_valid_teleport_position(teleport_position: Vector2) -> bool:
 	
 	# Check if there is no collision (collision_info will be null if no collision occurred)
 	return collision_info == null
-
 
 # Start cooldown timer
 func start_teleport_cooldown():
@@ -91,3 +94,7 @@ func process_input():
 	if can_teleport and Input.is_action_just_pressed("dash"):
 		teleport(direction)
 		start_teleport_cooldown()
+
+	# Check if the player is defeated, then queue-free the paddle
+	if Global.get_player_lives() <= 0:
+		queue_free()
