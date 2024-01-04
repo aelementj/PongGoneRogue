@@ -11,6 +11,7 @@ signal shoot_ball
 func _ready():
 	# Assuming the player is a child of the main scene root
 	Global.set_player_reference(self)
+	print("Player has_Ball: ", Global.has_ball())
 
 
 func _process(delta):
@@ -37,6 +38,7 @@ func process_input():
 		emit_signal("shoot_ball")
 		Global.ball_count -= 1  # Decrement the ball count after shooting
 		print(Global.ball_count)
+		print("Player has_Ball: ", Global.has_ball())
 
 # Teleport function
 func teleport(direction: Vector2):

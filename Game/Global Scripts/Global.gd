@@ -17,7 +17,6 @@ func add_ball():
 # Function to check if the player has at least one ball
 func has_ball() -> bool:
 	var hasBall : bool = ball_count > 0
-	print("Player has at least one ball: ", hasBall)
 	return hasBall
 
 # Function to reset the number of balls

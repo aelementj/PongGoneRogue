@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlmc77cnij2ks"]
+[gd_scene load_steps=5 format=3 uid="uid://dlmc77cnij2ks"]
 
 [ext_resource type="Script" path="res://OptionsMenu.gd" id="1_wa6sv"]
 [ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="1_y0r30"]
-[ext_resource type="Script" path="res://OptionFunctionality.gd" id="3_13uo8"]
 [ext_resource type="FontFile" uid="uid://dnpkfghmefjyi" path="res://assets/MinimalPixel v2.ttf" id="3_yosbk"]
 [ext_resource type="PackedScene" uid="uid://d3wmqt1rv7e2b" path="res://vol_slider_function.tscn" id="4_addom"]
 
@@ -34,12 +33,18 @@ theme_override_constants/margin_bottom = 50
 layout_mode = 2
 color = Color(0.0338533, 0.0338533, 0.0338533, 0.470588)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_yosbk")
 theme_override_font_sizes/font_size = 38
@@ -48,7 +53,7 @@ horizontal_alignment = 1
 vertical_alignment = 2
 uppercase = true
 
-[node name="BackToMain" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BackToMain" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(130, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -59,66 +64,18 @@ text = "Back"
 icon_alignment = 1
 vertical_icon_alignment = 2
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -220.5
-offset_top = -73.0
-offset_right = 220.5
-offset_bottom = 73.0
+anchors_preset = -1
+anchor_left = 0.270833
+anchor_top = 0.192593
+anchor_right = 0.730208
+anchor_bottom = 0.635185
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("3_13uo8")
+metadata/_edit_use_anchors_ = true
 
 [node name="SubOptions" type="VBoxContainer" parent="MarginContainer2"]
-layout_mode = 2
-
-[node name="Video" type="HBoxContainer" parent="MarginContainer2/SubOptions"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
-
-[node name="Lables" type="VBoxContainer" parent="MarginContainer2/SubOptions/Video"]
-layout_direction = 1
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-
-[node name="Fullscreen" type="Label" parent="MarginContainer2/SubOptions/Video/Lables"]
-layout_mode = 2
-theme = ExtResource("1_y0r30")
-text = "Fullscreen"
-horizontal_alignment = 3
-
-[node name="Borderless" type="Label" parent="MarginContainer2/SubOptions/Video/Lables"]
-layout_mode = 2
-text = "Borderless"
-horizontal_alignment = 3
-
-[node name="Checks" type="VBoxContainer" parent="MarginContainer2/SubOptions/Video"]
-layout_mode = 2
-alignment = 1
-
-[node name="Fullscreen" type="CheckBox" parent="MarginContainer2/SubOptions/Video/Checks"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-icon_alignment = 1
-
-[node name="Borderless" type="CheckBox" parent="MarginContainer2/SubOptions/Video/Checks"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="HSeparator" type="HSeparator" parent="MarginContainer2/SubOptions"]
 layout_mode = 2
 
 [node name="Audio" type="HBoxContainer" parent="MarginContainer2/SubOptions"]
@@ -132,37 +89,28 @@ size_flags_horizontal = 3
 size_flags_vertical = 8
 theme_override_constants/separation = 0
 
-[node name="MasterLabel" type="Label" parent="MarginContainer2/SubOptions/Audio/Lables"]
-custom_minimum_size = Vector2(250, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Master"
-horizontal_alignment = 3
-
-[node name="Master" parent="MarginContainer2/SubOptions/Audio/Lables" instance=ExtResource("4_addom")]
-layout_mode = 2
-bus_name = "Master"
-
 [node name="MusicLabel" type="Label" parent="MarginContainer2/SubOptions/Audio/Lables"]
+texture_filter = 1
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Music"
 
 [node name="Music" parent="MarginContainer2/SubOptions/Audio/Lables" instance=ExtResource("4_addom")]
+texture_filter = 1
 layout_mode = 2
 bus_name = "Music"
 
 [node name="SoundFXLabel" type="Label" parent="MarginContainer2/SubOptions/Audio/Lables"]
+texture_filter = 1
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "SoundFX"
 
 [node name="SoundFX" parent="MarginContainer2/SubOptions/Audio/Lables" instance=ExtResource("4_addom")]
+texture_filter = 1
 layout_mode = 2
 bus_name = "SoundFX"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackToMain" to="." method="_on_back_to_main_pressed"]
-[connection signal="toggled" from="MarginContainer2/SubOptions/Video/Checks/Fullscreen" to="MarginContainer2" method="_on_fullscreen_toggled"]
-[connection signal="toggled" from="MarginContainer2/SubOptions/Video/Checks/Borderless" to="MarginContainer2" method="_on_borderless_toggled"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/BackToMain" to="." method="_on_back_to_main_pressed"]

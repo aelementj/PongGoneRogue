@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cyghrsi0f7j6m"]
 
-[ext_resource type="PackedScene" uid="uid://br2a0ngsh5a74" path="res://Game/Stage 1/SpawnRoom.tscn" id="1_sit16"]
+[ext_resource type="PackedScene" uid="uid://br2a0ngsh5a74" path="res://Game/Stage 1/Room Manager.tscn" id="1_sit16"]
 
 [node name="RoomPowerUpTest" type="Node2D"]
 

@@ -1,0 +1,98 @@
+[gd_scene load_steps=14 format=3 uid="uid://dyobg0dko1ep6"]
+
+[ext_resource type="Script" path="res://Game/GeneralRoomFeatures/DoorFunctions.gd" id="1_qaafe"]
+[ext_resource type="Texture2D" uid="uid://60rn660fee7c" path="res://assets/Doors/6/tile149.png" id="2_mgsd5"]
+[ext_resource type="Texture2D" uid="uid://cp5f62jaspqw3" path="res://assets/Doors/6/tile177.png" id="3_faf1w"]
+[ext_resource type="Texture2D" uid="uid://d367pceefmwke" path="res://assets/Doors/6/tile148.png" id="4_qwvva"]
+[ext_resource type="Texture2D" uid="uid://c3qdqnwipxqob" path="res://assets/Doors/6/tile176.png" id="5_f42d5"]
+[ext_resource type="Texture2D" uid="uid://c1uvg0khcrol6" path="res://assets/Doors/6/tile147.png" id="6_apa0r"]
+[ext_resource type="Texture2D" uid="uid://3xogjcwkvssr" path="res://assets/Doors/6/tile175.png" id="7_07mnr"]
+[ext_resource type="Texture2D" uid="uid://10og2py25nfg" path="res://assets/Doors/6/tile146.png" id="8_lndd8"]
+[ext_resource type="Texture2D" uid="uid://duht1cvpxbbp1" path="res://assets/Doors/6/tile174.png" id="9_jhtdd"]
+
+[sub_resource type="Gradient" id="Gradient_17xjo"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3njw3"]
+gradient = SubResource("Gradient_17xjo")
+width = 4
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8h3bx"]
+size = Vector2(32, 31.952)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cf1bv"]
+size = Vector2(32, 32)
+
+[node name="Doors" type="Node2D"]
+script = ExtResource("1_qaafe")
+
+[node name="Open" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Open"]
+position = Vector2(5.96046e-08, 4)
+scale = Vector2(8, 24)
+texture = SubResource("GradientTexture1D_3njw3")
+
+[node name="Tile157" type="Sprite2D" parent="Open"]
+texture_filter = 1
+position = Vector2(8.015, -7.94)
+scale = Vector2(1.0045, 0.99925)
+texture = ExtResource("2_mgsd5")
+
+[node name="Tile158" type="Sprite2D" parent="Open"]
+texture_filter = 1
+position = Vector2(8.009, 8.04)
+scale = Vector2(0.999, 1)
+texture = ExtResource("3_faf1w")
+
+[node name="Tile182" type="Sprite2D" parent="Open"]
+texture_filter = 1
+position = Vector2(-7.991, -7.952)
+scale = Vector2(1.006, 1.00075)
+texture = ExtResource("4_qwvva")
+
+[node name="Tile183" type="Sprite2D" parent="Open"]
+texture_filter = 1
+position = Vector2(-7.991, 8.048)
+scale = Vector2(0.996, 1.00113)
+texture = ExtResource("5_f42d5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Open"]
+position = Vector2(0.00900269, 0.0240007)
+shape = SubResource("RectangleShape2D_8h3bx")
+
+[node name="Closed" type="Area2D" parent="."]
+
+[node name="Tile207" type="Sprite2D" parent="Closed"]
+texture_filter = 1
+position = Vector2(8, -8)
+scale = Vector2(0.997, 1)
+texture = ExtResource("6_apa0r")
+
+[node name="Tile208" type="Sprite2D" parent="Closed"]
+texture_filter = 1
+position = Vector2(8, 8)
+scale = Vector2(1.006, 1)
+texture = ExtResource("7_07mnr")
+
+[node name="Tile232" type="Sprite2D" parent="Closed"]
+texture_filter = 1
+position = Vector2(-8, -8)
+scale = Vector2(0.997, 1.0015)
+texture = ExtResource("8_lndd8")
+
+[node name="Tile233" type="Sprite2D" parent="Closed"]
+texture_filter = 1
+position = Vector2(-8, 8)
+scale = Vector2(1.006, 1)
+texture = ExtResource("9_jhtdd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Closed"]
+visible = false
+shape = SubResource("RectangleShape2D_cf1bv")
+disabled = true
+
+[connection signal="body_entered" from="Open" to="." method="_on_open_door_body_entered"]

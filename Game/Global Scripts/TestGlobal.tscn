@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmkknakksdkb0"]
 
-[ext_resource type="PackedScene" uid="uid://fnmjcgnw0nmd" path="res://Game/Stage 1/Doors.tscn" id="2_u0txt"]
+[ext_resource type="PackedScene" uid="uid://fnmjcgnw0nmd" path="res://Game/GeneralRoomFeatures/Doors/DoorType1.tscn" id="2_u0txt"]
 
 [node name="TestGlobal" type="Node"]
 

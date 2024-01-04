@@ -34,7 +34,7 @@ shape = SubResource("SegmentShape2D_vmdvk")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
-position = Vector2(496, 424)
+position = Vector2(496, 440)
 shape = SubResource("SegmentShape2D_vmdvk")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
 
@@ -56,6 +56,6 @@ shape = SubResource("SegmentShape2D_vmdvk")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(496, 416)
+position = Vector2(496, 432)
 shape = SubResource("SegmentShape2D_vmdvk")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)

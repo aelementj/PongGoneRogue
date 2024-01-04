@@ -6,4 +6,4 @@
 [node name="RoomSelectionTest" type="Node"]
 script = ExtResource("1_su4y5")
 
-[node name="SpawnMap" parent="." instance=ExtResource("2_m8e50")]
+[node name="Room 00" parent="." instance=ExtResource("2_m8e50")]
