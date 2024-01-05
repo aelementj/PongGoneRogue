@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 50  # Adjust the speed as needed
 const BULLET_COOLDOWN = 2.0  # Adjust the cooldown time as needed
 const MAX_BULLETS = 5  # Number of bullets to initiate before going on cooldown
+const BULLET_DELAY = 0.2  # Adjust the delay between bullet initiations
 
 var custom_velocity = Vector2()
 var enemy_position = Vector2()
@@ -47,21 +48,39 @@ func _process(delta):
 
 	# Check if the enemy is aligned with the player on the x-axis
 	if can_shoot and is_aligned_with_player() and bullets_fired < MAX_BULLETS:
-		# Instantiate all the bullets at once
-		for i in range(MAX_BULLETS):
-			instantiate_bullet()
+		# Instantiate all the bullets with a delay between each initiation
+		instantiate_bullets_sequence()
 
+		can_shoot = false
+		bullet_timer.start()
+
+# Function to handle the sequential instantiation of bullets
+func instantiate_bullets_sequence():
+	for i in range(MAX_BULLETS):
+		var timer = Timer.new()
+		timer.wait_time = i * BULLET_DELAY  # Adjust the delay for each bullet
+		timer.one_shot = true
+		timer.connect("timeout", _on_bullet_delay_timeout)
+		add_child(timer)
+		timer.start()
+
+# Function to handle the delay between bullet instantiations
+func _on_bullet_delay_timeout():
+	instantiate_bullet()
+	bullets_fired += 1
+
+	if bullets_fired == MAX_BULLETS:
 		can_shoot = false
 		bullet_timer.start()
 
 # Function to check if the enemy is aligned with the player on the x-axis
 func is_aligned_with_player() -> bool:
 	var player_position = Global.get_player_reference().global_position
-	return abs(enemy_position.x - player_position.x) < 10  # Adjust the threshold as needed
+	return abs(enemy_position.x - player_position.x) < 30  # Adjust the threshold as needed
 
 # Function to instantiate the bullet
 func instantiate_bullet():
-	var bullet_instance = preload("res://Game/Enemies/Bullet/BulletType2.tscn").instantiate()
+	var bullet_instance = preload("res://Game/Enemies/Bullet/BulletType1.tscn").instantiate()
 	bullet_instance.position = global_position  # Set bullet position to the enemy's position
 	get_parent().add_child(bullet_instance)
 
