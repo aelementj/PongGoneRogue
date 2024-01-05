@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds1ghcw26owy8"]
+[gd_scene load_steps=5 format=3 uid="uid://ds1ghcw26owy8"]
 
-[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="1_ctpy8"]
+[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/enemy_type_1.tscn" id="1_ctpy8"]
 [ext_resource type="PackedScene" uid="uid://jshsl3wma2d6" path="res://Game/GeneralRoomFeatures/wall.tscn" id="2_1w33e"]
+[ext_resource type="Script" path="res://Game/Enemies/EnemyType4.gd" id="2_mhkbw"]
 [ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="3_wg7wo"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="EnemyType1" parent="." instance=ExtResource("1_ctpy8")]
 position = Vector2(499, 104)
+script = ExtResource("2_mhkbw")
 
 [node name="Wall" parent="." instance=ExtResource("2_1w33e")]
 

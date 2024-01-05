@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbieelm8034ql"]
+
+[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="3_xtduy"]
+[ext_resource type="PackedScene" uid="uid://fgu435c4o0f2" path="res://Game/Enemies/DetectDenShoot.tscn" id="4_xwyya"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CommonShooter" parent="." instance=ExtResource("3_xtduy")]
+position = Vector2(480, 167)
+
+[node name="CommonShooter2" parent="." instance=ExtResource("3_xtduy")]
+position = Vector2(479, 219)
+
+[node name="DetectDenShoot" parent="." instance=ExtResource("4_xwyya")]
+position = Vector2(480, 117)

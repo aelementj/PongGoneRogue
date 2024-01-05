@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://br2a0ngsh5a74"]
+[gd_scene load_steps=5 format=3 uid="uid://c5nmurcads6mx"]
 
 [ext_resource type="Script" path="res://Game/Stage 1/RoomSelectionTest/room_selection_test.gd" id="1_ndnbu"]
 [ext_resource type="PackedScene" uid="uid://jshsl3wma2d6" path="res://Game/GeneralRoomFeatures/wall.tscn" id="2_521tg"]

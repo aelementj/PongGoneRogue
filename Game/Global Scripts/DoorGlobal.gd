@@ -2,7 +2,6 @@
 
 extends Node
 
-# Singleton instance
 var instance
 var initiatedDoorsCount : int = 0
 var initiatedDoors : Array = []  # Array to store references to initiated doors in the current scene
@@ -19,12 +18,12 @@ func _ready():
 func updateInitiatedDoorsCount(count):
 	initiatedDoorsCount = count
 	emit_signal("initiated_doors_count_changed", initiatedDoorsCount)
-	#print("Initiated doors count updated:", initiatedDoorsCount)
+	print("Initiated doors count updated:", initiatedDoorsCount)
 
 # Function to add a reference to an initiated door
 func addInitiatedDoor(door):
 	initiatedDoors.append(door)
-	#print("Added reference to initiated door:", door)
+	print("Added reference to initiated door:", door)
 
 # Function to get references to all initiated doors in the current scene
 func getInitiatedDoors():

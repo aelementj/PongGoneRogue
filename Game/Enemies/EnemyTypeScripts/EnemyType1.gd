@@ -31,12 +31,18 @@ func _ready():
 		custom_velocity.x = -SPEED
 	
 	$Timer.start()
+	
+	EnemyGlobal.set_enemy_reference(self)
+	print("Enemy reference set in GlobalScript")
+
 
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Ball"):
 		queue_free()
 		print("Enemy Defeated")
+	EnemyGlobal.decrease_enemy_count()
+	print("Enemy freed, decreasing count.")
 
 # Function to get the current enemy position
 func get_enemy_position():

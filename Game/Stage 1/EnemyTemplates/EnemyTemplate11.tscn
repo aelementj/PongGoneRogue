@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://blvn84bptmq6t"]
+
+[ext_resource type="PackedScene" uid="uid://fgu435c4o0f2" path="res://Game/Enemies/DetectDenShoot.tscn" id="2_d21k4"]
+[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="3_25qjp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="DetectDenShoot" parent="." instance=ExtResource("2_d21k4")]
+position = Vector2(99, 110)
+
+[node name="DetectDenShoot2" parent="." instance=ExtResource("2_d21k4")]
+position = Vector2(863, 147)
+
+[node name="CommonShooter" parent="." instance=ExtResource("3_25qjp")]
+position = Vector2(482, 198)
+
+[node name="CommonShooter2" parent="." instance=ExtResource("3_25qjp")]
+position = Vector2(565, 243)
+
+[node name="CommonShooter3" parent="." instance=ExtResource("3_25qjp")]
+position = Vector2(394, 283)

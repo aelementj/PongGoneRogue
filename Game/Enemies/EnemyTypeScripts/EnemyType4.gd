@@ -2,10 +2,12 @@ extends CharacterBody2D
 
 const SPEED = 50  # Adjust the speed as needed
 const BULLET_COOLDOWN = 2.0  # Adjust the cooldown time as needed
+const MAX_BULLETS = 5  # Number of bullets to initiate before going on cooldown
 
 var custom_velocity = Vector2()
 var enemy_position = Vector2()
 var can_shoot = true
+var bullets_fired = 0
 var bullet_timer = Timer.new()
 
 func _ready():
@@ -39,17 +41,21 @@ func _process(delta):
 
 	# Update the enemy's position
 	enemy_position = global_position  # Use global_position to get the global position
-	
+
 	# Move the enemy type 1 horizontally
 	velocity = custom_velocity
 	move_and_slide()
 
 	# Check if the enemy is aligned with the player on the x-axis
-	if can_shoot and is_aligned_with_player():
+	if can_shoot and is_aligned_with_player() and bullets_fired < MAX_BULLETS:
 		# Instantiate the bullet scene
 		instantiate_bullet()
-		can_shoot = false
-		bullet_timer.start()
+		
+		bullets_fired += 1
+
+		if bullets_fired == MAX_BULLETS:
+			can_shoot = false
+			bullet_timer.start()
 
 # Function to check if the enemy is aligned with the player on the x-axis
 func is_aligned_with_player() -> bool:
@@ -65,7 +71,13 @@ func instantiate_bullet():
 # Function called when the bullet cooldown timer times out
 func _on_bullet_timer_timeout():
 	can_shoot = true
+	bullets_fired = 0
 
 # Function to check if the player is still valid
 func is_player_valid() -> bool:
 	return Global.get_player_reference() != null
+
+func _on_hit_box_area_entered(area):
+	if area.is_in_group("Ball"):
+		queue_free()
+		print("Enemy Defeated")

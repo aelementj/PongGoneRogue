@@ -19,6 +19,7 @@ func _ready():
 	openDoor.connect("body_entered", _on_open_door_body_entered)
 
 	DoorGlobal.instance.addInitiatedDoor(self)
+	DoorGlobal.instance.updateInitiatedDoorsCount(DoorGlobal.instance.initiatedDoorsCount + 1)
 
 func _process(delta):
 	# Check for the condition to open the door, for example, the down button or "ui_down"
@@ -55,3 +56,4 @@ func disconnect_signals():
 # Override the _exit_tree() function to disconnect signals before the node is freed
 func _exit_tree():
 	disconnect_signals()
+	DoorGlobal.instance.updateInitiatedDoorsCount(DoorGlobal.instance.initiatedDoorsCount - 1)

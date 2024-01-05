@@ -5,10 +5,13 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_2ouj5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k6j6p"]
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bwnj6"]
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4obgt"]
+radius = 6.0
 
 [node name="BallBody" type="RigidBody2D" groups=["Ball"]]
 collision_layer = 6
@@ -17,7 +20,7 @@ mass = 0.01
 script = ExtResource("1_6md6h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(16, 16)
+scale = Vector2(12, 12)
 texture = SubResource("CanvasTexture_2ouj5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

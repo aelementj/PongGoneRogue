@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dr4tqqqrh3xyv"]
+
+[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="3_1f3jf"]
+[ext_resource type="PackedScene" uid="uid://8rtuiq6td7wg" path="res://Game/Enemies/PlayerTracker.tscn" id="5_3aakb"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CommonShooter" parent="." instance=ExtResource("3_1f3jf")]
+position = Vector2(526, 188)
+
+[node name="CommonShooter2" parent="." instance=ExtResource("3_1f3jf")]
+position = Vector2(481, 232)
+
+[node name="CommonShooter3" parent="." instance=ExtResource("3_1f3jf")]
+position = Vector2(429, 277)
+
+[node name="EnemyShotgun" parent="." instance=ExtResource("5_3aakb")]
+position = Vector2(861, 150)
+
+[node name="PlayerTracker" parent="." instance=ExtResource("5_3aakb")]
+position = Vector2(117, 118)

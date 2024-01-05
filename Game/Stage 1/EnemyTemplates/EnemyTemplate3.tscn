@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ca32xra6vxlrl"]
+
+[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="2_1jphe"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CommonShooter" parent="." instance=ExtResource("2_1jphe")]
+position = Vector2(107, 105)
+
+[node name="CommonShooter2" parent="." instance=ExtResource("2_1jphe")]
+position = Vector2(170, 192)
+
+[node name="CommonShooter3" parent="." instance=ExtResource("2_1jphe")]
+position = Vector2(826, 229)
+
+[node name="CommonShooter4" parent="." instance=ExtResource("2_1jphe")]
+position = Vector2(608, 276)
+
+[node name="CommonShooter5" parent="." instance=ExtResource("2_1jphe")]
+position = Vector2(437, 143)
