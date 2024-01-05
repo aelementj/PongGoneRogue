@@ -1,7 +1,7 @@
 class_name OptionsMenu
 extends Control
 
-@onready var back_to_main = $MarginContainer/VBoxContainer/BackToMain as Button
+@onready var back_to_main = $MarginContainer/MarginContainer/VBoxContainer/BackToMain as Button
 
 signal back_main_menu
 
