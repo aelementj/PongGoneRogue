@@ -4,7 +4,25 @@ const SPEED = 50  # Adjust the speed as needed
 var custom_velocity = Vector2()
 var enemy_position = Vector2()  # Variable to track the enemy's position
 
+
+func _ready():
+	# If custom_velocity is not set externally, randomize it
+	if custom_velocity == Vector2():
+		if randf() > 0.5:
+			custom_velocity.x = SPEED
+		else:
+			custom_velocity.x = -SPEED
+	
+	$Timer.start()
+	
+	EnemyGlobal.set_enemy_reference(self)
+	print("Enemy reference set in GlobalScript")
+
 func _process(delta):
+	# Check if the player is still valid
+	if not is_player_valid():
+		$Timer.stop()
+		return  # Stop processing if the player is not valid
 	# Update the enemy's position
 	enemy_position = position
 
@@ -23,26 +41,23 @@ func _on_enemytype1_area_entered(area):
 		print("Enemy entered the wall area!")
 
 # Called when the node enters the scene tree for the first time
-func _ready():
-	# Randomly determine the initial direction
-	if randf() > 0.5:
-		custom_velocity.x = SPEED
-	else:
-		custom_velocity.x = -SPEED
-	
-	$Timer.start()
-	
-	EnemyGlobal.set_enemy_reference(self)
-	print("Enemy reference set in GlobalScript")
-
-
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Ball"):
-		queue_free()
-		print("Enemy Defeated")
-	EnemyGlobal.decrease_enemy_count()
-	print("Enemy freed, decreasing count.")
+		# Start a delay timer before calling queue_free()
+		var delay_timer = Timer.new()
+		delay_timer.wait_time = 0.01  # Adjust the delay duration as needed
+		delay_timer.one_shot = true
+		delay_timer.connect("timeout", _on_delay_timer_timeout)
+		add_child(delay_timer)
+		delay_timer.start()
+
+# Function called when the delay timer times out
+func _on_delay_timer_timeout():
+	# This function will be called after the delay
+	queue_free()
+	print("Enemy Defeated")
+
 
 # Function to get the current enemy position
 func get_enemy_position():
@@ -59,4 +74,5 @@ func _on_shoot_timer_timeout():
 	# Add the bullet to the scene
 	get_parent().add_child(bullet_instance)
 
-
+func is_player_valid() -> bool:
+	return Global.get_player_reference() != null

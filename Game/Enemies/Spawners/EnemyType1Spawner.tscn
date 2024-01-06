@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://uptgp1d4rs1p"]
+
+[ext_resource type="Texture2D" uid="uid://cah6tml6boosc" path="res://assets/ezgif/ezgif-3-7a099e5faa-png-16x16-sprite-png/tile110.png" id="1_74krq"]
+[ext_resource type="Script" path="res://Game/Enemies/Spawners/SpawnerScripts/EnemyType1Spawner.gd" id="1_80fwm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2vaxd"]
+size = Vector2(32, 32)
+
+[node name="EnemyType1Spawner" type="CharacterBody2D"]
+script = ExtResource("1_80fwm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(2, 2)
+texture = ExtResource("1_74krq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2vaxd")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_2vaxd")
+
+[connection signal="area_entered" from="HitBox" to="." method="on_Ball_area_entered"]

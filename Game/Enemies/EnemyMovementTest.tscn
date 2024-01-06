@@ -1,14 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://ds1ghcw26owy8"]
+[gd_scene load_steps=6 format=3 uid="uid://ds1ghcw26owy8"]
 
 [ext_resource type="PackedScene" uid="uid://jshsl3wma2d6" path="res://Game/GeneralRoomFeatures/wall.tscn" id="2_1w33e"]
-[ext_resource type="PackedScene" uid="uid://dphgaso2l3hkj" path="res://Game/Enemies/EnemyBurst.tscn" id="3_kijrp"]
+[ext_resource type="PackedScene" uid="uid://c0i4vgrqne7di" path="res://Game/Enemies/Spawners/RandomEnemySpawner.tscn" id="3_am4uc"]
 [ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="3_wg7wo"]
+[ext_resource type="PackedScene" uid="uid://7m1y0376rbvh" path="res://Game/GeneralRoomFeatures/ball_catcher.tscn" id="4_jh2v4"]
+[ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Stage 1/Room 00.tscn" id="5_oe7qg"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Room 0" parent="." instance=ExtResource("5_oe7qg")]
 
 [node name="Wall" parent="." instance=ExtResource("2_1w33e")]
 
 [node name="Node2D" parent="." instance=ExtResource("3_wg7wo")]
 
-[node name="EnemyShotgun" parent="." instance=ExtResource("3_kijrp")]
-position = Vector2(560, 104)
+[node name="Ball Catcher" parent="." instance=ExtResource("4_jh2v4")]
+position = Vector2(-2, 0)
+
+[node name="RandomEnemySpawner" parent="." instance=ExtResource("3_am4uc")]
+position = Vector2(488, 168)

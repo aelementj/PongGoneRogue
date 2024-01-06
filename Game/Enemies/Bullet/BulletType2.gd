@@ -8,7 +8,7 @@ func _ready():
 	velocity = Vector2(SPEED * cos(random_angle), SPEED * sin(random_angle))
 
 	# Rotate the bullet sprite to match the direction angle
-	rotation_degrees = rad_to_deg(random_angle +  30)
+	rotation_degrees = rad_to_deg(random_angle + 30)
 
 func _process(delta):
 	position += velocity * delta

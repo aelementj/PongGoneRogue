@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const BASE_SPEED = 50  # Adjust the base speed as needed
+const SPEED = 50  # Adjust the base speed as needed
 const SPEED_MULTIPLIER = 2.0  # Adjust the speed multiplier as needed
 const BULLET_COOLDOWN = 2.0  # Adjust the cooldown time as needed
 const PAUSE_AFTER_SHOOT = 1.0  # Adjust the pause duration after shooting
@@ -14,9 +14,9 @@ var pause_timer = Timer.new()
 
 func _ready():
 	if randf() > 0.5:
-		custom_velocity.x = BASE_SPEED
+		custom_velocity.x = SPEED
 	else:
-		custom_velocity.x = -BASE_SPEED
+		custom_velocity.x = -SPEED
 	EnemyGlobal.set_enemy_reference(self)
 	print("Enemy reference set in Enemy script")
 
@@ -59,7 +59,7 @@ func _process(delta):
 
 		# Adjust the speed based on the distance to the player
 		var speed_multiplier = lerp(1.0, SPEED_MULTIPLIER, abs(distance_to_player) / 100.0)
-		custom_velocity.x = sign(distance_to_player) * BASE_SPEED * speed_multiplier
+		custom_velocity.x = sign(distance_to_player) * SPEED * speed_multiplier
 
 		# Move the enemy type 1 horizontally
 		velocity = custom_velocity
@@ -99,5 +99,16 @@ func _on_pause_timer_timeout():
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Ball"):
-		queue_free()
-		print("Enemy Defeated")
+		# Start a delay timer before calling queue_free()
+		var delay_timer = Timer.new()
+		delay_timer.wait_time = 0.01  # Adjust the delay duration as needed
+		delay_timer.one_shot = true
+		delay_timer.connect("timeout", _on_delay_timer_timeout)
+		add_child(delay_timer)
+		delay_timer.start()
+
+# Function called when the delay timer times out
+func _on_delay_timer_timeout():
+	# This function will be called after the delay
+	queue_free()
+	print("Enemy Defeated")

@@ -41,7 +41,7 @@ func _process(delta):
 				velocity = velocity.normalized() * initial_ball_speed
 		else:
 			velocity *= speed_multiplier
-			print("Current Ball Speed:", velocity)
+			#print("Current Ball Speed:", velocity)
 
 
 func _integrate_forces(state):

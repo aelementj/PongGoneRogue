@@ -9,10 +9,12 @@ var can_shoot = true
 var bullet_timer = Timer.new()
 
 func _ready():
-	if randf() > 0.5:
-		custom_velocity.x = SPEED
-	else:
-		custom_velocity.x = -SPEED
+	# If custom_velocity is not set externally, randomize it
+	if custom_velocity == Vector2():
+		if randf() > 0.5:
+			custom_velocity.x = SPEED
+		else:
+			custom_velocity.x = -SPEED
 	EnemyGlobal.set_enemy_reference(self)
 	print("Enemy reference set in Enemy script")
 
@@ -72,5 +74,16 @@ func is_player_valid() -> bool:
 
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Ball"):
-		queue_free()
-		print("Enemy Defeated")
+		# Start a delay timer before calling queue_free()
+		var delay_timer = Timer.new()
+		delay_timer.wait_time = 0.01  # Adjust the delay duration as needed
+		delay_timer.one_shot = true
+		delay_timer.connect("timeout", _on_delay_timer_timeout)
+		add_child(delay_timer)
+		delay_timer.start()
+
+# Function called when the delay timer times out
+func _on_delay_timer_timeout():
+	# This function will be called after the delay
+	queue_free()
+	print("Enemy Defeated")
