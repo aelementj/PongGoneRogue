@@ -13,7 +13,8 @@ func _ready():
 	bullet_timer.connect("timeout", _on_bullet_timer_timeout)
 	add_child(bullet_timer)
 	bullet_timer.start()
-	EnemyGlobal.set_enemy_reference(self)
+	EnemyGlobal.instance.addInitiatedEnemy(self)
+	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount + 1)
 
 
 func _process(delta):
@@ -70,4 +71,6 @@ func _on_delay_timer_timeout():
 	# This function will be called after the delay
 	queue_free()
 	print("Enemy Defeated")
-	EnemyGlobal.decrease_enemy_count()
+
+func _exit_tree():
+	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount - 1)

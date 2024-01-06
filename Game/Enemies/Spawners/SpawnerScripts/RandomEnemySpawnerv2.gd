@@ -25,10 +25,10 @@ var respawn_timer_bottom: Timer
 
 func _ready():
 	spawn_shooters()
-	EnemyGlobal.set_enemy_reference(self)
-	EnemyGlobal.set_spawner_reference(self)
-
-	# Create and configure the respawn timers
+	EnemyGlobal.instance.addInitiatedEnemy(self)
+	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount + 1)
+	EnemyGlobal.instance.addInitiatedSpawner(self)
+	EnemyGlobal.instance.updateInitiatedSpawnersCount(EnemyGlobal.instance.initiatedSpawnersCount + 1)	# Create and configure the respawn timers
 	respawn_timer_top = Timer.new()
 	respawn_timer_top.one_shot = true
 	respawn_timer_top.wait_time = 3.0
@@ -116,6 +116,8 @@ func on_Ball_area_entered(area):
 		print("Spawner Hit")
 		if health <= 0:
 			print("Spawner Destroyed")
-			EnemyGlobal.decrease_enemy_count()
-			EnemyGlobal.decrease_spawner_count()
 			queue_free()
+
+func _exit_tree():
+	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount - 1)
+	EnemyGlobal.instance.updateInitiatedSpawnersCount(EnemyGlobal.instance.initiatedSpawnersCount - 1)

@@ -1,40 +1,44 @@
+# EnemyGlobal.gd
 extends Node
 
-var enemy_reference: Node = null  # Reference to the enemy node
-var enemy_count: int = 0  # Counter for the number of initiated enemies
+var instance
+var initiatedEnemiesCount: int = 0
+var initiatedEnemies: Array = []  # Array to store references to initiated enemies in the current scene
 
-var spawner_reference: Node = null  # Reference to a single spawner
-var spawner_count: int = 0  # Counter for the number of initiated spawners
+var initiatedSpawnersCount: int = 0
+var initiatedSpawners: Array = []  # Array to store references to initiated spawners in the current scene
 
 func _ready():
-	pass  # Replace with function body.
+	# Set the singleton instance
+	instance = self
+	print("EnemyGlobal2 instance ready")
 
-# Function to set the enemy reference
-func set_enemy_reference(enemy_node: Node):
-	enemy_reference = enemy_node
-	enemy_count += 1
-	print("Enemy reference set in GlobalScript. Current enemy count:", enemy_count)
+# Function to update the initiated enemies count
+func updateInitiatedEnemiesCount(count):
+	initiatedEnemiesCount = count
+	emit_signal("initiated_enemies_count_changed", initiatedEnemiesCount)
+	print("Initiated enemies count updated:", initiatedEnemiesCount)
 
-# Function to get the enemy reference
-func get_enemy_reference() -> Node:
-	return enemy_reference
+# Function to add a reference to an initiated enemy
+func addInitiatedEnemy(enemy):
+	initiatedEnemies.append(enemy)
+	print("Added reference to initiated enemy:", enemy)
 
-# Function to decrease the enemy count
-func decrease_enemy_count():
-	enemy_count -= 1
-	print("Enemy count decreased. Current enemy count:", enemy_count)
+# Function to get references to all initiated enemies in the current scene
+func getInitiatedEnemies():
+	return initiatedEnemies
 
-# Function to set the spawner reference
-func set_spawner_reference(spawner_node: Node):
-	spawner_reference = spawner_node
-	spawner_count += 1
-	print("Spawner reference set in GlobalScript. Current spawner count:", spawner_count)
+# Function to update the initiated spawners count
+func updateInitiatedSpawnersCount(count):
+	initiatedSpawnersCount = count
+	emit_signal("initiated_spawners_count_changed", initiatedSpawnersCount)
+	print("Initiated spawners count updated:", initiatedSpawnersCount)
 
-# Function to get the spawner reference
-func get_spawner_reference() -> Node:
-	return spawner_reference
+# Function to add a reference to an initiated spawner
+func addInitiatedSpawner(spawner):
+	initiatedSpawners.append(spawner)
+	print("Added reference to initiated spawner:", spawner)
 
-# Function to decrease the spawner count
-func decrease_spawner_count():
-	spawner_count -= 1
-	print("Spawner count decreased. Current spawner count:", spawner_count)
+# Function to get references to all initiated spawners in the current scene
+func getInitiatedSpawners():
+	return initiatedSpawners

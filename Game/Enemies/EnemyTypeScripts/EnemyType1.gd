@@ -1,9 +1,8 @@
 extends CharacterBody2D
 
-const SPEED = 50  # Adjust the speed as needed
+const SPEED = 50
 var custom_velocity = Vector2()
-var enemy_position = Vector2()  # Variable to track the enemy's position
-
+var enemy_position = Vector2()
 
 func _ready():
 	# If custom_velocity is not set externally, randomize it
@@ -15,8 +14,8 @@ func _ready():
 	
 	$Timer.start()
 	
-	EnemyGlobal.set_enemy_reference(self)
-	print("Enemy reference set in GlobalScript")
+	EnemyGlobal.instance.addInitiatedEnemy(self)
+	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount + 1)
 
 func _process(delta):
 	# Check if the player is still valid
@@ -30,18 +29,13 @@ func _process(delta):
 	velocity = custom_velocity
 	move_and_slide()
 
-
 func _on_enemytype1_area_entered(area):
 	# Check if the entered area is in the "Wall" group
 	if area.is_in_group("Wall"):
 		# Change the direction when colliding with a wall
 		custom_velocity = -custom_velocity
 
-		# Print a debug message
-		print("Enemy entered the wall area!")
-
 # Called when the node enters the scene tree for the first time
-
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Ball"):
 		# Start a delay timer before calling queue_free()
@@ -57,7 +51,6 @@ func _on_delay_timer_timeout():
 	# This function will be called after the delay
 	queue_free()
 	print("Enemy Defeated")
-
 
 # Function to get the current enemy position
 func get_enemy_position():
@@ -76,3 +69,9 @@ func _on_shoot_timer_timeout():
 
 func is_player_valid() -> bool:
 	return Global.get_player_reference() != null
+
+# Function called when the node is about to be removed from the scene tree
+func _exit_tree():
+	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount - 1)
+	EnemyGlobal.initiatedEnemiesCount
+

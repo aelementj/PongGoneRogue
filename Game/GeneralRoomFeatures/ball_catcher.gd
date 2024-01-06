@@ -6,3 +6,4 @@ func _on_BallCatcher_body_entered(body):
 	if "velocity" in body:
 		# Stop the object's velocity
 		body.velocity = Vector2.ZERO
+		

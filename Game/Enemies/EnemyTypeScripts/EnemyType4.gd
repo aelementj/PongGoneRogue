@@ -17,8 +17,8 @@ func _ready():
 			custom_velocity.x = SPEED
 		else:
 			custom_velocity.x = -SPEED
-	EnemyGlobal.set_enemy_reference(self)
-	print("Enemy reference set in Enemy script")
+	EnemyGlobal.instance.addInitiatedEnemy(self)
+	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount + 1)
 
 	# Initialize and connect the timer
 	bullet_timer.wait_time = BULLET_COOLDOWN
@@ -31,9 +31,6 @@ func _on_enemytype1_area_entered(area):
 	if area.is_in_group("Wall"):
 		# Change the direction when colliding with a wall
 		custom_velocity = -custom_velocity
-
-		# Print a debug message
-		print("Enemy entered the wall area!")
 
 func _process(delta):
 	# Check if the player is still valid
@@ -91,3 +88,7 @@ func _on_delay_timer_timeout():
 	# This function will be called after the delay
 	queue_free()
 	print("Enemy Defeated")
+
+
+func _exit_tree():
+	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount - 1)

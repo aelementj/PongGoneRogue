@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://qx73305aajow"]
+[gd_scene load_steps=3 format=3 uid="uid://qx73305aajow"]
 
 [ext_resource type="PackedScene" uid="uid://bgm5jgp6kyw7l" path="res://Game/Enemies/EnemyShotgun.tscn" id="1_utra1"]
 [ext_resource type="PackedScene" uid="uid://8rtuiq6td7wg" path="res://Game/Enemies/PlayerTracker.tscn" id="2_h1av1"]
-[ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="3_ubtri"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -14,5 +13,3 @@ position = Vector2(861, 152)
 
 [node name="PlayerTracker" parent="." instance=ExtResource("2_h1av1")]
 position = Vector2(482, 191)
-
-[node name="Player" parent="." instance=ExtResource("3_ubtri")]
