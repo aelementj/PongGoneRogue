@@ -13,10 +13,10 @@ func _ready():
 	instance = self
 	print("EnemyGlobal2 instance ready")
 
+
 # Function to update the initiated enemies count
 func updateInitiatedEnemiesCount(count):
 	initiatedEnemiesCount = count
-	emit_signal("initiated_enemies_count_changed", initiatedEnemiesCount)
 	print("Initiated enemies count updated:", initiatedEnemiesCount)
 
 # Function to add a reference to an initiated enemy

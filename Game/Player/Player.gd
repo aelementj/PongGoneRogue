@@ -35,7 +35,6 @@ func reset_positions() -> void:
 		ball.visible = false
 		Global.add_ball()
 		print("Player has_Ball: ", Global.has_ball())
-		emit_signal("reset_speed")
 
 		# Add debug prints to verify the function is triggered
 		print("Positions reset!")

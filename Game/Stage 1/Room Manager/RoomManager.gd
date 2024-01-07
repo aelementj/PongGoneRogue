@@ -48,7 +48,7 @@ func instantiate_new_room(room_path: String):
 		room_00.queue_free()
 
 	var new_room_instance = load(room_path).instantiate()
-	add_child(new_room_instance)
+	add_child.call_deferred(new_room_instance)
 	instantiated_rooms.append(new_room_instance)
 	print("Instantiated Room: ", room_path)
 	

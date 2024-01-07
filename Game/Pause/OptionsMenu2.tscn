@@ -1,9 +1,121 @@
-[gd_scene format=3 uid="uid://i50dynnx1exd"]
+[gd_scene load_steps=5 format=3 uid="uid://i50dynnx1exd"]
+
+[ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="1_g6pjs"]
+[ext_resource type="Script" path="res://Game/Pause/OptionsMenu2.gd" id="2_8s33t"]
+[ext_resource type="FontFile" uid="uid://dnpkfghmefjyi" path="res://assets/MinimalPixel v2.ttf" id="3_x8bup"]
+[ext_resource type="PackedScene" uid="uid://d3wmqt1rv7e2b" path="res://vol_slider_function.tscn" id="4_ymtif"]
 
 [node name="OptionsMenu2" type="Control"]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_g6pjs")
+script = ExtResource("2_8s33t")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 272.0
+offset_top = 64.0
+offset_right = -272.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+color = Color(0.0338533, 0.0338533, 0.0338533, 0.470588)
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_x8bup")
+theme_override_font_sizes/font_size = 38
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="BackToPause" type="Button" parent="MarginContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(130, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_fonts/font = ExtResource("3_x8bup")
+theme_override_font_sizes/font_size = 34
+text = "Back"
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.270833
+anchor_top = 0.192593
+anchor_right = 0.730208
+anchor_bottom = 0.635185
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubOptions" type="VBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+
+[node name="Audio" type="HBoxContainer" parent="MarginContainer2/SubOptions"]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+
+[node name="Lables" type="VBoxContainer" parent="MarginContainer2/SubOptions/Audio"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = 0
+
+[node name="MusicLabel" type="Label" parent="MarginContainer2/SubOptions/Audio/Lables"]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Music"
+
+[node name="Music" parent="MarginContainer2/SubOptions/Audio/Lables" instance=ExtResource("4_ymtif")]
+texture_filter = 1
+layout_mode = 2
+bus_name = "Music"
+
+[node name="SoundFXLabel" type="Label" parent="MarginContainer2/SubOptions/Audio/Lables"]
+texture_filter = 1
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "SoundFX"
+
+[node name="SoundFX" parent="MarginContainer2/SubOptions/Audio/Lables" instance=ExtResource("4_ymtif")]
+texture_filter = 1
+layout_mode = 2
+bus_name = "SoundFX"
+
+[connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/BackToPause" to="." method="_on_back_to_main_pressed"]

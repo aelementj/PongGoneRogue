@@ -45,7 +45,7 @@ func instantiate_new_enemy(enemy_path: String):
 		print("Removed Enemy: ", last_instantiated_enemy.get_name())
 
 	var new_enemy_instance = load(enemy_path).instantiate()
-	add_child(new_enemy_instance)
+	add_child.call_deferred(new_enemy_instance)
 	instantiated_enemies.append(new_enemy_instance)
 	print("Instantiated EnemyTemplate: ", enemy_path)
 

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d138lauggmjjj"]
+[gd_scene load_steps=4 format=3 uid="uid://d138lauggmjjj"]
 
 [ext_resource type="Script" path="res://Game/Pause/PauseMenu.gd" id="1_8a2rq"]
+[ext_resource type="PackedScene" uid="uid://i50dynnx1exd" path="res://Game/Pause/OptionsMenu2.tscn" id="2_7ovbo"]
+[ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="3_umvxt"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -11,6 +13,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 script = ExtResource("1_8a2rq")
+
+[node name="OptionsMenu2" parent="." instance=ExtResource("2_7ovbo")]
+layout_mode = 1
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -30,8 +35,10 @@ anchor_bottom = 0.25625
 metadata/_edit_use_anchors_ = true
 
 [node name="Pause Label" type="Label" parent="Panel/MarginContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 1
+theme = ExtResource("3_umvxt")
 theme_override_font_sizes/font_size = 40
 text = "Pause"
 horizontal_alignment = 1
@@ -53,23 +60,31 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="Resume" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_umvxt")
 text = "Resume"
 
 [node name="Options" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_umvxt")
 text = "Options"
 
 [node name="Restart" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_umvxt")
 text = "Restart"
 
 [node name="Back to Main" type="Button" parent="Panel/HBoxContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("3_umvxt")
 text = "Back to Main"
 
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

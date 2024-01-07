@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkcvk78b6vw02"]
+[gd_scene load_steps=10 format=3 uid="uid://dkcvk78b6vw02"]
 
 [ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_2hssr"]
 [ext_resource type="PackedScene" uid="uid://c5nmurcads6mx" path="res://Game/Stage 1/Room Manager/Room Manager.tscn" id="2_52n3e"]
@@ -6,6 +6,68 @@
 [ext_resource type="PackedScene" uid="uid://n3060u0nj3f1" path="res://Game/Stage 1/Enemy Manager/EnemyManager.tscn" id="3_ldam8"]
 [ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="4_cu0mg"]
 [ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="4_uccct"]
+
+[sub_resource type="Animation" id="Animation_m2066"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ydolu"]
+resource_name = "fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Transition/ColorRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Transition/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_um4nb"]
+_data = {
+"fade_in": SubResource("Animation_m2066"),
+"fade_out": SubResource("Animation_ydolu")
+}
 
 [node name="GameManagerv1" type="Node"]
 script = ExtResource("1_2hssr")
@@ -29,3 +91,20 @@ anchor_mode = 0
 process_mode = 2
 visible = false
 game_manager = NodePath("../..")
+
+[node name="Transition" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_um4nb")
+}
+
+[node name="ColorRect" type="ColorRect" parent="Transition"]
+visible = false
+anchors_preset = -1
+anchor_left = -0.25
+anchor_top = -0.333333
+anchor_right = 1.25
+anchor_bottom = 1.33333
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]

@@ -29,10 +29,19 @@ func addInitiatedDoor(door):
 func getInitiatedDoors():
 	return initiatedDoors
 
-signal ball_entered_any_open_door
-signal positions_reset
-
 func onBallEnterAnyOpenDoor():
 	print("DoorGlobal: Ball entered any open door!")
 	emit_signal("ball_entered_any_open_door")
 	emit_signal("positions_reset")
+
+# Signal emitted when any open door is entered by the ball
+signal ball_entered_any_open_door
+
+# Signal emitted when positions need to be reset
+signal positions_reset
+
+# Function to toggle the doors open
+func toggleDoors():
+	for door in initiatedDoors:
+		door.toggleDoors()
+

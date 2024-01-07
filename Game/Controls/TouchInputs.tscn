@@ -70,14 +70,14 @@ passby_press = true
 action = "ui_right"
 
 [node name="Dash" type="TouchScreenButton" parent="."]
-position = Vector2(784, 456)
+position = Vector2(792, 456)
 scale = Vector2(72.0001, 64)
 texture_normal = SubResource("PlaceholderTexture2D_xxqau")
 texture_pressed = SubResource("GradientTexture2D_ybcy1")
 action = "dash"
 
 [node name="Launch" type="TouchScreenButton" parent="."]
-position = Vector2(688.104, 456)
+position = Vector2(688, 456)
 rotation = 0.00163134
 scale = Vector2(72, 64)
 texture_normal = SubResource("PlaceholderTexture2D_vytqa")

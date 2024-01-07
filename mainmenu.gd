@@ -6,21 +6,25 @@ extends Control
 @onready var Exit = $MarginContainer/VBoxContainer/Exit as Button
 @onready var options_menu = $OptionsMenu as OptionsMenu
 @onready var margin_container = $MarginContainer as MarginContainer
-@onready var Game = load("res://Game/GameManager/game_manager.tscn") as PackedScene
+@onready var LoadingScreen = load("res://loading_screen.tscn") as PackedScene
+@onready var transition = $Transition
+
 
 func _ready():
 	handle_connecting_signals()
 
 
 func _on_start_pressed() -> void:
-	get_tree().change_scene_to_packed(Game)
+	transition.play("fade_out")
 
+
+func _on_transition_animation_finished(anim_name):
+	get_tree().change_scene_to_packed(LoadingScreen)
 
 func _on_options_pressed() -> void:
 	margin_container.visible = false
 	options_menu.set_process(true)
 	options_menu.visible = true
-	
 
 
 func _on_exit_pressed() -> void:
@@ -35,3 +39,5 @@ func handle_connecting_signals() -> void:
 	Options.button_down.connect(_on_options_pressed)
 	Exit.button_down.connect(_on_exit_pressed)
 	options_menu.back_main_menu.connect(main_menu_back)
+
+

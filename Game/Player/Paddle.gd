@@ -38,9 +38,6 @@ func follow_player():
 		else:
 			following_enabled = false
 
-		# Check for position fluctuation
-		check_position_fluctuation()
-
 		# Update previous position
 		previous_position = global_position
 	else:
@@ -50,10 +47,6 @@ func follow_player():
 # Function to check if the player is valid (still instanced in the scene)
 func is_player_valid() -> bool:
 	return player != null
-
-# Function to check position fluctuation
-func check_position_fluctuation():
-	var position_change: Vector2 = global_position - previous_position
 
 func teleport(direction: Vector2):
 	var teleport_position: Vector2 = position + direction.normalized() * teleport_distance

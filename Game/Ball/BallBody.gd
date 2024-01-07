@@ -18,7 +18,6 @@ func _ready():
 	visible = false
 	# Connect the shoot_ball signal from the player
 	get_parent().get_node("PlayerBody").connect("shoot_ball", _on_player_shoot_ball)
-	get_parent().connect("reset_speed", reset_initial_ball_speed)
 
 func _process(delta):
 	var collision_info = move_and_collide(velocity * delta)
@@ -68,5 +67,3 @@ func _on_enemy_hit_area_entered(area):
 	if area.is_in_group("Enemy"):
 		print("Enemy Hit")
 
-func reset_initial_ball_speed():
-	initial_ball_speed = 500
