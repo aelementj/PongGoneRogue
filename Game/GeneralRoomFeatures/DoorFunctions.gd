@@ -34,7 +34,6 @@ func toggleDoors():
 func _on_open_door_body_entered(body):
 	if isDoorOpen and body.is_in_group("Ball"):
 		onBallEnterOpenDoor()
-		zoom_in.play()
 
 func onBallEnterOpenDoor():
 	print("Ball entered the open door!")
