@@ -21,6 +21,12 @@ func _input(event : InputEvent):
 	if(event.is_action_pressed("ui_cancel")):
 		game_paused = !game_paused
 
+func _process(delta):
+	if not is_player_valid():
+		game_paused = !game_paused
+
+func is_player_valid() -> bool:
+	return Global.get_player_reference() != null
 
 func _on_transition_animation_finished(anim_name):
 	pass

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://d138lauggmjjj"]
+[gd_scene load_steps=5 format=3 uid="uid://d138lauggmjjj"]
 
 [ext_resource type="Script" path="res://Game/Pause/PauseMenu.gd" id="1_8a2rq"]
 [ext_resource type="PackedScene" uid="uid://i50dynnx1exd" path="res://Game/Pause/OptionsMenu2.tscn" id="2_7ovbo"]
+[ext_resource type="PackedScene" uid="uid://dqry28lsnkspe" path="res://Game/GameOver/game_over_menu.tscn" id="3_b3myq"]
 [ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="3_umvxt"]
 
 [node name="PauseMenu" type="Control"]
@@ -15,6 +16,10 @@ size_flags_horizontal = 6
 script = ExtResource("1_8a2rq")
 
 [node name="OptionsMenu2" parent="." instance=ExtResource("2_7ovbo")]
+layout_mode = 1
+
+[node name="GameOverMenu" parent="." instance=ExtResource("3_b3myq")]
+visible = false
 layout_mode = 1
 
 [node name="Panel" type="Panel" parent="."]

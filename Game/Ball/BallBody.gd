@@ -20,6 +20,9 @@ func _ready():
 	get_parent().get_node("PlayerBody").connect("shoot_ball", _on_player_shoot_ball)
 
 func _process(delta):
+	if not is_player_valid():
+		velocity = Vector2.ZERO
+		
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collision_normal = collision_info.get_normal()
@@ -55,6 +58,7 @@ func _on_player_shoot_ball():
 		
 		velocity = Vector2(0, initial_ball_speed)
 		visible = true
+		Global.set_ball_reference(self)
 
 
 func _on_area_2d_area_entered(area):
@@ -67,3 +71,5 @@ func _on_enemy_hit_area_entered(area):
 	if area.is_in_group("Enemy"):
 		print("Enemy Hit")
 
+func is_player_valid() -> bool:
+	return Global.get_player_reference() != null

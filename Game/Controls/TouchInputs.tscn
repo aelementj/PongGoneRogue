@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dhe740i8uowko"]
+[gd_scene load_steps=16 format=3 uid="uid://dhe740i8uowko"]
 
 [ext_resource type="Texture2D" uid="uid://b4bx3gfs2bnq7" path="res://icon.svg" id="1_jq68y"]
 
@@ -49,7 +49,14 @@ height = 1
 fill_from = Vector2(0, 1)
 fill_to = Vector2(0.594017, 0)
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tf4vo"]
+[sub_resource type="Gradient" id="Gradient_arxmi"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dhwdj"]
+gradient = SubResource("Gradient_arxmi")
+width = 1
+height = 1
+fill_from = Vector2(0, 1)
+fill_to = Vector2(1, 1)
 
 [node name="TouchInputs" type="Node2D"]
 
@@ -85,8 +92,10 @@ texture_pressed = SubResource("GradientTexture2D_arjwi")
 action = "ui_accept"
 
 [node name="Pause" type="TouchScreenButton" parent="."]
+process_mode = 3
+process_priority = 1
 position = Vector2(16, 16)
 scale = Vector2(32, 32)
 texture_normal = SubResource("GradientTexture2D_jxcl4")
-texture_pressed = SubResource("PlaceholderTexture2D_tf4vo")
+texture_pressed = SubResource("GradientTexture2D_dhwdj")
 action = "ui_cancel"

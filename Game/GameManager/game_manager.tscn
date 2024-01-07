@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkcvk78b6vw02"]
+[gd_scene load_steps=11 format=3 uid="uid://dkcvk78b6vw02"]
 
 [ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_2hssr"]
 [ext_resource type="PackedScene" uid="uid://c5nmurcads6mx" path="res://Game/Stage 1/Room Manager/Room Manager.tscn" id="2_52n3e"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://n3060u0nj3f1" path="res://Game/Stage 1/Enemy Manager/EnemyManager.tscn" id="3_ldam8"]
 [ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="4_cu0mg"]
 [ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="4_uccct"]
+[ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="6_g8qsp"]
 
 [sub_resource type="Animation" id="Animation_m2066"]
 resource_name = "fade_in"
@@ -84,6 +85,12 @@ script = ExtResource("1_2hssr")
 
 [node name="Camera2D2" type="Camera2D" parent="General"]
 anchor_mode = 0
+
+[node name="Panel" parent="." instance=ExtResource("6_g8qsp")]
+offset_left = 494.0
+offset_top = 486.0
+offset_right = 494.0
+offset_bottom = 486.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

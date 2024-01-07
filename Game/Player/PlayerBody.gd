@@ -36,7 +36,7 @@ func process_input():
 	if Input.is_action_pressed("ui_accept") and Global.has_ball():
 		print(Global.ball_count)
 		emit_signal("shoot_ball")
-		Global.ball_count -= 1  # Decrement the ball count after shooting
+		Global.minus_ball()
 		print(Global.ball_count)
 		print("Player has_Ball: ", Global.has_ball())
 

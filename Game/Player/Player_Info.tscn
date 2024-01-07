@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5xy7t55ji1qe"]
+
+[ext_resource type="Script" path="res://Game/Player/health_visual.gd" id="1_4w6m6"]
+[ext_resource type="PackedScene" uid="uid://bbdvcwmuck5ps" path="res://Game/Player/PlayerHearts.tscn" id="2_kkad1"]
+[ext_resource type="PackedScene" uid="uid://oyph763jgio6" path="res://Game/Player/PlayerBalls.tscn" id="3_rttgg"]
+
+[node name="Panel" type="Panel"]
+custom_minimum_size = Vector2(0, 56)
+anchors_preset = -1
+anchor_left = -0.0666667
+anchor_top = -0.0518519
+anchor_right = 0.0666667
+anchor_bottom = 0.0518519
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4w6m6")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(112, 40)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0625
+anchor_top = 0.142857
+anchor_right = 0.9375
+anchor_bottom = 0.857143
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthVisualRow1" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(112, 18)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerHearts" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+layout_mode = 2
+
+[node name="PlayerHearts2" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+layout_mode = 2
+
+[node name="PlayerHearts3" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+layout_mode = 2
+
+[node name="PlayerHearts4" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+layout_mode = 2
+
+[node name="PlayerHearts5" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+layout_mode = 2
+
+[node name="PlayerHearts6" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+layout_mode = 2
+
+[node name="BallVisualRow2" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(112, 18)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerBalls" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls2" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls3" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls4" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls5" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls6" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+layout_mode = 2

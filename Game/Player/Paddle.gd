@@ -77,6 +77,9 @@ func is_moving() -> bool:
 
 # Process player input
 func process_input():
+	if is_player_valid():
+		show()
+	
 	var direction: Vector2 = Vector2.ZERO
 
 	if Input.is_action_pressed("ui_left"):
@@ -90,4 +93,6 @@ func process_input():
 
 	# Check if the player is defeated, then queue-free the paddle
 	if Global.get_player_lives() <= 0:
-		queue_free()
+		hide()
+
+

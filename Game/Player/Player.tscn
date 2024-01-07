@@ -18,4 +18,7 @@ position = Vector2(480, 413)
 position = Vector2(480, 413)
 
 [node name="BallBody" parent="." instance=ExtResource("3_ug7qh")]
-position = Vector2(480, 374)
+position = Vector2(480, 16)
+
+[node name="BallBody2" parent="." instance=ExtResource("3_ug7qh")]
+position = Vector2(464, 16)

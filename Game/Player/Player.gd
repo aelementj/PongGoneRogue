@@ -21,14 +21,14 @@ func _ready() -> void:
 	initialBallPosition = ball.position
 	DoorGlobal.instance.connect("positions_reset", reset_positions)
 
-# Function to reset the positions of player body, paddle, and ball to their initial positions
-# and stop the movement of the ball
 func reset_positions() -> void:
 	# Check if a reset is already in progress
 	if not reset_in_progress:
 		reset_in_progress = true
 		# Set the positions to their initial values
 		playerBody.position = initialPlayerBodyPosition
+		
+		# Reset the ball position and velocity
 		paddle.position = initialPaddlePosition
 		ball.position = initialBallPosition
 		ball.velocity = Vector2.ZERO

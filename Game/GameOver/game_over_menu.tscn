@@ -1,0 +1,82 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqry28lsnkspe"]
+
+[ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="1_wgo6j"]
+[ext_resource type="Script" path="res://Game/GameOver/game_over_menu.gd" id="2_onk2d"]
+
+[node name="GameOverMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+theme = ExtResource("1_wgo6j")
+script = ExtResource("2_onk2d")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.333333
+anchor_top = 0.296296
+anchor_right = 0.666667
+anchor_bottom = 0.666667
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.12
+anchor_right = 1.0
+anchor_bottom = 0.37625
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause Label" type="Label" parent="Panel/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+theme = ExtResource("1_wgo6j")
+theme_override_font_sizes/font_size = 40
+text = "Pause"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.4
+anchor_right = 0.9
+anchor_bottom = 0.795
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Back to Main" type="Button" parent="Panel/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_wgo6j")
+text = "Back 
+to 
+Main"
+icon_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="Panel/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Restart" type="Button" parent="Panel/HBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_wgo6j")
+text = "Restart"
+
+[connection signal="pressed" from="Panel/HBoxContainer/Back to Main" to="." method="_on_back_to_main_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
