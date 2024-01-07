@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqry28lsnkspe"]
+[gd_scene load_steps=3 format=3 uid="uid://fho32clhxpn5"]
 
-[ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="1_wgo6j"]
-[ext_resource type="Script" path="res://Game/GameOver/game_over_menu.gd" id="2_onk2d"]
+[ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="1_a8ys2"]
+[ext_resource type="Script" path="res://Game/GameOver/thank_you_menu.gd" id="2_wbcwr"]
 
-[node name="GameOverMenu" type="Control"]
+[node name="Thank You Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,8 +11,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
-theme = ExtResource("1_wgo6j")
-script = ExtResource("2_onk2d")
+theme = ExtResource("1_a8ys2")
+script = ExtResource("2_wbcwr")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -28,18 +28,20 @@ metadata/_edit_use_anchors_ = true
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.12
 anchor_right = 1.0
-anchor_bottom = 0.37625
+anchor_bottom = 0.375
 metadata/_edit_use_anchors_ = true
 
-[node name="GameOver Label" type="Label" parent="Panel/MarginContainer"]
+[node name="Pause Label" type="Label" parent="Panel/MarginContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_vertical = 1
-theme = ExtResource("1_wgo6j")
-theme_override_font_sizes/font_size = 40
-text = "Game Over"
+theme = ExtResource("1_a8ys2")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 7
+theme_override_font_sizes/font_size = 15
+text = "Thanks for Playing this game's Demo.
+ Please look forward on future updates"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -58,7 +60,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_wgo6j")
+theme = ExtResource("1_a8ys2")
 text = "Back 
 to 
 Main"
@@ -75,7 +77,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_wgo6j")
+theme = ExtResource("1_a8ys2")
 text = "Restart"
 
 [connection signal="pressed" from="Panel/HBoxContainer/Back to Main" to="." method="_on_back_to_main_pressed"]

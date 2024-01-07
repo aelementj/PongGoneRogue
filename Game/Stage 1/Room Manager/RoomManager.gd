@@ -4,10 +4,14 @@ extends Node
 # Array to store available room paths
 var available_rooms : Array = []
 
+var boss_room : Array = []
+
 # Array to store instantiated room instances
 var instantiated_rooms : Array = []
 
 var instantiation_in_progress : bool = false
+
+var room_count : int = 0
 
 func _ready():
 	# Initialize available room paths with your 12 room scenes
@@ -25,6 +29,8 @@ func _ready():
 		"res://Game/Stage 1/Room 11.tscn",
 		"res://Game/Stage 1/Room 12.tscn"
 	]
+	
+	boss_room = ["res://Game/Stage 1/Room 13 (Boss).tscn"]
 	
 	# Shuffle the available rooms
 	available_rooms.shuffle()
@@ -70,20 +76,21 @@ func _on_instantiation_timer_timeout():
 		timer.queue_free()
 
 # Example of how to use the instantiate_new_room function
-func _process(delta):
-	# Check if the "ui_up" action is just pressed
-	if Input.is_action_just_pressed("ui_up") and instantiation_in_progress == false:
-		# Get the path of the next room from the shuffled array
-		if available_rooms.size() > 0:
-			var next_room_path = available_rooms.pop_back()
-			instantiate_new_room(next_room_path)
-		else:
-			print("No available rooms")
-	
 func _on_ball_entered_any_open_door():
-	# Implement the logic to get the path of the next room from the shuffled array
-	if available_rooms.size() > 0 and instantiation_in_progress == false:
+	# Check if there are available rooms and instantiation is not in progress
+	if room_count < 6 and available_rooms.size() > 0 and instantiation_in_progress == false:
 		var next_room_path = available_rooms.pop_back()
 		instantiate_new_room(next_room_path)
+		room_count += 1
+		
+		# Check if six regular rooms have been instantiated
+	elif room_count == 6 and available_rooms.size() > 0 and instantiation_in_progress == false:
+		# Initiate the boss room
+		var boss_room_path = boss_room[0]
+		instantiate_new_room(boss_room_path)
 	else:
 		print("No available rooms")
+
+func _process(delta):
+	if Input.is_action_just_pressed("clear"):
+		_on_ball_entered_any_open_door()

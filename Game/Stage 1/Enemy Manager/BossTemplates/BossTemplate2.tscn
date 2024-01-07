@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvodsh4mo7614"]
+
+[ext_resource type="PackedScene" uid="uid://blb8028b3v3fo" path="res://Game/Enemies/Spawners/EnemyType3Spawner.tscn" id="2_nc0aq"]
+[ext_resource type="PackedScene" uid="uid://dvnbbn4ixp5ky" path="res://Game/Enemies/EnemySniper.tscn" id="3_aoovd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemyType3Spawner" parent="." instance=ExtResource("2_nc0aq")]
+position = Vector2(480, 168)
+
+[node name="EnemySniper" parent="." instance=ExtResource("3_aoovd")]
+position = Vector2(432, 168)
+
+[node name="EnemySniper2" parent="." instance=ExtResource("3_aoovd")]
+position = Vector2(528, 168)

@@ -1,101 +1,66 @@
-[gd_scene load_steps=16 format=3 uid="uid://dhe740i8uowko"]
+[gd_scene load_steps=11 format=3 uid="uid://dhe740i8uowko"]
 
-[ext_resource type="Texture2D" uid="uid://b4bx3gfs2bnq7" path="res://icon.svg" id="1_jq68y"]
-
-[sub_resource type="Gradient" id="Gradient_b67yn"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_uhlx3"]
-gradient = SubResource("Gradient_b67yn")
-width = 128
-height = 128
-fill_from = Vector2(1, 0)
-fill_to = Vector2(0, 0)
-
-[sub_resource type="Gradient" id="Gradient_2yaoc"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_rfuxa"]
-gradient = SubResource("Gradient_2yaoc")
-width = 128
-height = 128
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xxqau"]
-
-[sub_resource type="Gradient" id="Gradient_4bp2t"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ybcy1"]
-gradient = SubResource("Gradient_4bp2t")
-width = 1
-height = 1
-fill_from = Vector2(0, 1)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_vytqa"]
-
-[sub_resource type="Gradient" id="Gradient_62hqw"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_arjwi"]
-gradient = SubResource("Gradient_62hqw")
-width = 1
-height = 1
-fill_from = Vector2(1, 1)
-fill_to = Vector2(0, 1)
-metadata/_snap_enabled = true
-
-[sub_resource type="Gradient" id="Gradient_jtqx4"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_jxcl4"]
-gradient = SubResource("Gradient_jtqx4")
-width = 1
-height = 1
-fill_from = Vector2(0, 1)
-fill_to = Vector2(0.594017, 0)
-
-[sub_resource type="Gradient" id="Gradient_arxmi"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_dhwdj"]
-gradient = SubResource("Gradient_arxmi")
-width = 1
-height = 1
-fill_from = Vector2(0, 1)
-fill_to = Vector2(1, 1)
+[ext_resource type="Texture2D" uid="uid://bemp6u5k234oo" path="res://assets/Buttons by deo/left.png" id="1_if3lf"]
+[ext_resource type="Texture2D" uid="uid://blk1y8ytfg3i" path="res://assets/Buttons by deo/LeftBlur.png" id="1_rljsf"]
+[ext_resource type="Texture2D" uid="uid://hwp0mdiqi61u" path="res://assets/Buttons by deo/Right.png" id="2_xof3u"]
+[ext_resource type="Texture2D" uid="uid://bo0jkttkwejlo" path="res://assets/Buttons by deo/RightBlur.png" id="4_dtkj6"]
+[ext_resource type="Texture2D" uid="uid://dgvjjaqa3y2kb" path="res://assets/Buttons by deo/dash.png" id="5_6fkaa"]
+[ext_resource type="Texture2D" uid="uid://dskuf40e3yean" path="res://assets/Buttons by deo/DashBlur.png" id="6_iprqn"]
+[ext_resource type="Texture2D" uid="uid://dhxbgv0rspy08" path="res://assets/Buttons by deo/fire.png" id="7_l3r8r"]
+[ext_resource type="Texture2D" uid="uid://b0soequct7188" path="res://assets/Buttons by deo/FireBlur.png" id="8_76x8u"]
+[ext_resource type="Texture2D" uid="uid://c2e3jcdxnj68i" path="res://assets/tile066.png" id="9_dimtu"]
+[ext_resource type="Texture2D" uid="uid://i8ai260l8fl3" path="res://assets/tile066v2.png" id="10_2x22c"]
 
 [node name="TouchInputs" type="Node2D"]
 
 [node name="Left" type="TouchScreenButton" parent="."]
-position = Vector2(96, 456)
-scale = Vector2(1, 0.5)
-texture_normal = ExtResource("1_jq68y")
-texture_pressed = SubResource("GradientTexture2D_uhlx3")
+texture_filter = 1
+position = Vector2(100, 456)
+scale = Vector2(0.216582, 0.108291)
+texture_normal = ExtResource("1_if3lf")
+texture_pressed = ExtResource("1_rljsf")
 passby_press = true
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2(240, 456)
-scale = Vector2(1, 0.5)
-texture_normal = ExtResource("1_jq68y")
-texture_pressed = SubResource("GradientTexture2D_rfuxa")
+texture_filter = 1
+position = Vector2(236, 456)
+scale = Vector2(0.217, 0.109)
+texture_normal = ExtResource("2_xof3u")
+texture_pressed = ExtResource("4_dtkj6")
 passby_press = true
 action = "ui_right"
 
 [node name="Dash" type="TouchScreenButton" parent="."]
-position = Vector2(792, 456)
-scale = Vector2(72.0001, 64)
-texture_normal = SubResource("PlaceholderTexture2D_xxqau")
-texture_pressed = SubResource("GradientTexture2D_ybcy1")
+texture_filter = 1
+position = Vector2(739, 442)
+scale = Vector2(0.354, 0.278125)
+texture_normal = ExtResource("5_6fkaa")
+texture_pressed = ExtResource("6_iprqn")
 action = "dash"
 
 [node name="Launch" type="TouchScreenButton" parent="."]
-position = Vector2(688, 456)
+texture_filter = 1
+position = Vector2(615, 440)
 rotation = 0.00163134
-scale = Vector2(72, 64)
-texture_normal = SubResource("PlaceholderTexture2D_vytqa")
-texture_pressed = SubResource("GradientTexture2D_arjwi")
+scale = Vector2(0.35414, 0.289817)
+texture_normal = ExtResource("7_l3r8r")
+texture_pressed = ExtResource("8_76x8u")
 action = "ui_accept"
 
-[node name="Pause" type="TouchScreenButton" parent="."]
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color(0.894118, 0.521569, 0.258824, 1)
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="Pause" type="TouchScreenButton" parent="Panel"]
 process_mode = 3
 process_priority = 1
-position = Vector2(16, 16)
-scale = Vector2(32, 32)
-texture_normal = SubResource("GradientTexture2D_jxcl4")
-texture_pressed = SubResource("GradientTexture2D_dhwdj")
+texture_filter = 1
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("9_dimtu")
+texture_pressed = ExtResource("10_2x22c")
 action = "ui_cancel"

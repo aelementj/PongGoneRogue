@@ -6,6 +6,7 @@ class_name GameManagerv1
 
 func _ready():
 	transition.play("fade_in")
+	DoorGlobal.connect("demo2", thankyou_demo)
 
 
 signal toggle_game_paused(is_paused : bool)
@@ -24,6 +25,12 @@ func _input(event : InputEvent):
 func _process(delta):
 	if not is_player_valid():
 		game_paused = !game_paused
+		
+
+func thankyou_demo():
+	game_paused = !game_paused
+	print("debuggm")
+
 
 func is_player_valid() -> bool:
 	return Global.get_player_reference() != null

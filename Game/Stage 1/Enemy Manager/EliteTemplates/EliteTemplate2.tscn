@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctxa8g770piil"]
+
+[ext_resource type="PackedScene" uid="uid://c0i4vgrqne7di" path="res://Game/Enemies/Spawners/RandomEnemySpawner.tscn" id="2_evjwk"]
+
+[node name="Node2D2" type="Node2D"]
+
+[node name="RandomEnemySpawner" parent="." instance=ExtResource("2_evjwk")]
+position = Vector2(472, 176)

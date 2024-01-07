@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://baeldf8v7wbaf"]
+
+[ext_resource type="PackedScene" uid="uid://dsdbon2f7be2v" path="res://Game/Enemies/Spawners/EnemyType5Spawner.tscn" id="2_ja28h"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemyType5Spawner" parent="." instance=ExtResource("2_ja28h")]
+position = Vector2(480, 152)

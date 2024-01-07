@@ -57,10 +57,3 @@ func addBall():
 func removeBall():
 	currentBalls -= 1
 	updateBallVisual()
-
-# Input handling
-func _input(event):
-	if event.is_action_pressed("decrease_health"):
-		removeHeart()
-	elif event.is_action_pressed("increase_health"):
-		addHeart()

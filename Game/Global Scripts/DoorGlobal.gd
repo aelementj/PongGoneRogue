@@ -34,6 +34,12 @@ func onBallEnterAnyOpenDoor():
 	emit_signal("ball_entered_any_open_door")
 	emit_signal("positions_reset")
 
+func thankyou():
+	emit_signal("demo2")
+	print("debugdg")
+
+signal demo2
+
 # Signal emitted when any open door is entered by the ball
 signal ball_entered_any_open_door
 

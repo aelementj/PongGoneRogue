@@ -1,4 +1,4 @@
-# RoomManager.gd
+# EnemyManager.gd
 extends Node
 
 # Array to store available enemy template paths
@@ -7,7 +7,17 @@ var available_enemy_templates : Array = []
 # Array to store instantiated enemy template instances
 var instantiated_enemies : Array = []
 
+# Array to store available boss template paths
+var boss_templates : Array = []
+
+# Array to store available elite template paths
+var elite_templates : Array = []
+
 var instantiation_in_progress : bool = false
+
+var enemy_count : int = 0
+var elite_count : int = 0
+var boss_count : int = 0
 
 func _ready():
 	# Initialize available enemy template paths with your 12 enemy templates
@@ -26,11 +36,26 @@ func _ready():
 		"res://Game/Stage 1/Enemy Manager/EnemyTemplates/EnemyTemplate12.tscn"
 	]
 
-	# Shuffle the available enemy templates
+	# Initialize available boss template paths with your boss templates
+	boss_templates = [
+		"res://Game/Stage 1/Enemy Manager/BossTemplates/BossTemplate1.tscn",
+		"res://Game/Stage 1/Enemy Manager/BossTemplates/BossTemplate2.tscn",
+		"res://Game/Stage 1/Enemy Manager/BossTemplates/BossTemplate3.tscn"
+		# Add more boss templates as needed
+	]
+
+	# Initialize available elite template paths with your elite templates
+	elite_templates = [
+		"res://Game/Stage 1/Enemy Manager/EliteTemplates/EliteTemplate1.tscn",
+		"res://Game/Stage 1/Enemy Manager/EliteTemplates/EliteTemplate2.tscn",
+		# Add more elite templates as needed
+	]
+	
 	available_enemy_templates.shuffle()
+	boss_templates.shuffle()
+	elite_templates.shuffle()
 	
 	DoorGlobal.instance.connect("ball_entered_any_open_door", _on_ball_entered_any_open_door)
-
 
 func instantiate_new_enemy(enemy_path: String):
 	if instantiation_in_progress:
@@ -50,6 +75,8 @@ func instantiate_new_enemy(enemy_path: String):
 	print("Instantiated EnemyTemplate: ", enemy_path)
 
 	print("Remaining EnemiesTemplates:", available_enemy_templates)
+	print("Remaining EliteTemplates:", elite_templates)
+	print("Remaining BossTemplates:", boss_templates)
 
 	# Allow the next instantiation after a short delay
 	var timer = Timer.new()
@@ -66,21 +93,35 @@ func _on_instantiation_timer_timeout():
 	if timer:
 		timer.queue_free()
 
-# Example of how to use the instantiate_new_enemy function
 func _process(delta):
-	# Check if the "ui_up" action is just pressed
-	if Input.is_action_just_pressed("ui_up") and instantiation_in_progress == false:
-		# Get the path of the next enemy template from the shuffled array
-		if available_enemy_templates.size() > 0:
-			var next_enemy_path = available_enemy_templates.pop_back()
-			instantiate_new_enemy(next_enemy_path)
-		else:
-			print("No available enemies")
+	if Input.is_action_just_pressed("clear"):
+		_on_ball_entered_any_open_door()
 
 func _on_ball_entered_any_open_door():
-	# Implement the logic to get the path of the next room from the shuffled array
-	if available_enemy_templates.size() > 0 and instantiation_in_progress == false:
-		var next_enemy_path = available_enemy_templates.pop_back()
+	if instantiation_in_progress:
+		# Enemy instantiation is already in progress, skip
+		return
+
+	var next_enemy_path: String = ""
+
+	if enemy_count < 3 and available_enemy_templates.size() > 0 and instantiation_in_progress == false:
+		# Load the next enemy template
+		next_enemy_path = available_enemy_templates.pop_back()
+		enemy_count += 1
+	elif elite_count < 1 and available_enemy_templates.size() > 0 and instantiation_in_progress == false:
+		# Load the next elite template
+		next_enemy_path = elite_templates.pop_back()
+		elite_count += 1
+	elif enemy_count < 5 and elite_count == 1  and available_enemy_templates.size() > 0 and instantiation_in_progress == false:
+		# Load the next enemy template
+		next_enemy_path = available_enemy_templates.pop_back()
+		enemy_count += 1
+	elif boss_count < 1 and available_enemy_templates.size() > 0 and instantiation_in_progress == false:
+		# Load the next boss template
+		next_enemy_path = boss_templates.pop_back()
+		boss_count += 1
+
+	if next_enemy_path != "":
 		instantiate_new_enemy(next_enemy_path)
 	else:
-		print("No available rooms")
+		print("No available enemies")

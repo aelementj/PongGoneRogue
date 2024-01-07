@@ -1,7 +1,5 @@
 extends Node2D
 
-@onready var zoom_in = $Open/ZoomIn
-
 var closedDoor: Area2D
 var openDoor: Area2D
 
@@ -19,9 +17,7 @@ func _ready():
 func _process(delta):
 	# Check if initiated enemies count is zero and the door hasn't been toggled yet
 	if EnemyGlobal.instance.initiatedEnemiesCount == 0 and not hasToggledDoor:
-		$AnimatedSprite2D.play()
 		toggleDoors()
-
 
 func toggleDoors():
 	isDoorOpen = !isDoorOpen
@@ -29,17 +25,17 @@ func toggleDoors():
 	openDoor.visible = isDoorOpen
 	closedDoor.get_node("CollisionShape2D").disabled = isDoorOpen
 	openDoor.get_node("CollisionShape2D").disabled = !isDoorOpen
+	
 	hasToggledDoor = true  # Mark that the door has been toggled
 
 func _on_open_door_body_entered(body):
 	if isDoorOpen and body.is_in_group("Ball"):
 		onBallEnterOpenDoor()
-		zoom_in.play()
 
 func onBallEnterOpenDoor():
 	print("Ball entered the open door!")
-	emit_signal("ball_entered_open_door")
-	DoorGlobal.instance.onBallEnterAnyOpenDoor()
+	DoorGlobal.thankyou()
+
 
 func disconnect_signals():
 	openDoor.disconnect("body_entered", _on_open_door_body_entered)
@@ -47,4 +43,3 @@ func disconnect_signals():
 func _exit_tree():
 	disconnect_signals()
 	DoorGlobal.instance.updateInitiatedDoorsCount(DoorGlobal.instance.initiatedDoorsCount - 1)
-
