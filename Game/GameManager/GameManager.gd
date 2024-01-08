@@ -21,15 +21,17 @@ var game_paused : bool = false:
 func _input(event : InputEvent):
 	if(event.is_action_pressed("ui_cancel")):
 		game_paused = !game_paused
+		$Select.play()
 
 func _process(delta):
 	if not is_player_valid():
 		game_paused = !game_paused
-		
+		$Select.play()
 
 func thankyou_demo():
 	game_paused = !game_paused
 	print("debuggm")
+	$Select.play()
 
 
 func is_player_valid() -> bool:
@@ -37,3 +39,4 @@ func is_player_valid() -> bool:
 
 func _on_transition_animation_finished(anim_name):
 	pass
+

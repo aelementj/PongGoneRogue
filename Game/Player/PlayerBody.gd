@@ -3,7 +3,7 @@ class_name PlayerBody
 
 var speed: float = 200.0
 var teleport_distance: float = 50.0
-var teleport_cooldown: float = 3.0
+var teleport_cooldown: float = 2.0
 var can_teleport: bool = true
 
 signal shoot_ball
@@ -27,6 +27,7 @@ func process_input():
 		direction.x += 1
 
 	if can_teleport and Input.is_action_just_pressed("dash"):
+		$Dash.play()
 		teleport(direction)
 		start_teleport_cooldown()
 
@@ -72,11 +73,13 @@ func is_moving() -> bool:
 func _on_hit_by_bullet(body):
 	if body.is_in_group("Bullet"):
 		Global.decrease_player_lives()
+		$Hit.play()
 		print("Player hit by a bullet. Remaining lives: ", Global.get_player_lives())
 		body.queue_free()  # Remove the bullet from the scene
 		
 		if Global.get_player_lives() <= 0:
 			trigger_player_defeated()
+			
 
 # Function to trigger player defeated event
 func trigger_player_defeated():

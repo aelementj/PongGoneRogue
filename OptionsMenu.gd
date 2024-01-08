@@ -12,5 +12,10 @@ func _ready():
 func _on_back_to_main_pressed() -> void:
 	back_main_menu.emit()
 	set_process(false)
+	$"../Control/Select".play()
 
 
+
+
+func _on_music_drag_ended(value_changed):
+	pass # Replace with function body.

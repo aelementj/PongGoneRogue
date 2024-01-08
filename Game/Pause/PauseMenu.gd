@@ -39,24 +39,28 @@ func _on_game_manager_toggle_game_paused(is_paused : bool):
 
 func _on_resume_pressed():
 	game_manager.game_paused = false
+	$Select.play()
 
 func _on_restart_pressed():
 	_on_resume_pressed()
 	Global.reset_balls()
 	Global.reset_player_lives()
 	get_tree().reload_current_scene()
+	$Select.play()
 
 
 func _on_options_pressed():
 	panel.visible = false
 	options_menu.set_process(true)
 	options_menu.visible = true
+	$Select.play()
 
 func _on_back_to_main_pressed():
 	_on_resume_pressed()
 	Global.reset_balls()
 	Global.reset_player_lives()
 	get_tree().change_scene_to_packed(mainmenu)
+	$Select.play()
 
 func back_to_pause() -> void:
 	panel.visible = true

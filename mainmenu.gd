@@ -16,6 +16,7 @@ func _ready():
 
 func _on_start_pressed() -> void:
 	transition.play("fade_out")
+	$Control/Select.play()
 
 
 func _on_transition_animation_finished(anim_name):
@@ -25,10 +26,12 @@ func _on_options_pressed() -> void:
 	margin_container.visible = false
 	options_menu.set_process(true)
 	options_menu.visible = true
+	$Control/Select.play()
 
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
 
 func main_menu_back() -> void:
 	margin_container.visible = true

@@ -1,8 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://n0aut5n0d8qo"]
+[gd_scene load_steps=10 format=3 uid="uid://n0aut5n0d8qo"]
 
 [ext_resource type="Script" path="res://Game/Enemies/Bullet/BulletType1.gd" id="1_ds5ei"]
+[ext_resource type="Texture2D" uid="uid://cqe0f5ceu4phm" path="res://assets/Effects/Free  Effect Bullet Impact Explosion 32x32 V1/Blue Effect Bullet Impact Explosion 32x32.png" id="2_2hy80"]
+[ext_resource type="AudioStream" uid="uid://coput15nv3nqc" path="res://assets/SoundEffects/laserShoot.wav" id="3_ynepk"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_hvg71"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr3sf"]
+atlas = ExtResource("2_2hy80")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wbnp"]
+atlas = ExtResource("2_2hy80")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sloyc"]
+atlas = ExtResource("2_2hy80")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ge1hy"]
+atlas = ExtResource("2_2hy80")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_otfce"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr3sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6wbnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sloyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ge1hy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mr456"]
 size = Vector2(8, 16)
@@ -12,9 +48,14 @@ collision_layer = 16
 collision_mask = 16
 script = ExtResource("1_ds5ei")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(8.5, 16)
-texture = SubResource("CanvasTexture_hvg71")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -2)
+rotation = -1.5708
+scale = Vector2(0.75, 0.747)
+sprite_frames = SubResource("SpriteFrames_otfce")
+autoplay = "default"
+frame_progress = 0.280115
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mr456")
@@ -25,3 +66,8 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_mr456")
+
+[node name="Fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ynepk")
+volume_db = -10.0
+bus = &"SoundFX"

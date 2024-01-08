@@ -12,5 +12,6 @@ func _ready():
 func _on_back_to_pause_pressed() -> void:
 	back_pause_menu.emit()
 	set_process(false)
+	$"../Select".play()
 
 

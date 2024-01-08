@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://8rtuiq6td7wg"]
+[gd_scene load_steps=8 format=3 uid="uid://8rtuiq6td7wg"]
 
 [ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType3.gd" id="1_u0n0b"]
+[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="2_rwoxy"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_h6ufb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
 radius = 12.0
@@ -22,6 +25,30 @@ rotation = 0.785398
 scale = Vector2(24, 24)
 texture = SubResource("CanvasTexture_1na0g")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.34902, 0.34902, 0.34902, 1)
+texture_filter = 1
+position = Vector2(-0.0119742, -0.11)
+rotation = -3.14159
+scale = Vector2(33.9281, -2.69892)
+texture = SubResource("CanvasTexture_h6ufb")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+modulate = Color(0.34902, 0.34902, 0.34902, 1)
+texture_filter = 1
+position = Vector2(0.0093255, -8)
+rotation = -3.14159
+scale = Vector2(20.6877, -2.69892)
+texture = SubResource("CanvasTexture_h6ufb")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+modulate = Color(0.34902, 0.34902, 0.34902, 1)
+texture_filter = 1
+position = Vector2(-5.49178e-08, -7.76493)
+rotation = 1.5708
+scale = Vector2(18.2175, -2.69892)
+texture = SubResource("CanvasTexture_h6ufb")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p6g2v")
 
@@ -40,6 +67,10 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_dcdo3")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Bounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rwoxy")
+bus = &"SoundFX"
 
 [connection signal="area_entered" from="ChangeDirection" to="." method="_on_enemytype1_area_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]

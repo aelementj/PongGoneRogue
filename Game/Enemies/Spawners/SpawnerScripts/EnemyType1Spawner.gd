@@ -43,6 +43,7 @@ func spawn_shooters():
 
 func spawn_top_shooter():
 	if current_top_shooters < max_shooters:
+		
 		top_shooter = enemy_scenes.instantiate()
 
 		# Set the initial direction of the top shooter
@@ -83,12 +84,14 @@ func _process(delta):
 		current_top_shooters -= 1
 		top_shooter_removed = true
 		respawn_timer_top.start()
+		$Timer.start()
 
 	# Check if bottom_shooter is null and start the respawn timer for the bottom shooter
 	if not bottom_shooter_removed and (not bottom_shooter or bottom_shooter.is_queued_for_deletion()):
 		current_bottom_shooters -= 1
 		bottom_shooter_removed = true
 		respawn_timer_bottom.start()
+		$Timer.start()
 
 func _on_respawn_timer_top_timeout():
 	# Reset the removed flag for the top shooter
@@ -96,6 +99,7 @@ func _on_respawn_timer_top_timeout():
 
 	# Instantiate a new top shooter
 	spawn_top_shooter()
+	$Timer.stop()
 
 func _on_respawn_timer_bottom_timeout():
 	# Reset the removed flag for the bottom shooter
@@ -103,11 +107,13 @@ func _on_respawn_timer_bottom_timeout():
 
 	# Instantiate a new bottom shooter
 	spawn_bottom_shooter()
+	$Timer.stop()
 
 func on_Ball_area_entered(area):
 	if area.is_in_group("Ball"):
 		# Check if the object entering the area is in the "Ball" group
 		health -= 1
+		$Hit.play()
 		print("Spawner Hit")
 		if health <= 0:
 			print("Spawner Destroyed")
@@ -119,3 +125,6 @@ func is_player_valid() -> bool:
 func _exit_tree():
 	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount - 1)
 	EnemyGlobal.instance.updateInitiatedSpawnersCount(EnemyGlobal.instance.initiatedSpawnersCount - 1)
+
+func _on_timer_timeout():
+	$Spawn.play()

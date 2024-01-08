@@ -12,9 +12,10 @@ config_version=5
 
 config/name="Pong Gone Rogue"
 run/main_scene="res://mainmenu.tscn"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
-config/icon="res://icon.svg"
+config/icon="res://assets/1075236488.png"
 
 [audio]
 
@@ -31,6 +32,7 @@ EnemyGlobal="*res://Game/Global Scripts/EnemyGlobal.gd"
 window/size/viewport_width=960
 window/size/viewport_height=540
 window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [input]
 
@@ -78,3 +80,5 @@ pointing/emulate_touch_from_mouse=true
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.0941176, 0.0941176, 0.0941176, 1)
+renderer/transparent_background=false
+renderer/quit_on_go_back=false

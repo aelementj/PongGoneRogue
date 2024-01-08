@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 const BULLET_COOLDOWN = 6.0
+const PAUSE = 2
 
 var can_shoot = true
 var bullet_timer = Timer.new()
@@ -13,6 +14,12 @@ func _ready():
 	bullet_timer.connect("timeout", _on_bullet_timer_timeout)
 	add_child(bullet_timer)
 	bullet_timer.start()
+	
+	pause_timer.wait_time = PAUSE
+	pause_timer.one_shot = true
+	pause_timer.connect("timeout", _on_pause_timer_timeout)
+	add_child(pause_timer)
+	
 	EnemyGlobal.instance.addInitiatedEnemy(self)
 	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount + 1)
 
@@ -30,7 +37,8 @@ func _process(delta):
 		instantiate_bullet()
 		can_shoot = false
 		bullet_timer.start()
-		pause_timer.start()
+
+
 
 # Function to aim towards the player's position
 func aim_towards_player():
@@ -49,11 +57,13 @@ func is_player_valid() -> bool:
 
 # Function called when the bullet cooldown timer times out
 func _on_bullet_timer_timeout():
+	$AnimatedSprite2D.stop()
+	pause_timer.start()
 	can_shoot = true
 
 # Function called when the pause timer times out
 func _on_pause_timer_timeout():
-	pass  # You can add any additional logic here if needed
+	$AnimatedSprite2D.play()
 
 # Function called when the hit box area is entered
 func _on_hit_box_area_entered(area):

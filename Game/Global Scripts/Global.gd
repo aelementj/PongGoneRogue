@@ -32,6 +32,10 @@ func reset_balls():
 	ball_count = 1
 	print("Balls reset to one.")
 
+func reset_ball_pos():
+	emit_signal("reset_ball_pos2")
+signal reset_ball_pos2
+
 # Function to set the player reference
 func set_player_reference(player_node: Node):
 	player_reference = player_node

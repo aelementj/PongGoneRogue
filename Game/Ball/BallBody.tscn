@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1l85h8uosjis"]
+[gd_scene load_steps=9 format=3 uid="uid://d1l85h8uosjis"]
 
 [ext_resource type="Script" path="res://Game/Ball/BallBody.gd" id="1_6md6h"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_2ouj5"]
+[ext_resource type="Texture2D" uid="uid://dn84pnfctgcrm" path="res://assets/Planets/output-onlinepngtools (1).png" id="2_gmu0c"]
+[ext_resource type="AudioStream" uid="uid://qbl35ts215ry" path="res://assets/SoundEffects/hitHurt (2).wav" id="3_51nla"]
+[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="3_823p2"]
+[ext_resource type="AudioStream" uid="uid://d3nafmaw76qcw" path="res://assets/SoundEffects/pickupCoin.wav" id="4_ll5df"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k6j6p"]
-radius = 6.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bwnj6"]
-radius = 6.0
+radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4obgt"]
-radius = 6.0
+radius = 7.27273
 
 [node name="BallBody" type="RigidBody2D" groups=["Ball"]]
 collision_layer = 6
@@ -20,10 +22,13 @@ mass = 0.01
 script = ExtResource("1_6md6h")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(12, 12)
-texture = SubResource("CanvasTexture_2ouj5")
+texture_filter = 1
+position = Vector2(-4.76837e-07, -4.76837e-07)
+scale = Vector2(0.333, 0.333)
+texture = ExtResource("2_gmu0c")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.95, 0.95)
 shape = SubResource("CircleShape2D_k6j6p")
 
 [node name="PlayerCollect" type="Area2D" parent="." groups=["Ball"]]
@@ -31,6 +36,7 @@ collision_layer = 256
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollect"]
+scale = Vector2(0.95, 0.95)
 shape = SubResource("CircleShape2D_bwnj6")
 
 [node name="EnemyHit" type="Area2D" parent="." groups=["Ball"]]
@@ -40,6 +46,18 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHit"]
 scale = Vector2(1.1, 1.1)
 shape = SubResource("CircleShape2D_4obgt")
+
+[node name="Bounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_51nla")
+bus = &"SoundFX"
+
+[node name="BallPickUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ll5df")
+bus = &"SoundFX"
+
+[node name="EnemyHit2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_823p2")
+bus = &"SoundFX"
 
 [connection signal="area_entered" from="PlayerCollect" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="EnemyHit" to="." method="_on_enemy_hit_area_entered"]

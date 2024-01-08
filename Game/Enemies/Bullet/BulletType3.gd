@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 200  # Adjust the speed as needed
 
 func _ready():
+	$Fire.play()
 	# Get the player's position
 	var player_position = Global.get_player_reference().global_position
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0i4vgrqne7di"]
+[gd_scene load_steps=6 format=3 uid="uid://c0i4vgrqne7di"]
 
 [ext_resource type="Texture2D" uid="uid://cah6tml6boosc" path="res://assets/ezgif/ezgif-3-7a099e5faa-png-16x16-sprite-png/tile110.png" id="1_74krq"]
 [ext_resource type="Script" path="res://Game/Enemies/Spawners/SpawnerScripts/RandomEnemySpawner.gd" id="1_80fwm"]
+[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="3_3bxrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2vaxd"]
 size = Vector2(32, 32)
@@ -32,5 +33,9 @@ shape = SubResource("RectangleShape2D_2vaxd")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wall"]
 scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_3cuq0")
+
+[node name="Bounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3bxrk")
+bus = &"SoundFX"
 
 [connection signal="area_entered" from="HitBox" to="." method="on_Ball_area_entered"]

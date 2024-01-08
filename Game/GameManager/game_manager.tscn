@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkcvk78b6vw02"]
+[gd_scene load_steps=12 format=3 uid="uid://dkcvk78b6vw02"]
 
 [ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_2hssr"]
 [ext_resource type="PackedScene" uid="uid://c5nmurcads6mx" path="res://Game/Stage 1/Room Manager/Room Manager.tscn" id="2_52n3e"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="4_cu0mg"]
 [ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="4_uccct"]
 [ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="6_g8qsp"]
+[ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="8_uc8oq"]
 
 [sub_resource type="Animation" id="Animation_m2066"]
 resource_name = "fade_in"
@@ -106,6 +107,7 @@ libraries = {
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
 visible = false
+self_modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
 anchor_left = -0.25
 anchor_top = -0.333333
@@ -114,4 +116,9 @@ anchor_bottom = 1.33333
 color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_uc8oq")
+bus = &"SoundFX"
+
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
+[connection signal="animation_finished" from="Transition" to="Room Manager" method="_on_transition_animation_finished"]

@@ -20,6 +20,8 @@ func _ready() -> void:
 	initialPaddlePosition = paddle.position
 	initialBallPosition = ball.position
 	DoorGlobal.instance.connect("positions_reset", reset_positions)
+	Global.connect("reset_ball_pos2", ball_reset)
+
 
 func reset_positions() -> void:
 	# Check if a reset is already in progress
@@ -49,6 +51,12 @@ func reset_positions() -> void:
 		timer.connect("timeout", _on_reset_timer_timeout)
 		add_child(timer)
 		timer.start()
+
+func ball_reset():
+	ball.position = initialBallPosition
+	ball.velocity = Vector2.ZERO
+	ball.visible = false
+	Global.add_ball()
 
 # Signal emitted when the reset timer times out
 func _on_reset_timer_timeout():

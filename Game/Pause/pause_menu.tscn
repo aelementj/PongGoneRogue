@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d138lauggmjjj"]
+[gd_scene load_steps=7 format=3 uid="uid://d138lauggmjjj"]
 
 [ext_resource type="Script" path="res://Game/Pause/PauseMenu.gd" id="1_8a2rq"]
 [ext_resource type="PackedScene" uid="uid://i50dynnx1exd" path="res://Game/Pause/OptionsMenu2.tscn" id="2_7ovbo"]
 [ext_resource type="PackedScene" uid="uid://dqry28lsnkspe" path="res://Game/GameOver/game_over_menu.tscn" id="3_b3myq"]
 [ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="3_umvxt"]
 [ext_resource type="PackedScene" uid="uid://fho32clhxpn5" path="res://Game/GameOver/thank_you_menu.tscn" id="4_40nxy"]
+[ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="6_0byav"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -96,6 +97,10 @@ layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("3_umvxt")
 text = "Back to Main"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0byav")
+bus = &"SoundFX"
 
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]

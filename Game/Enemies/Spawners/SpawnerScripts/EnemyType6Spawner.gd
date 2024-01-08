@@ -202,3 +202,4 @@ func on_Ball_area_entered(area):
 func _exit_tree():
 	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount - 1)
 	EnemyGlobal.instance.updateInitiatedSpawnersCount(EnemyGlobal.instance.initiatedSpawnersCount - 1)
+

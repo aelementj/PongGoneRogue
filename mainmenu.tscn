@@ -1,13 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://ckooumxkkljsg"]
+[gd_scene load_steps=14 format=3 uid="uid://ckooumxkkljsg"]
 
 [ext_resource type="Script" path="res://mainmenu.gd" id="1_rhkky"]
-[ext_resource type="Texture2D" uid="uid://di3fr6e65hee0" path="res://assets/Space Background (1).png" id="1_y4p7s"]
 [ext_resource type="FontFile" uid="uid://dnpkfghmefjyi" path="res://assets/MinimalPixel v2.ttf" id="2_wkvoj"]
 [ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="3_01cl8"]
 [ext_resource type="Texture2D" uid="uid://b6arsa7eug46e" path="res://assets/LogoFinale!.png" id="3_ymxie"]
 [ext_resource type="PackedScene" uid="uid://dlmc77cnij2ks" path="res://options_menu.tscn" id="5_kgrdg"]
 [ext_resource type="AudioStream" uid="uid://byipvx6anxo2a" path="res://Music/Density & Time - MAZE  NO COPYRIGHT 8-bit Music.mp3" id="7_xbyx1"]
 [ext_resource type="PackedScene" uid="uid://4ksbyakwivij" path="res://MainMenuAnimations.tscn" id="8_ri1g4"]
+[ext_resource type="Texture2D" uid="uid://dq7wjbo4pjum0" path="res://assets/SpaceBackground/Space Background (2).png" id="9_2xpa7"]
+[ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="9_xhj2t"]
 
 [sub_resource type="Animation" id="Animation_m2066"]
 resource_name = "fade_in"
@@ -65,8 +66,26 @@ tracks/1/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_qhy7b"]
+resource_name = "background"
+length = 300.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60, 120, 180, 240, 300),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-240, -180), Vector2(-480, -358), Vector2(-483, 0), Vector2(0, -368), Vector2(0, 0), Vector2(-240, -180)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_um4nb"]
 _data = {
+"background": SubResource("Animation_qhy7b"),
 "fade_in": SubResource("Animation_m2066"),
 "fade_out": SubResource("Animation_ydolu")
 }
@@ -86,20 +105,24 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -180.0
+offset_right = 240.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_y4p7s")
+texture = ExtResource("9_2xpa7")
 
-[node name="LogoFinale!" type="Sprite2D" parent="TextureRect"]
+[node name="LogoFinale!" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(504, 190)
+position = Vector2(264, 10)
 scale = Vector2(0.729121, 0.730456)
 texture = ExtResource("3_ymxie")
 centered = false
 
-[node name="Planet Rotation" parent="TextureRect" instance=ExtResource("8_ri1g4")]
+[node name="Planet Rotation" parent="." instance=ExtResource("8_ri1g4")]
 texture_filter = 1
-position = Vector2(285, 670)
+position = Vector2(45, 490)
 scale = Vector2(4, 4)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -164,16 +187,25 @@ layout_mode = 1
 offset_left = -8.0
 offset_right = -8.0
 
-[node name="MainMenuBGM" type="AudioStreamPlayer" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="MainMenuBGM" type="AudioStreamPlayer" parent="Control"]
 stream = ExtResource("7_xbyx1")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
 
+[node name="Select" type="AudioStreamPlayer" parent="Control"]
+stream = ExtResource("9_xhj2t")
+bus = &"SoundFX"
+
 [node name="Transition" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_um4nb")
 }
+autoplay = "background"
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
 visible = false
@@ -189,4 +221,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="finished" from="Control/Select" to="." method="_on_select_finished"]
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]

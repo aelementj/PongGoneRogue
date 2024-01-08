@@ -1,6 +1,7 @@
 extends Node2D
 
-@onready var zoom_in = $Open/ZoomIn
+@onready var transition = $Transition
+
 
 var closedDoor: Area2D
 var openDoor: Area2D
@@ -21,7 +22,7 @@ func _process(delta):
 	if EnemyGlobal.instance.initiatedEnemiesCount == 0 and not hasToggledDoor:
 		$AnimatedSprite2D.play()
 		toggleDoors()
-
+		$Timer.start()
 
 func toggleDoors():
 	isDoorOpen = !isDoorOpen
@@ -30,15 +31,15 @@ func toggleDoors():
 	closedDoor.get_node("CollisionShape2D").disabled = isDoorOpen
 	openDoor.get_node("CollisionShape2D").disabled = !isDoorOpen
 	hasToggledDoor = true  # Mark that the door has been toggled
+	Global.reset_ball_pos()
 
 func _on_open_door_body_entered(body):
 	if isDoorOpen and body.is_in_group("Ball"):
 		onBallEnterOpenDoor()
 
 func onBallEnterOpenDoor():
-	print("Ball entered the open door!")
-	emit_signal("ball_entered_open_door")
-	DoorGlobal.instance.onBallEnterAnyOpenDoor()
+	transition.play("fade_out")
+
 
 func disconnect_signals():
 	openDoor.disconnect("body_entered", _on_open_door_body_entered)
@@ -46,4 +47,12 @@ func disconnect_signals():
 func _exit_tree():
 	disconnect_signals()
 	DoorGlobal.instance.updateInitiatedDoorsCount(DoorGlobal.instance.initiatedDoorsCount - 1)
+
+func _on_transition_animation_started(anim_name):
+	print("Ball entered the open door!")
+	emit_signal("ball_entered_open_door")
+	DoorGlobal.instance.onBallEnterAnyOpenDoor()
+
+func _on_timer_timeout():
+	$Open2.play()
 

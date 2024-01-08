@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://blb8028b3v3fo"]
+[gd_scene load_steps=7 format=3 uid="uid://blb8028b3v3fo"]
 
 [ext_resource type="Script" path="res://Game/Enemies/Spawners/SpawnerScripts/EnemyType3Spawner.gd" id="1_16mtw"]
 [ext_resource type="Texture2D" uid="uid://cah6tml6boosc" path="res://assets/ezgif/ezgif-3-7a099e5faa-png-16x16-sprite-png/tile110.png" id="2_w3fc8"]
+[ext_resource type="AudioStream" uid="uid://b1w0grk4k8jcb" path="res://assets/SoundEffects/random (1).wav" id="3_853v7"]
+[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="3_wkn3f"]
+[ext_resource type="AudioStream" uid="uid://kqxgb6fod7rd" path="res://assets/SoundEffects/explosion.wav" id="5_wdytf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2vaxd"]
 size = Vector2(32, 32)
@@ -24,4 +27,23 @@ collision_mask = 32
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("RectangleShape2D_2vaxd")
 
+[node name="Spawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_853v7")
+volume_db = -10.0
+bus = &"SoundFX"
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wkn3f")
+volume_db = -10.0
+bus = &"SoundFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wdytf")
+volume_db = -10.0
+bus = &"SoundFX"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="area_entered" from="HitBox" to="." method="on_Ball_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

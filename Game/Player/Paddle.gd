@@ -7,7 +7,7 @@ var following_enabled: bool = true
 var follow_distance: float = 50.0  # Adjust this value based on your needs
 
 var teleport_distance: float = 50.0
-var teleport_cooldown: float = 3.0
+var teleport_cooldown: float = 2.0
 var can_teleport: bool = true
 
 # Variable to store the previous position

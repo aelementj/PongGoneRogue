@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-const SPEED = 200  # Adjust the speed as needed
+const SPEED = 250  # Adjust the speed as needed
 
 func _ready():
+	$Fire.play()
 	# Set a random downward angle for the bullet
 	var random_angle = deg_to_rad(randi_range(60, 120))  # Adjust the angle range as needed
 	velocity = Vector2(SPEED * cos(random_angle), SPEED * sin(random_angle))

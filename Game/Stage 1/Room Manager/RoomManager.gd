@@ -1,6 +1,9 @@
 # RoomManager.gd
 extends Node
 
+@onready var transition = $"../Transition"
+
+
 # Array to store available room paths
 var available_rooms : Array = []
 
@@ -77,6 +80,7 @@ func _on_instantiation_timer_timeout():
 
 # Example of how to use the instantiate_new_room function
 func _on_ball_entered_any_open_door():
+	transition.play("fade_in")
 	# Check if there are available rooms and instantiation is not in progress
 	if room_count < 6 and available_rooms.size() > 0 and instantiation_in_progress == false:
 		var next_room_path = available_rooms.pop_back()

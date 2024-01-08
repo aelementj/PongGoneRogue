@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://ds1ghcw26owy8"]
+[gd_scene load_steps=5 format=3 uid="uid://ds1ghcw26owy8"]
 
 [ext_resource type="PackedScene" uid="uid://jshsl3wma2d6" path="res://Game/GeneralRoomFeatures/wall.tscn" id="2_1w33e"]
 [ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="3_wg7wo"]
 [ext_resource type="PackedScene" uid="uid://7m1y0376rbvh" path="res://Game/GeneralRoomFeatures/ball_catcher.tscn" id="4_jh2v4"]
-[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="5_lgq4q"]
 [ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Stage 1/Room 00.tscn" id="5_oe7qg"]
 
 [node name="Node2D" type="Node2D"]
@@ -16,6 +15,3 @@
 
 [node name="Ball Catcher" parent="." instance=ExtResource("4_jh2v4")]
 position = Vector2(-2, 0)
-
-[node name="CommonShooter" parent="." instance=ExtResource("5_lgq4q")]
-position = Vector2(600, 112)

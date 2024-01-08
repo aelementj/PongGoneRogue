@@ -31,6 +31,7 @@ func _process(delta):
 		velocity.y *= speed_multiplier
 
 		var current_speed = velocity.length()
+		$Bounce.play()
 
 		if current_speed > max_speed:
 			velocity = velocity.normalized() * max_speed
@@ -63,6 +64,7 @@ func _on_player_shoot_ball():
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Player"):
+		$BallPickUp.play()
 		hide()
 		Global.add_ball()
 		print("Player has_Ball: ", Global.has_ball())
@@ -70,6 +72,7 @@ func _on_area_2d_area_entered(area):
 func _on_enemy_hit_area_entered(area):
 	if area.is_in_group("Enemy"):
 		print("Enemy Hit")
+		$EnemyHit2.play()
 
 func is_player_valid() -> bool:
 	return Global.get_player_reference() != null

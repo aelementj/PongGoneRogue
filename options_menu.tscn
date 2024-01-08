@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlmc77cnij2ks"]
+[gd_scene load_steps=7 format=3 uid="uid://dlmc77cnij2ks"]
 
 [ext_resource type="Script" path="res://OptionsMenu.gd" id="1_wa6sv"]
 [ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="1_y0r30"]
 [ext_resource type="FontFile" uid="uid://dnpkfghmefjyi" path="res://assets/MinimalPixel v2.ttf" id="3_yosbk"]
 [ext_resource type="PackedScene" uid="uid://d3wmqt1rv7e2b" path="res://vol_slider_function.tscn" id="4_addom"]
+[ext_resource type="Script" path="res://MusVolSliderFunction.gd" id="5_26p27"]
+[ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="5_ffy18"]
 
 [node name="OptionsMenu" type="Control"]
 layout_mode = 3
@@ -99,6 +101,7 @@ text = "Music"
 [node name="Music" parent="MarginContainer2/SubOptions/Audio/Lables" instance=ExtResource("4_addom")]
 texture_filter = 1
 layout_mode = 2
+script = ExtResource("5_26p27")
 bus_name = "Music"
 
 [node name="SoundFXLabel" type="Label" parent="MarginContainer2/SubOptions/Audio/Lables"]
@@ -112,5 +115,13 @@ text = "SoundFX"
 texture_filter = 1
 layout_mode = 2
 bus_name = "SoundFX"
+
+[node name="Select" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ffy18")
+bus = &"SoundFX"
+
+[node name="Select2Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ffy18")
+bus = &"Music"
 
 [connection signal="pressed" from="MarginContainer/MarginContainer/VBoxContainer/BackToMain" to="." method="_on_back_to_main_pressed"]

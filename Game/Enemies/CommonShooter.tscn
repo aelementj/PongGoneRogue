@@ -1,8 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnx5ho24c13vj"]
+[gd_scene load_steps=8 format=3 uid="uid://cnx5ho24c13vj"]
 
 [ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType1.gd" id="1_pcuox"]
+[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="2_sa6og"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_kn10g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
 radius = 12.0
@@ -22,6 +25,14 @@ rotation = 0.785398
 scale = Vector2(24, 24)
 texture = SubResource("CanvasTexture_1na0g")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.34902, 0.34902, 0.34902, 1)
+texture_filter = 1
+position = Vector2(-0.0119742, -0.11)
+rotation = 3.14159
+scale = Vector2(33.9281, -2.69892)
+texture = SubResource("CanvasTexture_kn10g")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_p6g2v")
 
@@ -40,6 +51,10 @@ scale = Vector2(1.02, 1.02)
 shape = SubResource("CircleShape2D_dcdo3")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Bounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_sa6og")
+bus = &"SoundFX"
 
 [connection signal="area_entered" from="ChangeDirection" to="." method="_on_enemytype1_area_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
