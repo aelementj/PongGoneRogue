@@ -27,6 +27,7 @@ Global="*res://Game/Global Scripts/Global.gd"
 DoorGlobal="*res://Game/Global Scripts/DoorGlobal.gd"
 EnemyGlobal="*res://Game/Global Scripts/EnemyGlobal.gd"
 ResetGlobal="*res://Game/Global Scripts/ResetGlobal.gd"
+PowerUpGlobal="*res://Game/Global Scripts/PowerUpGlobal.gd"
 
 [display]
 

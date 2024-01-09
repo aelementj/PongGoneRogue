@@ -39,7 +39,6 @@ func _ready():
 	available_rooms.shuffle()
 	
 	DoorGlobal.instance.connect("ball_entered_any_open_door", _on_ball_entered_any_open_door)
-	#ResetGlobal.connect("resetRooms", reset_game)
 
 func instantiate_new_room(room_path: String):
 	if instantiation_in_progress:
@@ -99,31 +98,3 @@ func _on_ball_entered_any_open_door():
 func _process(delta):
 	if Input.is_action_just_pressed("clear"):
 		_on_ball_entered_any_open_door()
-
-#func reset_game():
-	# Clear arrays and reset variables
-	available_rooms.clear()
-	instantiated_rooms.clear()
-	room_count = 0
-	instantiation_in_progress = false
-
-	# Repopulate available_rooms with initial room paths
-	available_rooms = [
-		"res://Game/Stage 1/Room 01.tscn",
-		"res://Game/Stage 1/Room 02.tscn",
-		"res://Game/Stage 1/Room 03.tscn",
-		"res://Game/Stage 1/Room 04.tscn",
-		"res://Game/Stage 1/Room 05.tscn",
-		"res://Game/Stage 1/Room 06.tscn",
-		"res://Game/Stage 1/Room 07.tscn",
-		"res://Game/Stage 1/Room 08.tscn",
-		"res://Game/Stage 1/Room 09.tscn",
-		"res://Game/Stage 1/Room 10.tscn",
-		"res://Game/Stage 1/Room 11.tscn",
-		"res://Game/Stage 1/Room 12.tscn"
-	]
-
-	# Shuffle the available rooms
-	available_rooms.shuffle()
-	
-	print("Game reset. Ready for a new game.")

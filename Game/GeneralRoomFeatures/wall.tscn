@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://jshsl3wma2d6"]
+[gd_scene load_steps=9 format=3 uid="uid://jshsl3wma2d6"]
 
 [ext_resource type="Script" path="res://Game/GeneralRoomFeatures/wall.gd" id="1_tvmkr"]
 
@@ -12,11 +12,17 @@ size = Vector2(2, 392)
 a = Vector2(400, 0)
 b = Vector2(-432, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5g7l"]
+size = Vector2(832, 2)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkc51"]
 size = Vector2(2, 392)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ddk2"]
 size = Vector2(2, 392)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7yipq"]
+size = Vector2(832, 2)
 
 [node name="Wall" type="Node2D"]
 script = ExtResource("1_tvmkr")
@@ -40,32 +46,32 @@ shape = SubResource("SegmentShape2D_vmdvk")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall"]
-position = Vector2(496, 440)
-shape = SubResource("SegmentShape2D_vmdvk")
+position = Vector2(480, 432)
+shape = SubResource("RectangleShape2D_o5g7l")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
 
-[node name="Area2D" type="Area2D" parent="Wall" groups=["Wall"]]
+[node name="Area2D" type="Area2D" parent="." groups=["Wall"]]
 collision_layer = 17
 collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(64.25, 232)
 shape = SubResource("RectangleShape2D_mkc51")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall/Area2D"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(896, 232)
 shape = SubResource("RectangleShape2D_2ddk2")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
 
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall/Area2D"]
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(496, 56)
 shape = SubResource("SegmentShape2D_vmdvk")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
 
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall/Area2D"]
-position = Vector2(496, 432)
-shape = SubResource("SegmentShape2D_vmdvk")
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(480, 424)
+shape = SubResource("RectangleShape2D_7yipq")
 debug_color = Color(0.760784, 0.317647, 0.811765, 0.419608)
 
-[connection signal="body_entered" from="Wall/Area2D" to="." method="_on_bullet_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_bullet_body_entered"]

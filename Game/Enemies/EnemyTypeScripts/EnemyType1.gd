@@ -73,5 +73,4 @@ func is_player_valid() -> bool:
 # Function called when the node is about to be removed from the scene tree
 func _exit_tree():
 	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount - 1)
-	EnemyGlobal.initiatedEnemiesCount
 

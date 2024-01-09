@@ -34,16 +34,18 @@ scale = Vector2(33.9281, -2.69892)
 texture = SubResource("CanvasTexture_lfpa0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.1, 1.1)
 shape = SubResource("CircleShape2D_p6g2v")
 
 [node name="ChangeDirection" type="Area2D" parent="." groups=["Enemy"]]
+scale = Vector2(1.05, 1.05)
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeDirection"]
 shape = SubResource("CircleShape2D_1l2sv")
 
 [node name="HitBox" type="Area2D" parent="." groups=["Enemy"]]
-scale = Vector2(1.04, 1.04)
+scale = Vector2(1.1, 1.1)
 collision_layer = 32
 collision_mask = 32
 

@@ -1,13 +1,13 @@
 extends CharacterBody2D
 class_name PaddleBody
 
-var speed: float = 200.0
+var speed: float = 0
 var player: Node  # Assuming this is set to the player node in _ready()
 var following_enabled: bool = true
 var follow_distance: float = 50.0  # Adjust this value based on your needs
 
 var teleport_distance: float = 50.0
-var teleport_cooldown: float = 2.0
+var teleport_cooldown: float = 0
 var can_teleport: bool = true
 
 # Variable to store the previous position
@@ -20,6 +20,8 @@ func _ready():
 func _process(delta):
 	follow_player()
 	process_input()
+	speed = player.speed
+	teleport_cooldown = player.teleport_cooldown
 
 # Function to follow the player
 func follow_player():

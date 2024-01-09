@@ -1,5 +1,3 @@
-# DoorGlobal.gd
-
 extends Node
 
 var instance
@@ -20,10 +18,8 @@ func updateInitiatedDoorsCount(count):
 	emit_signal("initiated_doors_count_changed", initiatedDoorsCount)
 	print("Initiated doors count updated:", initiatedDoorsCount)
 
-# Function to add a reference to an initiated door
 func addInitiatedDoor(door):
 	initiatedDoors.append(door)
-	print("Added reference to initiated door:", door)
 
 # Function to get references to all initiated doors in the current scene
 func getInitiatedDoors():

@@ -2,12 +2,13 @@ extends Node2D
 
 @onready var transition = $Transition
 
-
 var closedDoor: Area2D
 var openDoor: Area2D
 
 var isDoorOpen: bool = false
-var hasToggledDoor: bool = false  # New variable to track whether the door has been toggled
+var hasToggledDoor: bool = false
+
+var assignedPowerUp
 
 func _ready():
 	closedDoor = $Closed
@@ -15,10 +16,8 @@ func _ready():
 	openDoor.get_node("CollisionShape2D").disabled = true
 	DoorGlobal.instance.addInitiatedDoor(self)
 	DoorGlobal.instance.updateInitiatedDoorsCount(DoorGlobal.instance.initiatedDoorsCount + 1)
-	
 
 func _process(delta):
-	# Check if initiated enemies count is zero and the door hasn't been toggled yet
 	if EnemyGlobal.instance.initiatedEnemiesCount == 0 and not hasToggledDoor:
 		$AnimatedSprite2D.play()
 		toggleDoors()
@@ -30,7 +29,7 @@ func toggleDoors():
 	openDoor.visible = isDoorOpen
 	closedDoor.get_node("CollisionShape2D").disabled = isDoorOpen
 	openDoor.get_node("CollisionShape2D").disabled = !isDoorOpen
-	hasToggledDoor = true  # Mark that the door has been toggled
+	hasToggledDoor = true
 	Global.reset_ball_pos()
 
 func _on_open_door_body_entered(body):
@@ -39,6 +38,11 @@ func _on_open_door_body_entered(body):
 
 func onBallEnterOpenDoor():
 	transition.play("fade_out")
+	print("Player Acquired: ", assignedPowerUp)
+	if assignedPowerUp in PowerUpGlobal.playerPowerUps:
+		PowerUpGlobal.applyPowerUpToPlayer(Global.get_player_reference(), assignedPowerUp)
+	elif assignedPowerUp in PowerUpGlobal.ballPowerUps:
+		PowerUpGlobal.applyPowerUpToBall(Global.get_ball_reference(), assignedPowerUp)
 
 
 func disconnect_signals():
@@ -50,9 +54,12 @@ func _exit_tree():
 
 func _on_transition_animation_started(anim_name):
 	print("Ball entered the open door!")
-	emit_signal("ball_entered_open_door")
 	DoorGlobal.instance.onBallEnterAnyOpenDoor()
+	PowerUpGlobal.hasAssignedPowerUp = false
+	PowerUpGlobal.clearInitiatedDoors()
+
 
 func _on_timer_timeout():
 	$Open2.play()
+
 
