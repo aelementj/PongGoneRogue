@@ -26,13 +26,14 @@ buses/default_bus_layout="res://Music/default_bus_layout.tres"
 Global="*res://Game/Global Scripts/Global.gd"
 DoorGlobal="*res://Game/Global Scripts/DoorGlobal.gd"
 EnemyGlobal="*res://Game/Global Scripts/EnemyGlobal.gd"
+ResetGlobal="*res://Game/Global Scripts/ResetGlobal.gd"
 
 [display]
 
 window/size/viewport_width=960
 window/size/viewport_height=540
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
+window/stretch/aspect="ignore"
 
 [input]
 

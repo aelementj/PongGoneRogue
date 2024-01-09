@@ -59,7 +59,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_1l2sv")
 
 [node name="HitBox" type="Area2D" parent="." groups=["Enemy"]]
-scale = Vector2(1.02, 1.02)
+scale = Vector2(1.04, 1.04)
 collision_layer = 32
 collision_mask = 32
 

@@ -115,7 +115,8 @@ func on_Ball_area_entered(area):
 		print("Spawner Hit")
 		if health <= 0:
 			print("Spawner Destroyed")
-			queue_free()
+			hide()
+			$Death.play()
 
 func _exit_tree():
 	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount - 1)
@@ -124,3 +125,7 @@ func _exit_tree():
 
 func _on_timer_timeout():
 	$Spawn.play()
+
+
+func _on_death_finished():
+	queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dhe740i8uowko"]
+[gd_scene load_steps=15 format=3 uid="uid://dhe740i8uowko"]
 
 [ext_resource type="Texture2D" uid="uid://bemp6u5k234oo" path="res://assets/Buttons by deo/left.png" id="1_if3lf"]
 [ext_resource type="Texture2D" uid="uid://blk1y8ytfg3i" path="res://assets/Buttons by deo/LeftBlur.png" id="1_rljsf"]
@@ -11,41 +11,57 @@
 [ext_resource type="Texture2D" uid="uid://c2e3jcdxnj68i" path="res://assets/tile066.png" id="9_dimtu"]
 [ext_resource type="Texture2D" uid="uid://i8ai260l8fl3" path="res://assets/tile066v2.png" id="10_2x22c"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8a8wd"]
+size = Vector2(591, 591)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xif53"]
+size = Vector2(591, 591)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2o4op"]
+size = Vector2(320, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y80qr"]
+size = Vector2(320, 320)
+
 [node name="TouchInputs" type="Node2D"]
 
 [node name="Left" type="TouchScreenButton" parent="."]
 texture_filter = 1
-position = Vector2(100, 456)
-scale = Vector2(0.216582, 0.108291)
+position = Vector2(72, 392)
+scale = Vector2(0.263959, 0.225042)
 texture_normal = ExtResource("1_if3lf")
 texture_pressed = ExtResource("1_rljsf")
+shape = SubResource("RectangleShape2D_8a8wd")
 passby_press = true
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
 texture_filter = 1
-position = Vector2(236, 456)
-scale = Vector2(0.217, 0.109)
+position = Vector2(236, 392)
+scale = Vector2(0.263959, 0.225751)
 texture_normal = ExtResource("2_xof3u")
 texture_pressed = ExtResource("4_dtkj6")
+shape = SubResource("RectangleShape2D_xif53")
 passby_press = true
 action = "ui_right"
 
 [node name="Dash" type="TouchScreenButton" parent="."]
 texture_filter = 1
-position = Vector2(739, 442)
-scale = Vector2(0.354, 0.278125)
+position = Vector2(739, 392)
+scale = Vector2(0.465625, 0.421875)
 texture_normal = ExtResource("5_6fkaa")
 texture_pressed = ExtResource("6_iprqn")
+shape = SubResource("RectangleShape2D_2o4op")
 action = "dash"
 
 [node name="Launch" type="TouchScreenButton" parent="."]
 texture_filter = 1
-position = Vector2(615, 440)
+position = Vector2(584.185, 392.065)
 rotation = 0.00163134
-scale = Vector2(0.35414, 0.289817)
+scale = Vector2(0.45065, 0.423441)
 texture_normal = ExtResource("7_l3r8r")
 texture_pressed = ExtResource("8_76x8u")
+shape = SubResource("RectangleShape2D_y80qr")
 action = "ui_accept"
 
 [node name="Panel" type="Panel" parent="."]

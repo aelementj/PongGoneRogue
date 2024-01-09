@@ -46,4 +46,5 @@ bus = &"SoundFX"
 wait_time = 2.0
 
 [connection signal="area_entered" from="HitBox" to="." method="on_Ball_area_entered"]
+[connection signal="finished" from="Death" to="." method="_on_death_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

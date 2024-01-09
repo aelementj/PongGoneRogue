@@ -6,7 +6,7 @@ extends Control
 @onready var mainmenu = load("res://mainmenu.tscn") as PackedScene
 @onready var gameover_menu = $GameOverMenu
 @onready var thank_you_menu = $"Thank You Menu"
-
+@onready var LoadingScreen = load("res://loading_screen.tscn") as PackedScene
 
 func _ready():
 	hide()
@@ -45,8 +45,9 @@ func _on_restart_pressed():
 	_on_resume_pressed()
 	Global.reset_balls()
 	Global.reset_player_lives()
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_packed(LoadingScreen)
 	$Select.play()
+
 
 
 func _on_options_pressed():

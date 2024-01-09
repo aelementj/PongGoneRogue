@@ -10,6 +10,23 @@
 [ext_resource type="Texture2D" uid="uid://dq7wjbo4pjum0" path="res://assets/SpaceBackground/Space Background (2).png" id="9_2xpa7"]
 [ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="9_xhj2t"]
 
+[sub_resource type="Animation" id="Animation_qhy7b"]
+resource_name = "background"
+length = 300.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 60, 120, 180, 240, 300),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-240, -180), Vector2(-480, -358), Vector2(-483, 0), Vector2(0, -368), Vector2(0, 0), Vector2(-240, -180)]
+}
+
 [sub_resource type="Animation" id="Animation_m2066"]
 resource_name = "fade_in"
 length = 0.5
@@ -64,23 +81,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_qhy7b"]
-resource_name = "background"
-length = 300.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TextureRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 60, 120, 180, 240, 300),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-240, -180), Vector2(-480, -358), Vector2(-483, 0), Vector2(0, -368), Vector2(0, 0), Vector2(-240, -180)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_um4nb"]
