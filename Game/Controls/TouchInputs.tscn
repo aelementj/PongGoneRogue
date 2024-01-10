@@ -26,42 +26,50 @@ size = Vector2(320, 320)
 [node name="TouchInputs" type="Node2D"]
 
 [node name="Left" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.686275)
 texture_filter = 1
-position = Vector2(72, 392)
+position = Vector2(57, 392)
 scale = Vector2(0.263959, 0.225042)
 texture_normal = ExtResource("1_if3lf")
 texture_pressed = ExtResource("1_rljsf")
 shape = SubResource("RectangleShape2D_8a8wd")
+shape_visible = false
 passby_press = true
 action = "ui_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
+modulate = Color(1, 1, 1, 0.686275)
 texture_filter = 1
-position = Vector2(236, 392)
+position = Vector2(221, 392)
 scale = Vector2(0.263959, 0.225751)
 texture_normal = ExtResource("2_xof3u")
 texture_pressed = ExtResource("4_dtkj6")
 shape = SubResource("RectangleShape2D_xif53")
+shape_visible = false
 passby_press = true
 action = "ui_right"
 
 [node name="Dash" type="TouchScreenButton" parent="."]
+self_modulate = Color(1, 1, 1, 0.686275)
 texture_filter = 1
-position = Vector2(739, 392)
+position = Vector2(754, 392)
 scale = Vector2(0.465625, 0.421875)
 texture_normal = ExtResource("5_6fkaa")
 texture_pressed = ExtResource("6_iprqn")
 shape = SubResource("RectangleShape2D_2o4op")
+shape_visible = false
 action = "dash"
 
 [node name="Launch" type="TouchScreenButton" parent="."]
+self_modulate = Color(1, 1, 1, 0.686275)
 texture_filter = 1
-position = Vector2(584.185, 392.065)
+position = Vector2(599.185, 392.065)
 rotation = 0.00163134
 scale = Vector2(0.45065, 0.423441)
 texture_normal = ExtResource("7_l3r8r")
 texture_pressed = ExtResource("8_76x8u")
 shape = SubResource("RectangleShape2D_y80qr")
+shape_visible = false
 action = "ui_accept"
 
 [node name="Panel" type="Panel" parent="."]

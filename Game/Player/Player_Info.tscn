@@ -1,75 +1,151 @@
-[gd_scene load_steps=4 format=3 uid="uid://b5xy7t55ji1qe"]
+[gd_scene load_steps=6 format=3 uid="uid://b5xy7t55ji1qe"]
 
 [ext_resource type="Script" path="res://Game/Player/health_visual.gd" id="1_4w6m6"]
+[ext_resource type="Theme" uid="uid://73ldd1e4lpne" path="res://themes/GUI.tres" id="1_tu6on"]
 [ext_resource type="PackedScene" uid="uid://bbdvcwmuck5ps" path="res://Game/Player/PlayerHearts.tscn" id="2_kkad1"]
 [ext_resource type="PackedScene" uid="uid://oyph763jgio6" path="res://Game/Player/PlayerBalls.tscn" id="3_rttgg"]
+[ext_resource type="PackedScene" uid="uid://bdt6f6wpi43yh" path="res://Game/Player/PlayerMana.tscn" id="3_y3sav"]
 
-[node name="Panel" type="Panel"]
-custom_minimum_size = Vector2(0, 56)
+[node name="HBoxContainer" type="HBoxContainer"]
 anchors_preset = -1
-anchor_left = -0.0666667
-anchor_top = -0.0518519
-anchor_right = 0.0666667
-anchor_bottom = 0.0518519
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = -0.136458
+anchor_top = -0.0703704
+anchor_right = 0.0802083
+anchor_bottom = 0.0722222
+offset_left = -2.0
+offset_top = 1.0
+offset_right = -2.0
+offset_bottom = 1.0
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+alignment = 1
+
+[node name="Health" type="Label" parent="VBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(52, 23)
+layout_mode = 2
+theme = ExtResource("1_tu6on")
+theme_override_font_sizes/font_size = 12
+text = "Health"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="Mana" type="Label" parent="VBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(52, 23)
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("1_tu6on")
+theme_override_font_sizes/font_size = 12
+text = "Mana"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Balls" type="Label" parent="VBoxContainer2"]
+texture_filter = 1
+custom_minimum_size = Vector2(52, 23)
+layout_mode = 2
+theme = ExtResource("1_tu6on")
+theme_override_font_sizes/font_size = 12
+text = "Balls"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(150, 70)
+layout_mode = 2
 script = ExtResource("1_4w6m6")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 custom_minimum_size = Vector2(112, 40)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0625
-anchor_top = 0.142857
-anchor_right = 0.9375
-anchor_bottom = 0.857143
+anchor_left = 0.0466667
+anchor_top = 0.0909091
+anchor_right = 0.966667
+anchor_bottom = 0.909091
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="HealthVisualRow1" type="HBoxContainer" parent="VBoxContainer"]
+[node name="HealthVisualRow1" type="HBoxContainer" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(112, 18)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerHearts" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+[node name="PlayerHearts" parent="Panel/VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
 layout_mode = 2
 
-[node name="PlayerHearts2" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+[node name="PlayerHearts2" parent="Panel/VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
 layout_mode = 2
 
-[node name="PlayerHearts3" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+[node name="PlayerHearts3" parent="Panel/VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
 layout_mode = 2
 
-[node name="PlayerHearts4" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+[node name="PlayerHearts4" parent="Panel/VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
 layout_mode = 2
 
-[node name="PlayerHearts5" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+[node name="PlayerHearts5" parent="Panel/VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
 layout_mode = 2
 
-[node name="PlayerHearts6" parent="VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+[node name="PlayerHearts6" parent="Panel/VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
 layout_mode = 2
 
-[node name="BallVisualRow2" type="HBoxContainer" parent="VBoxContainer"]
+[node name="PlayerHearts7" parent="Panel/VBoxContainer/HealthVisualRow1" instance=ExtResource("2_kkad1")]
+layout_mode = 2
+
+[node name="ManaVisualRow2" type="HBoxContainer" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(112, 18)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PlayerBalls" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+[node name="PlayerHearts" parent="Panel/VBoxContainer/ManaVisualRow2" instance=ExtResource("3_y3sav")]
 layout_mode = 2
 
-[node name="PlayerBalls2" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+[node name="PlayerHearts2" parent="Panel/VBoxContainer/ManaVisualRow2" instance=ExtResource("3_y3sav")]
 layout_mode = 2
 
-[node name="PlayerBalls3" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+[node name="PlayerHearts3" parent="Panel/VBoxContainer/ManaVisualRow2" instance=ExtResource("3_y3sav")]
 layout_mode = 2
 
-[node name="PlayerBalls4" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+[node name="PlayerHearts4" parent="Panel/VBoxContainer/ManaVisualRow2" instance=ExtResource("3_y3sav")]
 layout_mode = 2
 
-[node name="PlayerBalls5" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+[node name="PlayerHearts5" parent="Panel/VBoxContainer/ManaVisualRow2" instance=ExtResource("3_y3sav")]
 layout_mode = 2
 
-[node name="PlayerBalls6" parent="VBoxContainer/BallVisualRow2" instance=ExtResource("3_rttgg")]
+[node name="PlayerHearts6" parent="Panel/VBoxContainer/ManaVisualRow2" instance=ExtResource("3_y3sav")]
+layout_mode = 2
+
+[node name="PlayerHearts7" parent="Panel/VBoxContainer/ManaVisualRow2" instance=ExtResource("3_y3sav")]
+layout_mode = 2
+
+[node name="BallVisualRow3" type="HBoxContainer" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(112, 18)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerBalls" parent="Panel/VBoxContainer/BallVisualRow3" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls2" parent="Panel/VBoxContainer/BallVisualRow3" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls3" parent="Panel/VBoxContainer/BallVisualRow3" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls4" parent="Panel/VBoxContainer/BallVisualRow3" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls5" parent="Panel/VBoxContainer/BallVisualRow3" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls6" parent="Panel/VBoxContainer/BallVisualRow3" instance=ExtResource("3_rttgg")]
+layout_mode = 2
+
+[node name="PlayerBalls7" parent="Panel/VBoxContainer/BallVisualRow3" instance=ExtResource("3_rttgg")]
 layout_mode = 2

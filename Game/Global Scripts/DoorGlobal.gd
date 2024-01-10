@@ -28,7 +28,8 @@ func getInitiatedDoors():
 func onBallEnterAnyOpenDoor():
 	print("DoorGlobal: Ball entered any open door!")
 	emit_signal("ball_entered_any_open_door")
-	emit_signal("positions_reset")
+	emit_signal("reset_player_position")
+	emit_signal("reset_ball_position")
 
 func thankyou():
 	emit_signal("demo2")
@@ -40,10 +41,19 @@ signal demo2
 signal ball_entered_any_open_door
 
 # Signal emitted when positions need to be reset
-signal positions_reset
+signal reset_ball_position
+signal reset_player_position
 
 # Function to toggle the doors open
 func toggleDoors():
 	for door in initiatedDoors:
 		door.toggleDoors()
 
+func areAllInitiatedDoorsToggled() -> bool:
+	for door in initiatedDoors:
+		# Check if the door is not queue freed and not toggled
+		if door != null and !door.hasToggledDoor:
+			return false
+
+	# All doors have been toggled or are queue freed
+	return true

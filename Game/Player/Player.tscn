@@ -5,11 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://b2ebdovl23cwd" path="res://Game/Player/Paddle.tscn" id="2_8y4gq"]
 [ext_resource type="PackedScene" uid="uid://d1l85h8uosjis" path="res://Game/Ball/BallBody.tscn" id="3_ug7qh"]
 
-[node name="Player" type="Node2D" node_paths=PackedStringArray("playerBody", "paddle", "ball")]
+[node name="Player" type="Node2D" node_paths=PackedStringArray("playerBody", "paddle")]
 script = ExtResource("1_if6c1")
 playerBody = NodePath("PlayerBody")
 paddle = NodePath("Paddle")
-ball = NodePath("BallBody")
 
 [node name="PlayerBody" parent="." instance=ExtResource("1_3pyux")]
 position = Vector2(480, 413)

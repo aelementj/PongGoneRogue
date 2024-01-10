@@ -94,6 +94,7 @@ func _on_ball_entered_any_open_door():
 		instantiate_new_room(boss_room_path)
 	else:
 		print("No available rooms")
+		
 
 func _process(delta):
 	if Input.is_action_just_pressed("clear"):

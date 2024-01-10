@@ -1,12 +1,14 @@
 extends Node
 
-var playerPowerUps: Array = ["SpeedUp", "TeleportCooldown", "PowerUp3"]
-var ballPowerUps: Array = ["BallBigger", "BallSpeed", "BallPowerUp3"]
+var playerPowerUps: Array = ["SpeedUp", "TeleportCooldown", "AddLife"]
+var ballPowerUps: Array = ["AddBall", "BallSpeed", "BallPowerUp3"]
 var mixedPowerUps: Array = []  # Array to track assigned power-ups for both player and ball
 
 var initiatedDoors: Array = []
 var hasAssignedPowerUp: bool = false
 var assignedPowerUps: Array = []  # Array to track assigned power-ups
+
+signal AddBall
 
 func _ready():
 	# Combine player and ball power-ups into the mixedPowerUps array
@@ -55,15 +57,18 @@ func applyPowerUpToPlayer(player: PlayerBody, powerUpType: String):
 			player.speed *= 1.5  # Increase player's speed by 50%
 		"TeleportCooldown":
 			player.teleport_cooldown /= 2  # Halve player's teleport cooldown
-		# Add more cases for other player power-ups as needed
+		"AddLife":
+			Global.increase_player_lives()
+
+func applyPowerUpToAllBalls(powerUpType: String):
+	for ball in Global.get_initiated_balls():
+		applyPowerUpToBall(ball, powerUpType)
 
 func applyPowerUpToBall(ball: BallBody, powerUpType: String):
 	match powerUpType:
-		"BallBigger":
-			if ball.ball_size <= 2.0 and ball.size_multiplier <= 2:
-				ball.ball_size += 0.1
-				ball.size_multiplier += 0.1
-			else:
-				print("Max Size has been reached")
 		"BallSpeed":
-			ball.initial_ball_speed *= 1.1
+			ball.initial_ball_speed *= 1.1  # Adjust the multiplier as needed
+		# Add more cases for other ball power-ups as needed
+		"AddBall":
+			emit_signal("AddBall")
+			

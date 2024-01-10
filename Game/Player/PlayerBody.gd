@@ -5,13 +5,15 @@ var speed: float = 200.0
 var teleport_distance: float = 50.0
 var teleport_cooldown: float = 2.0
 var can_teleport: bool = true
-
-signal shoot_ball
+var initial_position: Vector2
+var initial_player_x : float = 0
+var initial_player_y : float = 0
 
 func _ready():
 	# Assuming the player is a child of the main scene root
 	Global.set_player_reference(self)
 	print("Player has_Ball: ", Global.has_ball())
+	initial_position = position
 
 
 func _process(delta):
@@ -30,16 +32,12 @@ func process_input():
 		$Dash.play()
 		teleport(direction)
 		start_teleport_cooldown()
-
+		
+	if Input.is_action_just_pressed("ui_accept"):
+		shoot_ball()
+		
 	velocity = direction.normalized() * speed
 	move_and_slide()
-
-	if Input.is_action_pressed("ui_accept") and Global.has_ball():
-		print(Global.ball_count)
-		emit_signal("shoot_ball")
-		Global.minus_ball()
-		print(Global.ball_count)
-		print("Player has_Ball: ", Global.has_ball())
 
 # Teleport function
 func teleport(direction: Vector2):
@@ -79,8 +77,22 @@ func _on_hit_by_bullet(body):
 		
 		if Global.get_player_lives() <= 0:
 			trigger_player_defeated()
-			
+
 
 # Function to trigger player defeated event
 func trigger_player_defeated():
 	queue_free()
+
+func shoot_ball():
+	if Global.get_ball_count() > 0:
+		var ball = Global.get_next_ball()
+		if ball != null:
+			var player_position = position
+			player_position.y -= 50  # Adjust this value as needed
+
+			ball.position = player_position
+			ball.velocity = Vector2(0, ball.initial_ball_speed)  # Optionally, set ball velocity to zero
+			ball.visible = true
+			Global.minus_ball(ball)
+			# Move to the next ball in the array
+			Global.move_to_next_ball()

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdt6f6wpi43yh"]
+
+[sub_resource type="Gradient" id="Gradient_ctsa1"]
+colors = PackedColorArray(0, 0.517647, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6be2s"]
+gradient = SubResource("Gradient_ctsa1")
+width = 1
+height = 1
+
+[node name="PlayerHearts" type="Panel"]
+custom_minimum_size = Vector2(16, 16)
+anchors_preset = -1
+anchor_right = 0.0166667
+anchor_bottom = 0.0296296
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+scale = Vector2(16, -16)
+texture = SubResource("GradientTexture2D_6be2s")

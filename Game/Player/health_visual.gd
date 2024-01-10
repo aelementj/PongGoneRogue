@@ -11,9 +11,9 @@ var currentBalls: int = 0
 func _ready():
 	# Assuming the HBoxContainers are direct children
 	heartVisual = $VBoxContainer/HealthVisualRow1
-	ballVisual = $VBoxContainer/BallVisualRow2
+	ballVisual = $VBoxContainer/BallVisualRow3
 	currentHearts = Global.get_player_lives()
-	currentBalls = Global.get_ball_count()
+	currentBalls = Global.ball_count
 	updateHeartVisual()
 	updateBallVisual()
 	Global.connect("lives_decreased", removeHeart)

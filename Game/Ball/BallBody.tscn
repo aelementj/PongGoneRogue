@@ -16,7 +16,6 @@ radius = 8.0
 radius = 7.27273
 
 [node name="BallBody" type="RigidBody2D" groups=["Ball"]]
-scale = Vector2(1.1, 1.1)
 collision_layer = 6
 collision_mask = 5
 mass = 0.01

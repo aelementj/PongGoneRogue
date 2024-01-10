@@ -22,6 +22,12 @@ func _process(delta):
 		$AnimatedSprite2D.play()
 		toggleDoors()
 		$Timer.start()
+		if DoorGlobal.areAllInitiatedDoorsToggled():
+			Global.reset_ball_pos()
+			
+			
+	if Input.is_action_just_pressed("test2"):
+		Global.reset_ball_pos()
 
 func toggleDoors():
 	isDoorOpen = !isDoorOpen
@@ -30,7 +36,8 @@ func toggleDoors():
 	closedDoor.get_node("CollisionShape2D").disabled = isDoorOpen
 	openDoor.get_node("CollisionShape2D").disabled = !isDoorOpen
 	hasToggledDoor = true
-	Global.reset_ball_pos()
+	print(DoorGlobal.areAllInitiatedDoorsToggled())
+
 
 func _on_open_door_body_entered(body):
 	if isDoorOpen and body.is_in_group("Ball"):
@@ -42,7 +49,7 @@ func onBallEnterOpenDoor():
 	if assignedPowerUp in PowerUpGlobal.playerPowerUps:
 		PowerUpGlobal.applyPowerUpToPlayer(Global.get_player_reference(), assignedPowerUp)
 	elif assignedPowerUp in PowerUpGlobal.ballPowerUps:
-		PowerUpGlobal.applyPowerUpToBall(Global.get_ball_reference(), assignedPowerUp)
+		PowerUpGlobal.applyPowerUpToAllBalls(assignedPowerUp)
 
 
 func disconnect_signals():
@@ -61,5 +68,3 @@ func _on_transition_animation_started(anim_name):
 
 func _on_timer_timeout():
 	$Open2.play()
-
-

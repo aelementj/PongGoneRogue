@@ -1,63 +1,54 @@
+# ParentNode of playerbody, and ballbody
 extends Node2D
 
-# Declare variables for player body, paddle, and ball
 @export var playerBody : Node2D
 @export var paddle : Node2D
-@export var ball : Node2D
 
 # Variables to store initial positions
 var initialPlayerBodyPosition : Vector2
 var initialPaddlePosition : Vector2
-var initialBallPosition : Vector2
 
-# Flag to prevent multiple resets in quick succession
-var reset_in_progress : bool = false
+# Flag to track whether a ball has been added
+var ballAdded : bool = false
 
 # Called when the node enters the scene tree for the first time
 func _ready() -> void:
 	# Store the initial positions when the nodes are first initiated in the scene
 	initialPlayerBodyPosition = playerBody.position
 	initialPaddlePosition = paddle.position
-	initialBallPosition = ball.position
-	DoorGlobal.instance.connect("positions_reset", reset_positions)
-	Global.connect("reset_ball_pos2", ball_reset)
+	DoorGlobal.connect("reset_player_position", reset_positions)
+	PowerUpGlobal.connect("AddBall", initiate_ball)
 
+
+var ball_spacing: float = 20.0  # Adjust the spacing as needed
 
 func reset_positions() -> void:
-	# Check if a reset is already in progress
-	if not reset_in_progress:
-		reset_in_progress = true
-		# Set the positions to their initial values
-		playerBody.position = initialPlayerBodyPosition
+	playerBody.position = initialPlayerBodyPosition
+	paddle.position = initialPaddlePosition
+	Global.reset_ball_pos()
+
+# Function to initiate a BallBody as a child of the node and add it to the balls array
+func initiate_ball():
+	# Check if a ball has already been added
+	if not ballAdded:
+		var ball_instance = preload("res://Game/Ball/BallBody.tscn").instantiate() # Replace with the correct path to your BallBody scene
 		
-		# Reset the ball position and velocity
-		paddle.position = initialPaddlePosition
-		ball.position = initialBallPosition
-		ball.velocity = Vector2.ZERO
-		ball.visible = false
-		Global.add_ball()
-		print("Player has_Ball: ", Global.has_ball())
+		# Position the new ball 20 pixels to the right of the last ball
+		if get_child_count() > 0:
+			var last_ball = get_child(get_child_count() - 1)
+			ball_instance.position = last_ball.position + Vector2(ball_spacing, 0)
+		else:
+			ball_instance.position = Vector2.ZERO
+		
+		add_child(ball_instance)
 
-		# Add debug prints to verify the function is triggered
-		print("Positions reset!")
-		print("Player Body Position: ", playerBody.position)
-		print("Paddle Position: ", paddle.position)
-		print("Ball Position: ", ball.position)
+		# Add the instantiated ball to the balls array in the Global script
+		Global.add_ball(ball_instance)
 
-		# Start a timer to allow the next reset after a short delay
-		var timer = Timer.new()
-		timer.wait_time = 1.0  # Adjust the delay duration as needed
-		timer.one_shot = true
-		timer.connect("timeout", _on_reset_timer_timeout)
-		add_child(timer)
-		timer.start()
+		# Set the flag to true to indicate that a ball has been added
+		ballAdded = true
 
-func ball_reset():
-	ball.position = initialBallPosition
-	ball.velocity = Vector2.ZERO
-	ball.visible = false
-	Global.add_ball()
-
-# Signal emitted when the reset timer times out
-func _on_reset_timer_timeout():
-	reset_in_progress = false
+# Input handling
+func _input(event):
+	if event.is_action_pressed("test1"):
+		initiate_ball()

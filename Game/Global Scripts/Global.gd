@@ -1,77 +1,121 @@
 extends Node
 class_name GlobalScript
 
-var ball_count : int = 1  # Initial number of balls
-var player_reference : Node = null  # Reference to the player node
-var ball_reference : Node = null  # Reference to the ball node
+# Member Variables
+var ball_count : int = 0
+var player_reference : Node = null
+var balls : Array = []  # Array to store referenced balls
 var shoot_angle : float = 0.0
 var player_lives : int = 3  # Initial number of lives
+var ball_reference : Node = null  # Declare ball_reference as a class member
+var current_ball_index : int = 0  # Track the current index in the array
+var max_ball_count : int = 0
 
+# Signals
+signal ball_increased
+signal ball_decreased
+signal reset_ball_position
+signal lives_decreased
+signal lives_increased
+
+# Global Function
 func global_function():
 	print("Global function called")
 
-signal ball_increased
-func add_ball():
-	ball_count += 1
-	emit_signal("ball_increased")
-	print("Ball added. New ball count: ", ball_count)
+# Ball Management Functions
+func add_ball(ball: Node):
+	if ball_count < max_ball_count:
+		ball_count += 1
+		emit_signal("ball_increased")
+		print("Ball added. New ball count: ", ball_count)
 
-signal ball_decreased
-func minus_ball():
-	ball_count -= 1
-	emit_signal("ball_decreased")
-	print("Ball added. New ball count: ", ball_count)
+		# Store the referenced ball in the array
+		balls.append(ball)
 
-# Function to check if the player has at least one ball
+	else:
+		print("Max ball count reached. Cannot add more balls.")
+
+
+func minus_ball(ball_node: Node):
+	if ball_node != null and balls.has(ball_node):
+		balls.erase(ball_node)
+		ball_count -= 1
+		emit_signal("ball_decreased")
+		print("Ball removed. New ball count: ", ball_count)
+	print(balls)
+	
+
 func has_ball() -> bool:
-	var hasBall : bool = ball_count > 0
-	return hasBall
+	return ball_count > 0
 
-# Function to reset the number of balls
 func reset_balls():
-	ball_count = 1
-	print("Balls reset to one.")
+	ball_count = 0
+	print("Balls reset to zero.")
+	balls.clear()  # Clear the array when resetting balls
 
+# Ball Position Functions
 func reset_ball_pos():
-	emit_signal("reset_ball_pos2")
-signal reset_ball_pos2
+	emit_signal("reset_ball_position")
 
-# Function to set the player reference
+# Player and Ball Reference Functions
 func set_player_reference(player_node: Node):
 	player_reference = player_node
 
-# Function to get the player's global position
 func get_player_reference() -> Node:
 	return player_reference
 
-# Function to set the ball reference
 func set_ball_reference(ball_node: Node):
 	ball_reference = ball_node
+	add_ball(ball_node)  # Add the referenced ball to the array
 
-# Function to get the ball reference
 func get_ball_reference() -> Node:
 	return ball_reference
 
-signal lives_decreased
+# Player Lives Functions
 func decrease_player_lives():
 	player_lives -= 1
 	emit_signal("lives_decreased")
 	print("Player lives decreased. Remaining lives: ", player_lives)
 
-signal lives_increased
 func increase_player_lives():
 	player_lives += 1
 	emit_signal("lives_increased")
 	print("Player lives increased. Remaining lives: ", player_lives)
 
-# Function to get the current number of player lives
 func get_player_lives() -> int:
 	return player_lives
 
-func get_ball_count() -> int:
+func reset_player_lives():
+	player_lives = 3
+	print("Player lives reset to ", player_lives)
+
+func get_topmost_ball() -> Node:
+	if balls.size() > 0:
+		return balls[balls.size() - 1]  # Return the last element in the array (topmost ball)
+	else:
+		return null  # Return null if the array is empty
+
+func get_ball_count():
 	return ball_count
 
-# Function to reset the number of lives
-func reset_player_lives():
-	player_lives = 3  # Reset to the initial number of lives
-	print("Player lives reset to ", player_lives)
+func get_ball_index(ball: Node) -> int:
+	if balls.size() > 0:
+		for i in range(balls.size()):
+			if balls[i] == ball:
+				return i
+	return -1  # Return -1 if the ball is not found in the array
+
+func get_next_ball() -> Node:
+	if balls.size() > 0:
+		var next_ball = balls[current_ball_index]
+		return next_ball
+	else:
+		return null
+
+# Function to move to the next ball in the array
+func move_to_next_ball():
+	if balls.size() > 0:
+		current_ball_index = (current_ball_index + 1) % balls.size()
+
+func get_initiated_balls() -> Array:
+	return balls
