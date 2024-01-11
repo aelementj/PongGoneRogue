@@ -6,16 +6,13 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerTracker" parent="." instance=ExtResource("2_dyhwt")]
-position = Vector2(107, 112)
-
-[node name="PlayerTracker2" parent="." instance=ExtResource("2_dyhwt")]
-position = Vector2(171, 196)
+position = Vector2(198, 176)
 
 [node name="PlayerTracker3" parent="." instance=ExtResource("2_dyhwt")]
-position = Vector2(379, 250)
+position = Vector2(694, 246)
 
 [node name="CommonShooter" parent="." instance=ExtResource("3_r8sq3")]
-position = Vector2(768, 292)
+position = Vector2(802, 297)
 
 [node name="CommonShooter2" parent="." instance=ExtResource("3_r8sq3")]
-position = Vector2(588, 158)
+position = Vector2(98, 110)

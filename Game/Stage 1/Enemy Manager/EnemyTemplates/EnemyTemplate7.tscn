@@ -6,10 +6,10 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="CommonShooter" parent="." instance=ExtResource("3_xtduy")]
-position = Vector2(480, 167)
+position = Vector2(616, 175)
 
 [node name="CommonShooter2" parent="." instance=ExtResource("3_xtduy")]
-position = Vector2(479, 219)
+position = Vector2(403, 235)
 
 [node name="DetectDenShoot" parent="." instance=ExtResource("4_xwyya")]
-position = Vector2(480, 117)
+position = Vector2(217, 113)

@@ -9,14 +9,11 @@
 [node name="PlayerTracker" parent="." instance=ExtResource("2_52rwb")]
 position = Vector2(256, 153)
 
-[node name="EnemyShotgun" parent="." instance=ExtResource("3_e28ri")]
-position = Vector2(449, 300)
-
 [node name="EnemyShotgun2" parent="." instance=ExtResource("3_e28ri")]
-position = Vector2(681, 252)
+position = Vector2(837, 107)
 
 [node name="CommonShooter" parent="." instance=ExtResource("4_4wpn3")]
-position = Vector2(841, 112)
+position = Vector2(659, 258)
 
 [node name="CommonShooter2" parent="." instance=ExtResource("4_4wpn3")]
 position = Vector2(105, 202)
