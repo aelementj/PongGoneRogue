@@ -202,10 +202,10 @@ stream = ExtResource("9_xhj2t")
 bus = &"SoundFX"
 
 [node name="Transition" type="AnimationPlayer" parent="."]
-autoplay = "background"
 libraries = {
 "": SubResource("AnimationLibrary_um4nb")
 }
+autoplay = "background"
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
 visible = false
