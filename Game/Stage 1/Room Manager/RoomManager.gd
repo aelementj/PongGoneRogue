@@ -65,7 +65,8 @@ func instantiate_new_room(room_path: String):
 
 	# Allow the next instantiation after a short delay
 	var timer = Timer.new()
-	timer.wait_time = 1.0
+	timer.wait_time = 0.5
+	Global.reset_ball_pos()
 	timer.one_shot = true
 	timer.connect("timeout", _on_instantiation_timer_timeout)
 	add_child(timer)

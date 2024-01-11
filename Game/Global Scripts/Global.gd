@@ -50,6 +50,7 @@ func has_ball() -> bool:
 
 func reset_balls():
 	ball_count = 0
+	max_ball_count = 0
 	print("Balls reset to zero.")
 	balls.clear()  # Clear the array when resetting balls
 

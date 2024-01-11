@@ -72,3 +72,9 @@ func applyPowerUpToBall(ball: BallBody, powerUpType: String):
 		"AddBall":
 			emit_signal("AddBall")
 			
+func reassignPowerUpToNullDoor():
+	for door in initiatedDoors:
+		if door != null and door.assignedPowerUp == null:
+			assignPowerUp()
+			print(initiatedDoors)
+			print(assignedPowerUps)

@@ -7,6 +7,7 @@ class_name GameManagerv1
 func _ready():
 	transition.play("fade_in")
 	DoorGlobal.connect("demo2", thankyou_demo)
+	PowerUpGlobal.reassignPowerUpToNullDoor()
 
 
 signal toggle_game_paused(is_paused : bool)

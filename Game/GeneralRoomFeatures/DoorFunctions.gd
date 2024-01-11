@@ -54,10 +54,10 @@ func onBallEnterOpenDoor():
 
 func disconnect_signals():
 	openDoor.disconnect("body_entered", _on_open_door_body_entered)
+	DoorGlobal.instance.removeInitiatedDoor(self)
 
 func _exit_tree():
 	disconnect_signals()
-	DoorGlobal.instance.updateInitiatedDoorsCount(DoorGlobal.instance.initiatedDoorsCount - 1)
 
 func _on_transition_animation_started(anim_name):
 	print("Ball entered the open door!")

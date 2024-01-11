@@ -52,3 +52,7 @@ func initiate_ball():
 func _input(event):
 	if event.is_action_pressed("test1"):
 		initiate_ball()
+	
+	if event.is_action_pressed("test3"):
+		PowerUpGlobal.reassignPowerUpToNullDoor()
+

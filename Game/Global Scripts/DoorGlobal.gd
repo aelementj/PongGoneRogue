@@ -21,6 +21,10 @@ func updateInitiatedDoorsCount(count):
 func addInitiatedDoor(door):
 	initiatedDoors.append(door)
 
+func removeInitiatedDoor(door):
+	initiatedDoors.erase(door)
+	updateInitiatedDoorsCount(initiatedDoorsCount - 1)
+
 # Function to get references to all initiated doors in the current scene
 func getInitiatedDoors():
 	return initiatedDoors
