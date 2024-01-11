@@ -19,6 +19,7 @@ func _ready():
 	Global.connect("reset_ball_position", reset_to_initial_position)
 	print(Global.balls)
 	Global.max_ball_count += 1
+	Global.set_ball_reference(self)
 
 
 

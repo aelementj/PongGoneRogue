@@ -63,15 +63,15 @@ func spawn_bottom_shooter():
 	if current_bottom_shooters < max_shooters:
 		bottom_shooter = enemy_scenes.instantiate()
 
-		# Set the initial direction of the bottom shooter opposite to the top shooter
-		if top_shooter.custom_velocity.x > 0:
-			bottom_shooter.custom_velocity.x = -bottom_shooter.SPEED
-		else:
+		# Set the initial direction of the top shooter
+		if randf() > 0.5:
 			bottom_shooter.custom_velocity.x = bottom_shooter.SPEED
+		else:
+			bottom_shooter.custom_velocity.x = -bottom_shooter.SPEED
 
 		current_bottom_shooters += 1
 
-		# Set the position of the bottom shooter based on the initial position
+		# Set the position of the top shooter based on the initial position
 		bottom_shooter.position = position + Vector2(0, 36)  # Adjust the Y-coordinate as needed
 
 		# Use call_deferred with add_child
@@ -83,14 +83,14 @@ func _process(delta):
 		current_top_shooters -= 1
 		top_shooter_removed = true
 		respawn_timer_top.start()
-		$Timer.start()
+		$Timer1.start()
 
 	# Check if bottom_shooter is null and start the respawn timer for the bottom shooter
 	if not bottom_shooter_removed and (not bottom_shooter or bottom_shooter.is_queued_for_deletion()):
 		current_bottom_shooters -= 1
 		bottom_shooter_removed = true
 		respawn_timer_bottom.start()
-		$Timer.start()
+		$Timer2.start()
 
 func _on_respawn_timer_top_timeout():
 	# Reset the removed flag for the top shooter
@@ -98,7 +98,7 @@ func _on_respawn_timer_top_timeout():
 
 	# Instantiate a new top shooter
 	spawn_top_shooter()
-	$Timer.stop()
+	$Timer1.stop()
 
 func _on_respawn_timer_bottom_timeout():
 	# Reset the removed flag for the bottom shooter
@@ -106,7 +106,7 @@ func _on_respawn_timer_bottom_timeout():
 
 	# Instantiate a new bottom shooter
 	spawn_bottom_shooter()
-	$Timer.stop()
+	$Timer2.stop()
 
 func on_Ball_area_entered(area):
 	if area.is_in_group("Ball"):

@@ -42,9 +42,13 @@ stream = ExtResource("5_wdytf")
 volume_db = -10.0
 bus = &"SoundFX"
 
-[node name="Timer" type="Timer" parent="."]
+[node name="Timer1" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="Timer2" type="Timer" parent="."]
 wait_time = 2.0
 
 [connection signal="area_entered" from="HitBox" to="." method="on_Ball_area_entered"]
 [connection signal="finished" from="Death" to="." method="_on_death_finished"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer1" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_timeout"]
