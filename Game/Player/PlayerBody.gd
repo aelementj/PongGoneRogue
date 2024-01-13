@@ -28,12 +28,14 @@ func process_input():
 	elif Input.is_action_pressed("ui_right"):
 		direction.x += 1
 
-	if can_teleport and Input.is_action_just_pressed("dash"):
+	if can_teleport and Input.is_action_just_pressed("dash") and not Global.mana_count == 0 and (Input.is_action_pressed("ui_right") or  Input.is_action_pressed("ui_left")):
 		$Dash.play()
+		Global.decrease_player_mana()
 		teleport(direction)
 		start_teleport_cooldown()
 		
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_accept") :
+		Global.decrease_player_mana()
 		shoot_ball()
 		
 	velocity = direction.normalized() * speed

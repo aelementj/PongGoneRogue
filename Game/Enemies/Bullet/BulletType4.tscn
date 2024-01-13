@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://qaip5o1oxshe"]
+
+[ext_resource type="Script" path="res://Game/Enemies/Bullet/BulletType4.gd" id="1_c4p1f"]
+[ext_resource type="Texture2D" uid="uid://bdjv8vb3nu1qc" path="res://assets/ezgif/Beams/tile091.png" id="2_h3qxx"]
+[ext_resource type="Texture2D" uid="uid://5tda78iyppwo" path="res://assets/ezgif/Beams/tile092.png" id="3_eoolg"]
+[ext_resource type="AudioStream" uid="uid://coput15nv3nqc" path="res://assets/SoundEffects/laserShoot.wav" id="3_v1lag"]
+[ext_resource type="Texture2D" uid="uid://dakgytf1lcmsn" path="res://assets/ezgif/Beams/tile093.png" id="4_j8roo"]
+[ext_resource type="Texture2D" uid="uid://bafkn74f5kn06" path="res://assets/ezgif/Beams/tile094.png" id="5_2muop"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_otfce"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_h3qxx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_eoolg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j8roo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2muop")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mr456"]
+size = Vector2(8, 25.3333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h4gap"]
+size = Vector2(4, 31.5)
+
+[node name="BulletType4" type="CharacterBody2D" groups=["Bullet"]]
+show_behind_parent = true
+position = Vector2(0, -8)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_c4p1f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1.40325e-06, 14.0513)
+rotation = 3.14159
+scale = Vector2(1, 2.20804)
+sprite_frames = SubResource("SpriteFrames_otfce")
+autoplay = "default"
+frame_progress = 0.666715
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 11.3333)
+shape = SubResource("RectangleShape2D_mr456")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Bullet"]]
+visible = false
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 12.75)
+scale = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_h4gap")
+
+[node name="Fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v1lag")
+volume_db = -10.0
+bus = &"SoundFX"
+
+[node name="Timer" type="Timer" parent="."]

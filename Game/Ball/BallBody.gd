@@ -46,8 +46,9 @@ func _integrate_forces(state):
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("Player"):
+	if area.is_in_group("Player") and not Global.mana_count == 0:
 		$BallPickUp.play()
+		Global.decrease_player_mana()
 		print("Player has_Ball: ", Global.has_ball())
 		reset_to_initial_position()
 

@@ -10,6 +10,8 @@ var player_lives : int = 3  # Initial number of lives
 var ball_reference : Node = null  # Declare ball_reference as a class member
 var current_ball_index : int = 0  # Track the current index in the array
 var max_ball_count : int = 0
+var mana_count : int = 1
+var max_mana_count : int = 3
 
 # Signals
 signal ball_increased
@@ -17,10 +19,15 @@ signal ball_decreased
 signal reset_ball_position
 signal lives_decreased
 signal lives_increased
+signal mana_increased
+signal mana_decreased
 
 # Global Function
 func global_function():
 	print("Global function called")
+
+func get_initiated_balls() -> Array:
+	return balls
 
 # Ball Management Functions
 func add_ball(ball: Node):
@@ -31,10 +38,8 @@ func add_ball(ball: Node):
 
 		# Store the referenced ball in the array
 		balls.append(ball)
-
 	else:
 		print("Max ball count reached. Cannot add more balls.")
-
 
 func minus_ball(ball_node: Node):
 	if ball_node != null and balls.has(ball_node):
@@ -43,7 +48,6 @@ func minus_ball(ball_node: Node):
 		emit_signal("ball_decreased")
 		print("Ball removed. New ball count: ", ball_count)
 	print(balls)
-	
 
 func has_ball() -> bool:
 	return ball_count > 0
@@ -90,6 +94,7 @@ func reset_player_lives():
 	player_lives = 3
 	print("Player lives reset to ", player_lives)
 
+# Ball Index and Movement Functions
 func get_topmost_ball() -> Node:
 	if balls.size() > 0:
 		return balls[balls.size() - 1]  # Return the last element in the array (topmost ball)
@@ -118,5 +123,18 @@ func move_to_next_ball():
 	if balls.size() > 0:
 		current_ball_index = (current_ball_index + 1) % balls.size()
 
-func get_initiated_balls() -> Array:
-	return balls
+# Player Mana Functions
+func decrease_player_mana():
+	mana_count -= 1
+	emit_signal("mana_decreased")
+	print("Player mana decreased. Remaining mana: ", mana_count)
+
+func increase_player_mana():
+	mana_count += 1
+	emit_signal("mana_increased")
+	print("Player mana increased. Remaining mana: ", mana_count)
+
+func reset_player_mana():
+	mana_count = 3
+	max_mana_count = 3
+	print("Player mana reset to ", mana_count)

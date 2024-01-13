@@ -4,7 +4,7 @@ class_name PaddleBody
 var speed: float = 0
 var player: Node  # Assuming this is set to the player node in _ready()
 var following_enabled: bool = true
-var follow_distance: float = 50.0  # Adjust this value based on your needs
+var follow_distance: float = 10.0  # Adjust this value based on your needs
 
 var teleport_distance: float = 50.0
 var teleport_cooldown: float = 0
@@ -13,43 +13,47 @@ var can_teleport: bool = true
 # Variable to store the previous position
 var previous_position: Vector2 = Vector2.ZERO
 
+var player_valid: bool = false  # Renamed the variable
+
 func _ready():
 	# Assuming you have a reference to the player node, set it here
 	player = Global.get_player_reference()
+	player_valid = is_player_valid()
 
 func _process(delta):
-	follow_player()
-	process_input()
-	speed = player.speed
-	teleport_cooldown = player.teleport_cooldown
+	if player_valid and player.has_method("is_moving") and player.is_moving():
+		follow_player()
+		process_input()
+		speed = player.speed
+		teleport_cooldown = player.teleport_cooldown
+		# Update previous position
+		previous_position = position
+	else:
+		velocity = Vector2.ZERO
+		following_enabled = false
+		player_valid = is_player_valid()
 
 # Function to follow the player
 func follow_player():
 	var direction: Vector2 = Vector2.ZERO
 
-	if is_player_valid() and player.has_method("is_moving") and player.is_moving():
-		direction = (player.global_position - global_position).normalized()
+	direction = (player.position - position).normalized()
 
-		velocity = direction * speed
-		move_and_slide()
+	velocity = direction * speed
+	move_and_slide()
 
-		# Check if the player is within a certain distance to the right or left
-		var distance_to_player: float = abs(player.global_position.x - global_position.x)
-		if distance_to_player < follow_distance:
-			following_enabled = true
-		else:
-			following_enabled = false
-
-		# Update previous position
-		previous_position = global_position
+	# Check if the player is within a certain distance to the right or left
+	var distance_to_player: float = abs(player.position.x - position.x)
+	if distance_to_player < follow_distance:
+		following_enabled = true
 	else:
-		velocity = Vector2.ZERO
 		following_enabled = false
 
 # Function to check if the player is valid (still instanced in the scene)
 func is_player_valid() -> bool:
 	return player != null
 
+# Function to teleport the paddle
 func teleport(direction: Vector2):
 	var teleport_position: Vector2 = position + direction.normalized() * teleport_distance
 
@@ -73,13 +77,14 @@ func start_teleport_cooldown():
 func _on_timer_timeout():
 	can_teleport = true
 
+# Function to check if the player is moving
 func is_moving() -> bool:
 	var moving: bool = velocity.length() > 0.1
 	return moving
 
 # Process player input
 func process_input():
-	if is_player_valid():
+	if player_valid:
 		show()
 	
 	var direction: Vector2 = Vector2.ZERO
@@ -89,12 +94,10 @@ func process_input():
 	elif Input.is_action_pressed("ui_right"):
 		direction.x += 1
 
-	if can_teleport and Input.is_action_just_pressed("dash"):
+	if can_teleport and Input.is_action_just_pressed("dash") and not Global.mana_count == 0:
 		teleport(direction)
 		start_teleport_cooldown()
 
 	# Check if the player is defeated, then queue-free the paddle
 	if Global.get_player_lives() <= 0:
 		hide()
-
-
