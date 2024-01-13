@@ -56,3 +56,5 @@ func _input(event):
 	if event.is_action_pressed("test3"):
 		PowerUpGlobal.reassignPowerUpToNullDoor()
 
+func _on_transition_animation_finished(anim_name):
+	pass
