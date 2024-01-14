@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5nmurcads6mx"]
+[gd_scene load_steps=5 format=3 uid="uid://c5nmurcads6mx"]
 
 [ext_resource type="Script" path="res://Game/Stage 1/Room Manager/RoomManager.gd" id="1_ndnbu"]
 [ext_resource type="PackedScene" uid="uid://jshsl3wma2d6" path="res://Game/GeneralRoomFeatures/wall.tscn" id="2_521tg"]
 [ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Stage 1/Room 00.tscn" id="4_13myg"]
-[ext_resource type="PackedScene" uid="uid://cuey1kvkk4c4f" path="res://Game/Boss/BossType1.tscn" id="5_ypphi"]
 [ext_resource type="PackedScene" uid="uid://7m1y0376rbvh" path="res://Game/GeneralRoomFeatures/ball_catcher.tscn" id="7_upq1u"]
 
 [node name="Room Manager(Stage1)" type="Node"]
@@ -15,6 +14,3 @@ script = ExtResource("1_ndnbu")
 
 [node name="Ball Catcher" parent="." instance=ExtResource("7_upq1u")]
 position = Vector2(0, -8)
-
-[node name="BossType1" parent="." instance=ExtResource("5_ypphi")]
-position = Vector2(480, 144)
