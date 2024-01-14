@@ -3,6 +3,7 @@ extends Node
 class_name GameManagerv1
 
 @onready var transition = $Transition
+var transistion_finished: bool = false
 
 func _ready():
 	transition.play("fade_in")
@@ -34,10 +35,16 @@ func thankyou_demo():
 	print("debuggm")
 	$Select.play()
 
-
 func is_player_valid() -> bool:
 	return Global.get_player_reference() != null
 
-func _on_transition_animation_finished(anim_name):
-	pass
 
+func _on_transition_animation_finished(anim_name):
+	transistion_finished = true
+	game_paused = false
+
+
+func _on_transition_animation_started(anim_name):
+	transistion_finished = false
+	game_paused = !game_paused
+	

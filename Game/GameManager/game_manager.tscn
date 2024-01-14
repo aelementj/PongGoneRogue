@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dkcvk78b6vw02"]
+[gd_scene load_steps=12 format=3 uid="uid://dkcvk78b6vw02"]
 
 [ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_2hssr"]
 [ext_resource type="PackedScene" uid="uid://c5nmurcads6mx" path="res://Game/Stage 1/Room Manager/Room Manager.tscn" id="2_52n3e"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="4_uccct"]
 [ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="6_g8qsp"]
 [ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="8_uc8oq"]
-[ext_resource type="PackedScene" uid="uid://blb8028b3v3fo" path="res://Game/Enemies/Spawners/EnemyType3Spawner.tscn" id="9_xsr25"]
 
 [sub_resource type="Animation" id="Animation_m2066"]
 resource_name = "fade_in"
@@ -108,13 +107,12 @@ visible = false
 game_manager = NodePath("../..")
 
 [node name="Transition" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 "": SubResource("AnimationLibrary_um4nb")
 }
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
-visible = false
-self_modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
 anchor_left = -0.25
 anchor_top = -0.333333
@@ -127,8 +125,5 @@ metadata/_edit_use_anchors_ = true
 stream = ExtResource("8_uc8oq")
 bus = &"SoundFX"
 
-[node name="EnemyType3Spawner" parent="." instance=ExtResource("9_xsr25")]
-position = Vector2(488, 176)
-
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
-[connection signal="animation_finished" from="Transition" to="Room Manager" method="_on_transition_animation_finished"]
+[connection signal="animation_started" from="Transition" to="." method="_on_transition_animation_started"]

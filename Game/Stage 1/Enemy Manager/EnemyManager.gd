@@ -39,8 +39,6 @@ func _ready():
 	# Initialize available boss template paths with your boss templates
 	boss_templates = [
 		"res://Game/Stage 1/Enemy Manager/BossTemplates/BossTemplate1.tscn",
-		"res://Game/Stage 1/Enemy Manager/BossTemplates/BossTemplate2.tscn",
-		"res://Game/Stage 1/Enemy Manager/BossTemplates/BossTemplate3.tscn"
 		# Add more boss templates as needed
 	]
 
@@ -48,6 +46,8 @@ func _ready():
 	elite_templates = [
 		"res://Game/Stage 1/Enemy Manager/EliteTemplates/EliteTemplate1.tscn",
 		"res://Game/Stage 1/Enemy Manager/EliteTemplates/EliteTemplate2.tscn",
+		"res://Game/Stage 1/Enemy Manager/EliteTemplates/EliteTemplate3.tscn",
+		"res://Game/Stage 1/Enemy Manager/EliteTemplates/EliteTemplate4.tscn"
 		# Add more elite templates as needed
 	]
 	

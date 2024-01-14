@@ -1,0 +1,112 @@
+[gd_scene load_steps=14 format=3 uid="uid://3xmgfdqcfm7l"]
+
+[ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType7v5.gd" id="1_attg5"]
+[ext_resource type="Texture2D" uid="uid://crmbhq34wgn16" path="res://assets/Effects/Free  Effect Bullet Impact Explosion 32x32 V1/Red Effect Bullet Impact Explosion 32x32.png" id="2_gwx6d"]
+[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="3_xvkrl"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1l2sv"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcdo3"]
+radius = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ieg7"]
+atlas = ExtResource("2_gwx6d")
+region = Rect2(288, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c2xp"]
+atlas = ExtResource("2_gwx6d")
+region = Rect2(256, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnppt"]
+atlas = ExtResource("2_gwx6d")
+region = Rect2(224, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qf357"]
+atlas = ExtResource("2_gwx6d")
+region = Rect2(192, 320, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bi42w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ieg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c2xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnppt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qf357")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_e85w8"]
+
+[node name="EnemyTrooperUD" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_attg5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-4.76837e-07, -4.76837e-07)
+rotation = 0.785398
+scale = Vector2(24, 24)
+texture = SubResource("CanvasTexture_1na0g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_p6g2v")
+
+[node name="ChangeDirection" type="Area2D" parent="." groups=["Enemy"]]
+scale = Vector2(1.05, 1.05)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeDirection"]
+shape = SubResource("CircleShape2D_1l2sv")
+
+[node name="HitBox" type="Area2D" parent="." groups=["Enemy"]]
+scale = Vector2(1.1, 1.1)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_dcdo3")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 0)
+sprite_frames = SubResource("SpriteFrames_bi42w")
+autoplay = "default"
+frame_progress = 0.0566564
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.713726, 0, 0, 1)
+texture_filter = 1
+position = Vector2(-0.0119742, -0.11)
+rotation = -3.14159
+scale = Vector2(33.9281, -2.69892)
+texture = SubResource("CanvasTexture_e85w8")
+
+[node name="Bounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_xvkrl")
+bus = &"SoundFX"
+
+[connection signal="area_entered" from="ChangeDirection" to="." method="_on_enemytype1_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]

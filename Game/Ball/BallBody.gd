@@ -22,32 +22,44 @@ func _ready():
 	Global.set_ball_reference(self)
 
 
-
 func _process(delta):
 	if not is_player_valid():
 		velocity = Vector2.ZERO
-	
+
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collision_normal = collision_info.get_normal()
-		velocity = velocity.bounce(collision_normal)
-		velocity.x *= 1
-		velocity.y *= 1
-		print(velocity)
+		
+		# Check if the ball has already bounced in this frame
+		if not has_bounced_this_frame:
+			velocity = velocity.bounce(collision_normal)
+			velocity.x *= 1
+			velocity.y *= 1
 
-		var current_speed = velocity.length()
-		$Bounce.play()
+			var current_speed = velocity.length()
+			$Bounce.play()
 
-		if current_speed > initial_ball_speed:
-			velocity = velocity.normalized() * initial_ball_speed
+			if current_speed > initial_ball_speed:
+				velocity = velocity.normalized() * initial_ball_speed
+
+			# Set the flag to true to indicate that the ball has bounced in this frame
+			has_bounced_this_frame = true
+
+	else:
+		# Reset the flag if there is no collision in this frame
+		has_bounced_this_frame = false
+
+var has_bounced_this_frame: bool
+
 
 func _integrate_forces(state):
 	state.linear_velocity = velocity
 
 
 func _on_area_2d_area_entered(area):
-	if area.is_in_group("Player"):
+	if area.is_in_group("Player") and not Global.mana_count == 0:
 		$BallPickUp.play()
+		Global.decrease_player_mana()
 		print("Player has_Ball: ", Global.has_ball())
 		reset_to_initial_position()
 

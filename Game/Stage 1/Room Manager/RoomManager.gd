@@ -74,7 +74,6 @@ func instantiate_new_room(room_path: String):
 
 func _on_instantiation_timer_timeout():
 	instantiation_in_progress = false
-	Global.reset_ball_pos()
 	var timer = get_node("Timer")
 	if timer:
 		timer.queue_free()

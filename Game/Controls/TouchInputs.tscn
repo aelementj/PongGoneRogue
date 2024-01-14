@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dskuf40e3yean" path="res://assets/Buttons by deo/DashBlur.png" id="6_iprqn"]
 [ext_resource type="Texture2D" uid="uid://dhxbgv0rspy08" path="res://assets/Buttons by deo/fire.png" id="7_l3r8r"]
 [ext_resource type="Texture2D" uid="uid://b0soequct7188" path="res://assets/Buttons by deo/FireBlur.png" id="8_76x8u"]
-[ext_resource type="Texture2D" uid="uid://c2e3jcdxnj68i" path="res://assets/tile066.png" id="9_dimtu"]
-[ext_resource type="Texture2D" uid="uid://i8ai260l8fl3" path="res://assets/tile066v2.png" id="10_2x22c"]
+[ext_resource type="Texture2D" uid="uid://dwqp8dk1eop20" path="res://assets/Tilesets/v1.1 dungeon crawler 16X16 pixel pack/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/pause_button.png" id="9_wp4qi"]
+[ext_resource type="Texture2D" uid="uid://bya6osp17i3qn" path="res://assets/Tilesets/v1.1 dungeon crawler 16X16 pixel pack/v1.1 dungeon crawler 16X16 pixel pack/ui (new)/pause_button_press.png" id="10_meng8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8a8wd"]
 size = Vector2(591, 591)
@@ -85,6 +85,6 @@ process_priority = 1
 texture_filter = 1
 position = Vector2(-4.76837e-07, -4.76837e-07)
 scale = Vector2(2.5, 2.5)
-texture_normal = ExtResource("9_dimtu")
-texture_pressed = ExtResource("10_2x22c")
+texture_normal = ExtResource("9_wp4qi")
+texture_pressed = ExtResource("10_meng8")
 action = "ui_cancel"

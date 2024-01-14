@@ -30,9 +30,10 @@ func _process(delta):
 		panel.visible = false
 		thank_you_menu.set_process(true)
 		thank_you_menu.visible = true
+		
 
 func _on_game_manager_toggle_game_paused(is_paused : bool):
-	if(is_paused):
+	if(is_paused) and game_manager.transistion_finished:
 		show()
 	else:
 		hide()

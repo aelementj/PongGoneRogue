@@ -24,7 +24,7 @@ size = Vector2(2, 392)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7yipq"]
 size = Vector2(832, 2)
 
-[node name="Wall" type="Node2D"]
+[node name="Wall" type="Node2D" groups=["Wall"]]
 script = ExtResource("1_tvmkr")
 
 [node name="Wall" type="StaticBody2D" parent="." groups=["Wall"]]
