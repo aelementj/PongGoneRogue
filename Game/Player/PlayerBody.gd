@@ -34,7 +34,7 @@ func process_input():
 		teleport(direction)
 		start_teleport_cooldown()
 		
-	if Input.is_action_just_pressed("ui_accept") :
+	if Input.is_action_just_pressed("ui_accept") and not Global.mana_count == 0:
 		Global.decrease_player_mana()
 		shoot_ball()
 		

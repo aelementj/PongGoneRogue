@@ -5,11 +5,10 @@ var speed: float = 0
 var player: Node  # Assuming this is set to the player node in _ready()
 var following_enabled: bool = true
 var follow_distance: float = 50.0  # Adjust this value based on your needs
-
+var can_teleport: bool = true
 var teleport_distance: float = 50.0
 var teleport_cooldown: float = 0
-var can_teleport: bool = true
-
+var player_valid: bool = false
 # Variable to store the previous position
 var previous_position: Vector2 = Vector2.ZERO
 
@@ -24,6 +23,7 @@ func _process(delta):
 		process_input()
 		speed = player.speed
 		teleport_cooldown = player.teleport_cooldown
+		can_teleport = player.can_teleport
 		# Update previous position
 		previous_position = position
 	else:
@@ -37,21 +37,16 @@ func follow_player():
 
 	direction = (player.position - position).normalized()
 
-		velocity = direction * speed
-		move_and_slide()
+	velocity = direction * speed
+	move_and_slide()
 
-		# Check if the player is within a certain distance to the right or left
-		var distance_to_player: float = abs(player.global_position.x - global_position.x)
-		if distance_to_player < follow_distance:
-			following_enabled = true
-		else:
-			following_enabled = false
-
-		# Update previous position
-		previous_position = global_position
+	# Check if the player is within a certain distance to the right or left
+	var distance_to_player: float = abs(player.global_position.x - global_position.x)
+	if distance_to_player < follow_distance:
+		following_enabled = true
 	else:
-		velocity = Vector2.ZERO
 		following_enabled = false
+		velocity = Vector2.ZERO
 
 # Function to check if the player is valid (still instanced in the scene)
 func is_player_valid() -> bool:
@@ -71,15 +66,6 @@ func is_valid_teleport_position(teleport_position: Vector2) -> bool:
 	# Check if there is no collision (collision_info will be null if no collision occurred)
 	return collision_info == null
 
-# Start cooldown timer
-func start_teleport_cooldown():
-	can_teleport = false
-	$Timer.start(teleport_cooldown)
-
-# Called when the timer completes (cooldown is over)
-func _on_timer_timeout():
-	can_teleport = true
-
 func is_moving() -> bool:
 	var moving: bool = velocity.length() > 0.1
 	return moving
@@ -96,9 +82,8 @@ func process_input():
 	elif Input.is_action_pressed("ui_right"):
 		direction.x += 1
 
-	if can_teleport and Input.is_action_just_pressed("dash") and not Global.mana_count == 0:
+	if can_teleport and Input.is_action_just_pressed("dash"):
 		teleport(direction)
-		start_teleport_cooldown()
 
 	# Check if the player is defeated, then queue-free the paddle
 	if Global.get_player_lives() <= 0:
