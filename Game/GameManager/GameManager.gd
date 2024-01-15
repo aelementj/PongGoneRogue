@@ -48,3 +48,6 @@ func _on_transition_animation_started(anim_name):
 	transistion_finished = false
 	game_paused = !game_paused
 	
+func next_level():
+	queue_free()
+	print("GM queue freed")

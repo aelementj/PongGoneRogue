@@ -46,9 +46,10 @@ func _on_restart_pressed():
 	_on_resume_pressed()
 	Global.reset_balls()
 	Global.reset_player_lives()
+	Global.reset_player_mana()
+	PowerUpGlobal.clearInitiatedDoors()
 	get_tree().change_scene_to_packed(LoadingScreen)
 	$Select.play()
-
 
 
 func _on_options_pressed():

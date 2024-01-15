@@ -27,3 +27,6 @@ func _process(delta):
 		else:
 			elapsedTime += delta
 
+func _exit_tree():
+	loadingComplete = false
+	print("game loaded")
