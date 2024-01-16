@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpa6gkg50s71v"]
+
+[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="1_8a8sw"]
+[ext_resource type="PackedScene" uid="uid://dphgaso2l3hkj" path="res://Game/Enemies/EnemyBurst.tscn" id="5_mbrnq"]
+[ext_resource type="PackedScene" uid="uid://ciw78c4f14hp0" path="res://Game/Enemies/ShowerShooterLR.tscn" id="7_wc351"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemyBurst" parent="." instance=ExtResource("5_mbrnq")]
+position = Vector2(286, 116)
+
+[node name="ShowerShooter" parent="." instance=ExtResource("7_wc351")]
+position = Vector2(124, 200)
+
+[node name="CommonShooter" parent="." instance=ExtResource("1_8a8sw")]
+position = Vector2(846, 164)
+
+[node name="CommonShooter2" parent="." instance=ExtResource("1_8a8sw")]
+position = Vector2(411, 255)

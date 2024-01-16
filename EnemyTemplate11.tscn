@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://f75ct085mvq2"]
+
+[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="1_16ukv"]
+[ext_resource type="PackedScene" uid="uid://dvnbbn4ixp5ky" path="res://Game/Enemies/EnemySniper.tscn" id="5_mmy28"]
+[ext_resource type="PackedScene" uid="uid://bhfipsydwi0b2" path="res://Game/Enemies/ShowerShooterRL.tscn" id="7_7d01f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemySniper" parent="." instance=ExtResource("5_mmy28")]
+position = Vector2(240, 217)
+
+[node name="EnemySniper2" parent="." instance=ExtResource("5_mmy28")]
+position = Vector2(186, 218)
+
+[node name="EnemySniper3" parent="." instance=ExtResource("5_mmy28")]
+position = Vector2(296, 219)
+
+[node name="CommonShooter" parent="." instance=ExtResource("1_16ukv")]
+position = Vector2(190, 130)
+
+[node name="ShowerShooter" parent="." instance=ExtResource("7_7d01f")]
+position = Vector2(829, 165)

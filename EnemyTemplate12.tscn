@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctsh8extjinvg"]
+
+[ext_resource type="PackedScene" uid="uid://6vdhvab60k2s" path="res://Game/Enemies/EnemyTrooperLR.tscn" id="5_tkskq"]
+[ext_resource type="PackedScene" uid="uid://bvtgg1t8nplr6" path="res://Game/Enemies/EnemyTrooperRL.tscn" id="6_carpn"]
+[ext_resource type="PackedScene" uid="uid://bgm5jgp6kyw7l" path="res://Game/Enemies/EnemyShotgun.tscn" id="8_n4kje"]
+[ext_resource type="PackedScene" uid="uid://8rtuiq6td7wg" path="res://Game/Enemies/PlayerTracker.tscn" id="8_nigvd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemyTrooper" parent="." instance=ExtResource("5_tkskq")]
+position = Vector2(442, 138)
+
+[node name="EnemyTrooper2" parent="." instance=ExtResource("6_carpn")]
+position = Vector2(507, 183)
+
+[node name="PlayerTracker" parent="." instance=ExtResource("8_nigvd")]
+position = Vector2(138, 311)
+
+[node name="EnemyShotgun" parent="." instance=ExtResource("8_n4kje")]
+position = Vector2(224, 255)
