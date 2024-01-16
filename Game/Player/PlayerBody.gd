@@ -35,7 +35,6 @@ func process_input():
 		start_teleport_cooldown()
 		
 	if Input.is_action_just_pressed("ui_accept") and not Global.mana_count == 0:
-		Global.decrease_player_mana()
 		shoot_ball()
 		
 	velocity = direction.normalized() * speed
@@ -86,6 +85,7 @@ func trigger_player_defeated():
 	queue_free()
 
 func shoot_ball():
+	Global.decrease_player_mana()
 	if Global.get_ball_count() > 0:
 		var ball = Global.get_next_ball()
 		if ball != null:

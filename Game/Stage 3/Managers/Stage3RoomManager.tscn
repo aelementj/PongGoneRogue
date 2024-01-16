@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwd4p8tec7i60"]
+
+[ext_resource type="Script" path="res://Game/Stage 2/Managers/Stage2RoomManager.gd" id="1_mtaq2"]
+[ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Stage 1/Room 00.tscn" id="2_at61s"]
+[ext_resource type="PackedScene" uid="uid://jshsl3wma2d6" path="res://Game/GeneralRoomFeatures/wall.tscn" id="3_f5kht"]
+[ext_resource type="PackedScene" uid="uid://7m1y0376rbvh" path="res://Game/GeneralRoomFeatures/ball_catcher.tscn" id="4_u7541"]
+
+[node name="Room Manager(Stage3)" type="Node"]
+script = ExtResource("1_mtaq2")
+
+[node name="Room 0" parent="." instance=ExtResource("2_at61s")]
+
+[node name="Wall" parent="." instance=ExtResource("3_f5kht")]
+
+[node name="Ball Catcher" parent="." instance=ExtResource("4_u7541")]
+position = Vector2(0, -8)
