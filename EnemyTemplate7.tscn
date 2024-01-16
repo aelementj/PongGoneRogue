@@ -1,20 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://bicucqak1atw0"]
+[gd_scene load_steps=3 format=3 uid="uid://t854cd2l1ror"]
 
-[ext_resource type="PackedScene" uid="uid://fgu435c4o0f2" path="res://Game/Enemies/DetectDenShoot.tscn" id="2_sult5"]
-[ext_resource type="PackedScene" uid="uid://bhfipsydwi0b2" path="res://Game/Enemies/ShowerShooterRL.tscn" id="5_sb0xo"]
-[ext_resource type="PackedScene" uid="uid://6vdhvab60k2s" path="res://Game/Enemies/EnemyTrooperLR.tscn" id="7_o3xak"]
-[ext_resource type="PackedScene" uid="uid://bvtgg1t8nplr6" path="res://Game/Enemies/EnemyTrooperRL.tscn" id="7_xivyt"]
+[ext_resource type="PackedScene" uid="uid://dphgaso2l3hkj" path="res://Game/Enemies/EnemyBurst.tscn" id="5_bc1lb"]
+[ext_resource type="PackedScene" uid="uid://8rtuiq6td7wg" path="res://Game/Enemies/PlayerTracker.tscn" id="6_8gin5"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="ShowerShooter" parent="." instance=ExtResource("5_sb0xo")]
-position = Vector2(843, 157)
+[node name="EnemyBurst" parent="." instance=ExtResource("5_bc1lb")]
+position = Vector2(273, 107)
 
-[node name="EnemyTrooper2" parent="." instance=ExtResource("7_xivyt")]
-position = Vector2(189, 215)
+[node name="EnemyBurst2" parent="." instance=ExtResource("5_bc1lb")]
+position = Vector2(375, 149)
 
-[node name="EnemyTrooper" parent="." instance=ExtResource("7_o3xak")]
-position = Vector2(768, 216)
+[node name="EnemyBurst3" parent="." instance=ExtResource("5_bc1lb")]
+position = Vector2(866, 191)
 
-[node name="DetectDenShoot" parent="." instance=ExtResource("2_sult5")]
-position = Vector2(379, 123)
+[node name="PlayerTracker" parent="." instance=ExtResource("6_8gin5")]
+position = Vector2(94, 248)
+
+[node name="PlayerTracker2" parent="." instance=ExtResource("6_8gin5")]
+position = Vector2(866, 297)

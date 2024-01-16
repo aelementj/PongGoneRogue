@@ -1,19 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://biffcgtmg3er1"]
+[gd_scene load_steps=3 format=3 uid="uid://cd0pmx8fnow88"]
 
-[ext_resource type="PackedScene" uid="uid://bgm5jgp6kyw7l" path="res://Game/Enemies/EnemyShotgun.tscn" id="1_oiovk"]
-[ext_resource type="PackedScene" uid="uid://fgu435c4o0f2" path="res://Game/Enemies/DetectDenShoot.tscn" id="3_lr82i"]
-[ext_resource type="PackedScene" uid="uid://dphgaso2l3hkj" path="res://Game/Enemies/EnemyBurst.tscn" id="4_7meec"]
+[ext_resource type="PackedScene" uid="uid://bgm5jgp6kyw7l" path="res://Game/Enemies/EnemyShotgun.tscn" id="5_b8pmh"]
+[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="6_0wkqc"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="EnemyBurst" parent="." instance=ExtResource("4_7meec")]
-position = Vector2(348, 134)
+[node name="EnemyShotgun" parent="." instance=ExtResource("5_b8pmh")]
+position = Vector2(343, 201)
 
-[node name="EnemyShotgun3" parent="." instance=ExtResource("1_oiovk")]
-position = Vector2(413, 274)
+[node name="EnemyShotgun2" parent="." instance=ExtResource("5_b8pmh")]
+position = Vector2(574, 240)
 
-[node name="DetectDenShoot" parent="." instance=ExtResource("3_lr82i")]
-position = Vector2(111, 188)
+[node name="EnemyShotgun3" parent="." instance=ExtResource("5_b8pmh")]
+position = Vector2(414, 280)
 
-[node name="DetectDenShoot2" parent="." instance=ExtResource("3_lr82i")]
-position = Vector2(855, 227)
+[node name="CommonShooter" parent="." instance=ExtResource("6_0wkqc")]
+position = Vector2(137, 104)
+
+[node name="CommonShooter2" parent="." instance=ExtResource("6_0wkqc")]
+position = Vector2(863, 134)

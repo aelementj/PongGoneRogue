@@ -1,20 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://ctsh8extjinvg"]
+[gd_scene load_steps=4 format=3 uid="uid://dn7f4e57yurdj"]
 
-[ext_resource type="PackedScene" uid="uid://6vdhvab60k2s" path="res://Game/Enemies/EnemyTrooperLR.tscn" id="5_tkskq"]
-[ext_resource type="PackedScene" uid="uid://bvtgg1t8nplr6" path="res://Game/Enemies/EnemyTrooperRL.tscn" id="6_carpn"]
-[ext_resource type="PackedScene" uid="uid://bgm5jgp6kyw7l" path="res://Game/Enemies/EnemyShotgun.tscn" id="8_n4kje"]
-[ext_resource type="PackedScene" uid="uid://8rtuiq6td7wg" path="res://Game/Enemies/PlayerTracker.tscn" id="8_nigvd"]
+[ext_resource type="PackedScene" uid="uid://dvnbbn4ixp5ky" path="res://Game/Enemies/EnemySniper.tscn" id="5_oiqof"]
+[ext_resource type="PackedScene" uid="uid://bgm5jgp6kyw7l" path="res://Game/Enemies/EnemyShotgun.tscn" id="6_y37ab"]
+[ext_resource type="PackedScene" uid="uid://dphgaso2l3hkj" path="res://Game/Enemies/EnemyBurst.tscn" id="7_jos4g"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="EnemyTrooper" parent="." instance=ExtResource("5_tkskq")]
-position = Vector2(442, 138)
+[node name="EnemySniper2" parent="." instance=ExtResource("5_oiqof")]
+position = Vector2(402, 239)
 
-[node name="EnemyTrooper2" parent="." instance=ExtResource("6_carpn")]
-position = Vector2(507, 183)
+[node name="EnemySniper3" parent="." instance=ExtResource("5_oiqof")]
+position = Vector2(556, 242)
 
-[node name="PlayerTracker" parent="." instance=ExtResource("8_nigvd")]
-position = Vector2(138, 311)
+[node name="EnemyShotgun" parent="." instance=ExtResource("6_y37ab")]
+position = Vector2(311, 329)
 
-[node name="EnemyShotgun" parent="." instance=ExtResource("8_n4kje")]
-position = Vector2(224, 255)
+[node name="EnemyBurst" parent="." instance=ExtResource("7_jos4g")]
+position = Vector2(405, 126)
+
+[node name="EnemyBurst2" parent="." instance=ExtResource("7_jos4g")]
+position = Vector2(556, 175)

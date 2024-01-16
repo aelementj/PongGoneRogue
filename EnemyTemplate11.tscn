@@ -1,22 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://f75ct085mvq2"]
+[gd_scene load_steps=6 format=3 uid="uid://kdyrncbnakea"]
 
-[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="1_16ukv"]
-[ext_resource type="PackedScene" uid="uid://dvnbbn4ixp5ky" path="res://Game/Enemies/EnemySniper.tscn" id="5_mmy28"]
-[ext_resource type="PackedScene" uid="uid://bhfipsydwi0b2" path="res://Game/Enemies/ShowerShooterRL.tscn" id="7_7d01f"]
+[ext_resource type="PackedScene" uid="uid://7xrj702ugpk1" path="res://Game/Enemies/EnemyTrooperCircleCCW.tscn" id="5_y16du"]
+[ext_resource type="PackedScene" uid="uid://c2ck3r50q7nam" path="res://Game/Enemies/EnemyTrooperCircleCW.tscn" id="6_lhxfp"]
+[ext_resource type="PackedScene" uid="uid://dbtweruceh6m3" path="res://Game/Enemies/EnemyTrooperDU.tscn" id="7_e1q6a"]
+[ext_resource type="PackedScene" uid="uid://ciw78c4f14hp0" path="res://Game/Enemies/ShowerShooterLR.tscn" id="8_7y8ri"]
+[ext_resource type="PackedScene" uid="uid://bhfipsydwi0b2" path="res://Game/Enemies/ShowerShooterRL.tscn" id="9_j0mhk"]
 
 [node name="Node2D" type="Node2D"]
 
-[node name="EnemySniper" parent="." instance=ExtResource("5_mmy28")]
-position = Vector2(240, 217)
+[node name="EnemyTrooperCircle" parent="." instance=ExtResource("5_y16du")]
+position = Vector2(479, 251)
 
-[node name="EnemySniper2" parent="." instance=ExtResource("5_mmy28")]
-position = Vector2(186, 218)
+[node name="EnemyTrooperCircle2" parent="." instance=ExtResource("6_lhxfp")]
+position = Vector2(479, 251)
 
-[node name="EnemySniper3" parent="." instance=ExtResource("5_mmy28")]
-position = Vector2(296, 219)
+[node name="EnemyTrooperDU" parent="." instance=ExtResource("7_e1q6a")]
+position = Vector2(479, 142)
 
-[node name="CommonShooter" parent="." instance=ExtResource("1_16ukv")]
-position = Vector2(190, 130)
+[node name="ShowerShooter" parent="." instance=ExtResource("8_7y8ri")]
+position = Vector2(107, 101)
 
-[node name="ShowerShooter" parent="." instance=ExtResource("7_7d01f")]
-position = Vector2(829, 165)
+[node name="ShowerShooter2" parent="." instance=ExtResource("9_j0mhk")]
+position = Vector2(846, 137)
