@@ -20,6 +20,7 @@ func _ready():
 	print(Global.balls)
 	Global.max_ball_count += 1
 	Global.set_ball_reference(self)
+	reset_to_initial_position()
 
 
 func _process(delta):
@@ -43,7 +44,7 @@ func _process(delta):
 			velocity = velocity.normalized() * initial_ball_speed
 			if current_speed > initial_ball_speed:
 				velocity = velocity.normalized() * initial_ball_speed
-
+				
 
 
 func _integrate_forces(state):

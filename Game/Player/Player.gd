@@ -18,7 +18,8 @@ func _ready() -> void:
 	initialPaddlePosition = paddle.position
 	DoorGlobal.connect("reset_player_position", reset_positions)
 	PowerUpGlobal.connect("AddBall", initiate_ball)
-
+	Global.connect("hide_player", hide_when_transitioning)
+	Global.connect("show_player", show_after_transitioning)
 
 var ball_spacing: float = 20.0  # Adjust the spacing as needed
 
@@ -48,13 +49,21 @@ func initiate_ball():
 		# Set the flag to true to indicate that a ball has been added
 		ballAdded = true
 
+func hide_when_transitioning():
+	hide()
+	print("???")
+
+func show_after_transitioning():
+	show()
+	print("???")
+
 # Input handling
 func _input(event):
 	if event.is_action_pressed("test1"):
 		initiate_ball()
 	
 	if event.is_action_pressed("test3"):
-		PowerUpGlobal.reassignPowerUpToNullDoor()
+		Global.reset_ball_pos()
 
 func _on_transition_animation_finished(anim_name):
 	pass

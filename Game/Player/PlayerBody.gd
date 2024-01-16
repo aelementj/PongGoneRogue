@@ -85,8 +85,8 @@ func trigger_player_defeated():
 	queue_free()
 
 func shoot_ball():
-	Global.decrease_player_mana()
 	if Global.get_ball_count() > 0:
+		Global.decrease_player_mana()
 		var ball = Global.get_next_ball()
 		if ball != null:
 			var player_position = position
@@ -96,5 +96,4 @@ func shoot_ball():
 			ball.velocity = Vector2(0, ball.initial_ball_speed)  # Optionally, set ball velocity to zero
 			ball.visible = true
 			Global.minus_ball(ball)
-			# Move to the next ball in the array
-			Global.move_to_next_ball()
+

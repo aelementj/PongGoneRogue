@@ -8,7 +8,7 @@ var elapsedTime = 0
 var delayDuration = 0.1  # Adjust this value to control the delay in seconds
 
 func _ready():
-	sceneName = "res://Game/GameManager/game_manager.tscn"
+	sceneName = "res://Game/GameManager/stage3_game_manager.tscn"
 	ResourceLoader.load_threaded_request(sceneName)
 	Global.player_hide()
 

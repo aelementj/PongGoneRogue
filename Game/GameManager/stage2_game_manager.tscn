@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://yciq1ay6fqw7"]
+[gd_scene load_steps=11 format=3 uid="uid://yciq1ay6fqw7"]
 
 [ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_84d5v"]
 [ext_resource type="PackedScene" uid="uid://be6iwkoxg8t24" path="res://Game/Stage 2/Managers/Stage2RoomManager.tscn" id="2_g830j"]
 [ext_resource type="PackedScene" uid="uid://bb1hr3iankhbv" path="res://Game/Stage 2/Managers/Stage2EnemyManager.tscn" id="3_c4qas"]
-[ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="4_obmpj"]
 [ext_resource type="PackedScene" uid="uid://dhe740i8uowko" path="res://Game/Controls/TouchInputs.tscn" id="5_wajmn"]
 [ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="6_psvhs"]
 [ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="7_a2ibl"]
@@ -77,8 +76,6 @@ script = ExtResource("1_84d5v")
 [node name="Room Manager(Stage1)" parent="." instance=ExtResource("2_g830j")]
 
 [node name="Enemy Manager (Stage2)" parent="." instance=ExtResource("3_c4qas")]
-
-[node name="Player" parent="." instance=ExtResource("4_obmpj")]
 
 [node name="General" type="Node2D" parent="."]
 

@@ -13,24 +13,15 @@ func _ready():
 	game_manager.connect("toggle_game_paused", _on_game_manager_toggle_game_paused)
 	gameover_menu.connect("gameover_restart", _on_restart_pressed)
 	gameover_menu.connect("gameover_back_to_main", _on_back_to_main_pressed)
-	thank_you_menu.connect("demo_restart", _on_restart_pressed)
-	thank_you_menu.connect("demo_back_to_main", _on_back_to_main_pressed)
 	handle_connecting_signals()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if not is_player_valid():
+	if Global.player_lives == 0:
 		show()
 		panel.visible = false
 		gameover_menu.set_process(true)
 		gameover_menu.visible = true
-		
-	if DoorGlobal.initiatedDoorsCount == 1 and is_player_valid():
-		show()
-		panel.visible = false
-		thank_you_menu.set_process(true)
-		thank_you_menu.visible = true
-		
 
 func _on_game_manager_toggle_game_paused(is_paused : bool):
 	if(is_paused) and game_manager.transistion_finished:
@@ -47,6 +38,7 @@ func _on_restart_pressed():
 	Global.reset_balls()
 	Global.reset_player_lives()
 	Global.reset_player_mana()
+	Global.remove_player()
 	PowerUpGlobal.clearInitiatedDoors()
 	get_tree().change_scene_to_packed(LoadingScreen)
 	$Select.play()

@@ -138,3 +138,29 @@ func reset_player_mana():
 	mana_count = 3
 	max_mana_count = 3
 	print("Player mana reset to ", mana_count)
+
+func _process(delta):
+	if Input.is_action_just_pressed("test9"):
+		spawn_player()
+	if Input.is_action_just_pressed("test0"):
+		player_hide()
+	if ball_count != balls.size():
+		reset_ball_pos()
+
+var player: Node = null
+func spawn_player():
+	var playerbody = preload("res://Game/Player/Player.tscn")
+	player = playerbody.instantiate()
+	get_parent().add_child(player)
+
+func remove_player():
+	player.queue_free()
+
+func player_hide():
+	emit_signal("hide_player")
+	reset_ball_pos()
+signal hide_player
+
+func player_show():
+	emit_signal("show_player")
+signal show_player

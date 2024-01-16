@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dkcvk78b6vw02"]
+[gd_scene load_steps=11 format=3 uid="uid://dkcvk78b6vw02"]
 
 [ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_2hssr"]
 [ext_resource type="PackedScene" uid="uid://c5nmurcads6mx" path="res://Game/Stage 1/Room Manager/Room Manager.tscn" id="2_52n3e"]
 [ext_resource type="PackedScene" uid="uid://dhe740i8uowko" path="res://Game/Controls/TouchInputs.tscn" id="3_k4uav"]
 [ext_resource type="PackedScene" uid="uid://n3060u0nj3f1" path="res://Game/Stage 1/Enemy Manager/EnemyManager.tscn" id="3_ldam8"]
 [ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="4_cu0mg"]
-[ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="4_uccct"]
 [ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="6_g8qsp"]
 [ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="8_uc8oq"]
 
@@ -78,8 +77,6 @@ script = ExtResource("1_2hssr")
 
 [node name="Enemy Manager" parent="." instance=ExtResource("3_ldam8")]
 
-[node name="Player" parent="." instance=ExtResource("4_uccct")]
-
 [node name="General" type="Node2D" parent="."]
 
 [node name="TouchInputs2" parent="General" instance=ExtResource("3_k4uav")]
@@ -113,6 +110,7 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
+z_index = 5
 anchors_preset = -1
 anchor_left = -0.25
 anchor_top = -0.333333

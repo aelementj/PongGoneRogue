@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://bryq8dlkcm1a6"]
+[gd_scene load_steps=9 format=3 uid="uid://bryq8dlkcm1a6"]
 
 [ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_thw4a"]
-[ext_resource type="PackedScene" uid="uid://dt4v4qdpip3h8" path="res://Game/Player/Player.tscn" id="4_hu81i"]
 [ext_resource type="PackedScene" uid="uid://dhe740i8uowko" path="res://Game/Controls/TouchInputs.tscn" id="5_oe3jw"]
 [ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="6_7c3ce"]
 [ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="7_k7ppt"]
@@ -71,8 +70,6 @@ _data = {
 
 [node name="GameManagerv1" type="Node"]
 script = ExtResource("1_thw4a")
-
-[node name="Player" parent="." instance=ExtResource("4_hu81i")]
 
 [node name="General" type="Node2D" parent="."]
 

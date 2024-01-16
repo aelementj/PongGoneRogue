@@ -38,6 +38,7 @@ func _ready():
 	available_rooms.shuffle()
 	
 	DoorGlobal.instance.connect("ball_entered_any_open_door", _on_ball_entered_any_open_door)
+	DoorGlobal.instance.connect("stage_next", next_stage)
 
 func instantiate_new_room(room_path: String):
 	if instantiation_in_progress:
@@ -98,3 +99,8 @@ func _on_ball_entered_any_open_door():
 func _process(delta):
 	if Input.is_action_just_pressed("clear"):
 		_on_ball_entered_any_open_door()
+
+@onready var LoadingStage2 = load("res://stage_2_loading_screen.tscn") as PackedScene
+
+func next_stage():
+	get_tree().change_scene_to_packed(LoadingStage2)

@@ -7,7 +7,6 @@ var transistion_finished: bool = false
 
 func _ready():
 	transition.play("fade_in")
-	DoorGlobal.connect("demo2", thankyou_demo)
 	PowerUpGlobal.reassignPowerUpToNullDoor()
 
 
@@ -26,14 +25,12 @@ func _input(event : InputEvent):
 		$Select.play()
 
 func _process(delta):
-	if not is_player_valid():
+	if not is_player_valid() and Global.player_lives == 0:
 		game_paused = !game_paused
 		$Select.play()
-
-func thankyou_demo():
-	game_paused = !game_paused
-	print("debuggm")
-	$Select.play()
+	if Global.player_reference == null and Global.player_lives > 0:
+		Global.spawn_player()
+		print("player spawned")
 
 func is_player_valid() -> bool:
 	return Global.get_player_reference() != null
@@ -42,11 +39,15 @@ func is_player_valid() -> bool:
 func _on_transition_animation_finished(anim_name):
 	transistion_finished = true
 	game_paused = false
+	Global.player_show()
+	Global.reset_ball_pos()
 
 
 func _on_transition_animation_started(anim_name):
 	transistion_finished = false
 	game_paused = !game_paused
+	Global.player_hide()
+	Global.reset_ball_pos()
 	
 func next_level():
 	queue_free()
