@@ -1,9 +1,11 @@
 extends Node2D
 
 @onready var transition = $Transition
+@onready var PowerUpIcon: Sprite2D
 
 var closedDoor: Area2D
 var openDoor: Area2D
+
 
 var isDoorOpen: bool = false
 var hasToggledDoor: bool = false
@@ -16,6 +18,9 @@ func _ready():
 	openDoor.get_node("CollisionShape2D").disabled = true
 	DoorGlobal.instance.addInitiatedDoor(self)
 	DoorGlobal.instance.updateInitiatedDoorsCount(DoorGlobal.instance.initiatedDoorsCount + 1)
+	PowerUpIcon = $PowerUpIcon
+	
+	
 
 func _process(delta):
 	if EnemyGlobal.instance.initiatedEnemiesCount == 0 and not hasToggledDoor:
@@ -37,6 +42,7 @@ func toggleDoors():
 	openDoor.get_node("CollisionShape2D").disabled = !isDoorOpen
 	hasToggledDoor = true
 	print(DoorGlobal.areAllInitiatedDoorsToggled())
+	updatePowerUpIcon()
 
 
 func _on_open_door_body_entered(body):
@@ -50,6 +56,26 @@ func onBallEnterOpenDoor():
 		PowerUpGlobal.applyPowerUpToPlayer(Global.get_player_reference(), assignedPowerUp)
 	elif assignedPowerUp in PowerUpGlobal.ballPowerUps:
 		PowerUpGlobal.applyPowerUpToAllBalls(assignedPowerUp)
+
+func updatePowerUpIcon():
+	# Assuming each power-up has a corresponding texture
+	match assignedPowerUp:
+		"SpeedUp":
+			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (2).png")
+			PowerUpIcon.scale = Vector2(1, 1)
+		"TeleportCooldown":
+			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (3).png")
+			PowerUpIcon.scale = Vector2(1, 1)
+		"AddLife":
+			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (4).png")
+			PowerUpIcon.scale = Vector2(1, 1)
+		"BallSpeed":
+			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (1).png")
+			PowerUpIcon.scale = Vector2(1, 1)
+		"AddBall":
+			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0.png")
+			PowerUpIcon.scale = Vector2(1, 1)
+
 
 
 func disconnect_signals():

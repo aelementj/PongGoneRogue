@@ -75,8 +75,8 @@ autostart = true
 [node name="ToggleMovement" type="Timer" parent="."]
 wait_time = 8.0
 
-[connection signal="area_entered" from="ChangeDirection" to="." method="_on_enemytype1_area_entered"]
 [connection signal="area_entered" from="ChangeDirection" to="." method="_on_Wall_body_entered"]
+[connection signal="area_entered" from="ChangeDirection" to="." method="_on_enemytype1_area_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Shoot" to="." method="_on_shoot_timeout"]

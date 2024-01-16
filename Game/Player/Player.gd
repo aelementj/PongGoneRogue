@@ -41,7 +41,8 @@ func initiate_ball():
 		else:
 			ball_instance.position = Vector2.ZERO
 		
-		add_child(ball_instance)
+		add_child(ball_instance)  # Replace with the correct path to your PowerUpManager
+		PowerUpGlobal.removePowerUp(PowerUpGlobal.ballAddedPowerUp)
 
 		# Add the instantiated ball to the balls array in the Global script
 		Global.add_ball(ball_instance)
@@ -61,6 +62,7 @@ func show_after_transitioning():
 func _input(event):
 	if event.is_action_pressed("test1"):
 		initiate_ball()
+
 	
 	if event.is_action_pressed("test3"):
 		Global.reset_ball_pos()

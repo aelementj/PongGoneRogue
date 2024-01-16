@@ -54,6 +54,8 @@ func _on_back_to_main_pressed():
 	_on_resume_pressed()
 	Global.reset_balls()
 	Global.reset_player_lives()
+	Global.remove_player()
+	PowerUpGlobal.clearInitiatedDoors()
 	get_tree().change_scene_to_packed(mainmenu)
 	$Select.play()
 

@@ -301,6 +301,11 @@ bus = &"SoundFX"
 wait_time = 0.5
 one_shot = true
 
+[node name="PowerUpIcon" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 48)
+scale = Vector2(0.666667, 0.666667)
+
 [connection signal="body_entered" from="Open" to="." method="_on_open_door_body_entered"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

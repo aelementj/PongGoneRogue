@@ -1,7 +1,7 @@
 extends Node
 
 var playerPowerUps: Array = ["SpeedUp", "TeleportCooldown", "AddLife"]
-var ballPowerUps: Array = ["AddBall", "BallSpeed", "BallPowerUp3"]
+var ballPowerUps: Array = ["AddBall", "BallSpeed"]
 var mixedPowerUps: Array = []  # Array to track assigned power-ups for both player and ball
 
 var initiatedDoors: Array = []
@@ -71,7 +71,18 @@ func applyPowerUpToBall(ball: BallBody, powerUpType: String):
 		# Add more cases for other ball power-ups as needed
 		"AddBall":
 			emit_signal("AddBall")
-			
+			print("ball added?")
+
+
+var ballAddedPowerUp: String = "AddBall"
+
+# Function to remove a power-up from the array
+func removePowerUp(powerUp: String):
+	if powerUp in mixedPowerUps:
+		mixedPowerUps.erase(powerUp)
+	print("Power-up removed:", powerUp)
+	print(mixedPowerUps)
+
 func reassignPowerUpToNullDoor():
 	for door in initiatedDoors:
 		if door != null and door.assignedPowerUp == null:
