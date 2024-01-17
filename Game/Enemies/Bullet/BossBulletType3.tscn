@@ -1,0 +1,171 @@
+[gd_scene load_steps=19 format=3 uid="uid://c0w1glbsaxycb"]
+
+[ext_resource type="Script" path="res://Game/Enemies/Bullet/BossBulletType3.gd" id="1_gldsa"]
+[ext_resource type="Texture2D" uid="uid://df6o5vyi61f1s" path="res://assets/Effects/Effect and Bullet 16x16/Fire Effect and Bullet 16x16.png" id="2_4l3bj"]
+[ext_resource type="AudioStream" uid="uid://cspwyr8uybqpy" path="res://assets/SoundEffects/laserShoot (1).wav" id="3_05ofe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r15i"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(384, 168, 16, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bs6ba"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(400, 168, 16, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ogc0"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(416, 168, 16, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3srgy"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(432, 168, 16, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dbdn4"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(448, 168, 16, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcgud"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(480, 175, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amak0"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(496, 175, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3ab7"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(512, 175, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofwo6"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(528, 175, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks4y2"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(544, 175, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jn3xm"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(560, 175, 16, 33)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_artdx"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(544, 174, 16, 34)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qe6ad"]
+atlas = ExtResource("2_4l3bj")
+region = Rect2(560, 174, 16, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6s537"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r15i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bs6ba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ogc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3srgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dbdn4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcgud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amak0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3ab7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofwo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ks4y2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qe6ad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jn3xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_artdx")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mr456"]
+size = Vector2(8, 16)
+
+[node name="BossBulletType2" type="CharacterBody2D" groups=["Bullet"]]
+scale = Vector2(10, 10)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("1_gldsa")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_6s537")
+frame = 22
+frame_progress = 1.0
+offset = Vector2(0, -15)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.8)
+shape = SubResource("RectangleShape2D_mr456")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Bullet"]]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -8.9)
+shape = SubResource("RectangleShape2D_mr456")
+
+[node name="Fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_05ofe")
+volume_db = -10.0
+bus = &"SoundFX"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

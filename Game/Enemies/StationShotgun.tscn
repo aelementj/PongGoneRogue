@@ -1,11 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuey1kvkk4c4f"]
+[gd_scene load_steps=8 format=3 uid="uid://cps0lq3iunjfe"]
 
-[ext_resource type="Script" path="res://Game/Boss/BossScript1.gd" id="1_o6v8p"]
-[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="2_vxbrp"]
+[ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType9.gd" id="1_0htp6"]
+[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="3_f1g4f"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_w4kcy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
 radius = 12.0
@@ -16,31 +14,16 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcdo3"]
 radius = 12.0
 
-[node name="BossType1" type="CharacterBody2D" groups=["Enemy"]]
-collision_layer = 32
-script = ExtResource("1_o6v8p")
+[sub_resource type="CanvasTexture" id="CanvasTexture_e85w8"]
+
+[node name="StationShotGun" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_0htp6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4.76837e-07, -4.76837e-07)
 rotation = 0.785398
 scale = Vector2(24, 24)
 texture = SubResource("CanvasTexture_1na0g")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.34902, 0.34902, 0.34902, 1)
-texture_filter = 1
-position = Vector2(-0.0119742, -0.11)
-rotation = -3.14159
-scale = Vector2(33.9281, -2.69892)
-texture = SubResource("CanvasTexture_w4kcy")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(0.34902, 0.34902, 0.34902, 1)
-texture_filter = 1
-position = Vector2(0.0093255, -8)
-rotation = -3.14159
-scale = Vector2(20.6877, -2.69892)
-texture = SubResource("CanvasTexture_w4kcy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.1, 1.1)
@@ -63,21 +46,23 @@ shape = SubResource("CircleShape2D_dcdo3")
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(0.713726, 0, 0, 1)
+texture_filter = 1
+position = Vector2(-0.0119742, -0.11)
+rotation = -3.14159
+scale = Vector2(33.9281, -2.69892)
+texture = SubResource("CanvasTexture_e85w8")
+
 [node name="Bounce" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_vxbrp")
+stream = ExtResource("3_f1g4f")
 bus = &"SoundFX"
 
-[node name="CrashWall" type="Timer" parent="."]
-
-[node name="Shoot" type="Timer" parent="."]
-autostart = true
-
-[node name="ToggleMovement" type="Timer" parent="."]
+[node name="Despawn" type="Timer" parent="."]
 wait_time = 8.0
+one_shot = true
 
 [connection signal="area_entered" from="ChangeDirection" to="." method="_on_enemytype1_area_entered"]
-[connection signal="area_entered" from="ChangeDirection" to="." method="_on_Wall_body_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]
-[connection signal="timeout" from="Shoot" to="." method="_on_shoot_timeout"]
-[connection signal="timeout" from="ToggleMovement" to="." method="_on_toggle_movement_timeout"]
+[connection signal="timeout" from="Despawn" to="." method="_on_despawn_timeout"]

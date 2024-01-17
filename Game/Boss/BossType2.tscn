@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuey1kvkk4c4f"]
+[gd_scene load_steps=8 format=3 uid="uid://bved57ew1uwnh"]
 
-[ext_resource type="Script" path="res://Game/Boss/BossScript1.gd" id="1_o6v8p"]
-[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="2_vxbrp"]
+[ext_resource type="Script" path="res://Game/Boss/BossScript2.gd" id="1_xm22v"]
+[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="2_x6yen"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
 
@@ -16,9 +16,9 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcdo3"]
 radius = 12.0
 
-[node name="BossType1" type="CharacterBody2D" groups=["Enemy"]]
+[node name="BossType2" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 32
-script = ExtResource("1_o6v8p")
+script = ExtResource("1_xm22v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4.76837e-07, -4.76837e-07)
@@ -64,20 +64,22 @@ shape = SubResource("CircleShape2D_dcdo3")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="Bounce" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_vxbrp")
+stream = ExtResource("2_x6yen")
 bus = &"SoundFX"
 
 [node name="CrashWall" type="Timer" parent="."]
 
 [node name="Shoot" type="Timer" parent="."]
+wait_time = 0.1
 autostart = true
 
 [node name="ToggleMovement" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 10.0
 
 [connection signal="area_entered" from="ChangeDirection" to="." method="_on_enemytype1_area_entered"]
 [connection signal="area_entered" from="ChangeDirection" to="." method="_on_Wall_body_entered"]
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="Shoot" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Shoot" to="." method="_on_shoot_timeout"]
 [connection signal="timeout" from="ToggleMovement" to="." method="_on_toggle_movement_timeout"]

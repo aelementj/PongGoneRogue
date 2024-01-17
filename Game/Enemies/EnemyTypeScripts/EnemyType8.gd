@@ -30,6 +30,7 @@ func _process(delta):
 	# Update the enemy's position
 	enemy_position = position
 
+
 	# Move the enemytype1 horizontally
 	velocity = custom_velocity
 	move_and_slide()
@@ -63,7 +64,6 @@ func get_enemy_position():
 
 # Function called when the shoot_timer times out
 func _on_shoot_timer_timeout():
-	# Instantiate the laser beam scene
 	var laser_beam_instance = laser_beam_scene.instantiate()
 	add_child(laser_beam_instance)
 
