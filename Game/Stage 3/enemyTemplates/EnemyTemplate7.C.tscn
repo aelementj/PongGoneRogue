@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://t854cd2l1ror"]
 
-[ext_resource type="PackedScene" uid="uid://dphgaso2l3hkj" path="res://Game/Enemies/EnemyBurst.tscn" id="5_bc1lb"]
+[ext_resource type="PackedScene" uid="uid://dphgaso2l3hkj" path="res://Game/Enemies/Spawners/EnemyBurst.tscn" id="5_bc1lb"]
 [ext_resource type="PackedScene" uid="uid://8rtuiq6td7wg" path="res://Game/Enemies/PlayerTracker.tscn" id="6_8gin5"]
 
 [node name="Node2D" type="Node2D"]

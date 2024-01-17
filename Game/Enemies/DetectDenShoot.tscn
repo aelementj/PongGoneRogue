@@ -1,11 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://fgu435c4o0f2"]
+[gd_scene load_steps=9 format=3 uid="uid://fgu435c4o0f2"]
 
 [ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType2.gd" id="1_yviiu"]
 [ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="2_0i4c7"]
+[ext_resource type="Texture2D" uid="uid://bysqklgkd8ona" path="res://assets/enemies/Frankenstein/FrankensteinNoShadow/1stFrankensteinNoShadow.png" id="2_k7hvj"]
+[ext_resource type="Texture2D" uid="uid://d7ync1n28kt5" path="res://assets/enemies/Frankenstein/FrankensteinNoShadow/4thFrankensteinNoShadow.png" id="5_4rnn2"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_w4kcy"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_u4rr2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k7hvj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4rnn2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
 radius = 12.0
@@ -19,27 +31,11 @@ radius = 12.0
 [node name="DetectDenShoot" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_yviiu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, -4.76837e-07)
-rotation = 0.785398
-scale = Vector2(24, 24)
-texture = SubResource("CanvasTexture_1na0g")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.34902, 0.34902, 0.34902, 1)
-texture_filter = 1
-position = Vector2(-0.0119742, -0.11)
-rotation = -3.14159
-scale = Vector2(33.9281, -2.69892)
-texture = SubResource("CanvasTexture_w4kcy")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(0.34902, 0.34902, 0.34902, 1)
-texture_filter = 1
-position = Vector2(0.0093255, -8)
-rotation = -3.14159
-scale = Vector2(20.6877, -2.69892)
-texture = SubResource("CanvasTexture_w4kcy")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.127302, 0.0844734)
+sprite_frames = SubResource("SpriteFrames_u4rr2")
+autoplay = "default"
+frame_progress = 0.605955
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.1, 1.1)
