@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://dkcvk78b6vw02"]
 
-[ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_2hssr"]
-[ext_resource type="PackedScene" uid="uid://c5nmurcads6mx" path="res://Game/Stage 1/Room Manager/Room Manager.tscn" id="2_52n3e"]
-[ext_resource type="PackedScene" uid="uid://dhe740i8uowko" path="res://Game/Controls/TouchInputs.tscn" id="3_k4uav"]
-[ext_resource type="PackedScene" uid="uid://n3060u0nj3f1" path="res://Game/Stage 1/Enemy Manager/EnemyManager.tscn" id="3_ldam8"]
-[ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="4_cu0mg"]
-[ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="6_g8qsp"]
-[ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="8_uc8oq"]
+[ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_6jii3"]
+[ext_resource type="PackedScene" uid="uid://c5nmurcads6mx" path="res://Game/Stage 1/Room Manager/Room Manager.tscn" id="2_6qa8x"]
+[ext_resource type="PackedScene" uid="uid://n3060u0nj3f1" path="res://Game/Stage 1/Enemy Manager/EnemyManager.tscn" id="3_wp47v"]
+[ext_resource type="PackedScene" uid="uid://dhe740i8uowko" path="res://Game/Controls/TouchInputs.tscn" id="4_876q2"]
+[ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="5_s2c54"]
+[ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="6_4jgd1"]
+[ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="7_gti6i"]
 
 [sub_resource type="Animation" id="Animation_m2066"]
 resource_name = "fade_in"
@@ -71,20 +71,20 @@ _data = {
 }
 
 [node name="GameManagerv1" type="Node"]
-script = ExtResource("1_2hssr")
+script = ExtResource("1_6jii3")
 
-[node name="Room Manager" parent="." instance=ExtResource("2_52n3e")]
+[node name="Room Manager" parent="." instance=ExtResource("2_6qa8x")]
 
-[node name="Enemy Manager" parent="." instance=ExtResource("3_ldam8")]
+[node name="Enemy Manager" parent="." instance=ExtResource("3_wp47v")]
 
 [node name="General" type="Node2D" parent="."]
 
-[node name="TouchInputs2" parent="General" instance=ExtResource("3_k4uav")]
+[node name="TouchInputs2" parent="General" instance=ExtResource("4_876q2")]
 
 [node name="Camera2D2" type="Camera2D" parent="General"]
 anchor_mode = 0
 
-[node name="Panel" parent="." instance=ExtResource("6_g8qsp")]
+[node name="Panel" parent="." instance=ExtResource("5_s2c54")]
 anchor_left = 0.396875
 anchor_top = 0.82963
 anchor_right = 0.613542
@@ -98,7 +98,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("4_cu0mg")]
+[node name="PauseMenu" parent="CanvasLayer" node_paths=PackedStringArray("game_manager") instance=ExtResource("6_4jgd1")]
 process_mode = 2
 visible = false
 game_manager = NodePath("../..")
@@ -119,7 +119,7 @@ color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Select" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_uc8oq")
+stream = ExtResource("7_gti6i")
 bus = &"SoundFX"
 
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
