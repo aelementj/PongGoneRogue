@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://defdqaa6lw018"]
+
+[ext_resource type="PackedScene" uid="uid://bved57ew1uwnh" path="res://Game/Boss/BossType2.tscn" id="1_602sx"]
+[ext_resource type="Script" path="res://Game/Boss/Boss2HPbar.gd" id="2_uvl70"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2t50b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqlhy"]
+bg_color = Color(0.827451, 0.113725, 0.0823529, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BossType2" parent="." instance=ExtResource("1_602sx")]
+position = Vector2(480, 152)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 448.0
+offset_top = 176.0
+offset_right = 512.0
+offset_bottom = 184.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2t50b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xqlhy")
+max_value = 8.0
+step = 1.0
+value = 8.0
+show_percentage = false
+script = ExtResource("2_uvl70")
