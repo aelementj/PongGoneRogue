@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyxyx2fdaui7b"]
+
+[ext_resource type="PackedScene" uid="uid://bgm5jgp6kyw7l" path="res://Game/Enemies/EnemyShotgun.tscn" id="2_grm8u"]
+[ext_resource type="PackedScene" uid="uid://fgu435c4o0f2" path="res://Game/Enemies/DetectDenShoot.tscn" id="3_4c6pg"]
+[ext_resource type="PackedScene" uid="uid://8rtuiq6td7wg" path="res://Game/Enemies/PlayerTracker.tscn" id="5_dxisi"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PlayerTracker" parent="." instance=ExtResource("2_grm8u")]
+position = Vector2(834, 306)
+
+[node name="DetectDenShoot" parent="." instance=ExtResource("3_4c6pg")]
+position = Vector2(244, 174)
+
+[node name="DetectDenShoot2" parent="." instance=ExtResource("3_4c6pg")]
+position = Vector2(683, 242)
+
+[node name="EnemyShotgun" parent="." instance=ExtResource("5_dxisi")]
+position = Vector2(120, 108)
