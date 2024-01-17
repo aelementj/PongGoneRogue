@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bicucqak1atw0"]
+
+[ext_resource type="PackedScene" uid="uid://fgu435c4o0f2" path="res://Game/Enemies/DetectDenShoot.tscn" id="2_sult5"]
+[ext_resource type="PackedScene" uid="uid://bhfipsydwi0b2" path="res://Game/Enemies/ShowerShooterRL.tscn" id="5_sb0xo"]
+[ext_resource type="PackedScene" uid="uid://6vdhvab60k2s" path="res://Game/Enemies/EnemyTrooperLR.tscn" id="7_o3xak"]
+[ext_resource type="PackedScene" uid="uid://bvtgg1t8nplr6" path="res://Game/Enemies/EnemyTrooperRL.tscn" id="7_xivyt"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ShowerShooter" parent="." instance=ExtResource("5_sb0xo")]
+position = Vector2(843, 157)
+
+[node name="EnemyTrooper2" parent="." instance=ExtResource("7_xivyt")]
+position = Vector2(189, 215)
+
+[node name="EnemyTrooper" parent="." instance=ExtResource("7_o3xak")]
+position = Vector2(768, 216)
+
+[node name="DetectDenShoot" parent="." instance=ExtResource("2_sult5")]
+position = Vector2(379, 123)
