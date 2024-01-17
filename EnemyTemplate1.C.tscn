@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dneuc7416quhq"]
+
+[ext_resource type="PackedScene" uid="uid://ciw78c4f14hp0" path="res://Game/Enemies/ShowerShooterLR.tscn" id="5_0efk6"]
+[ext_resource type="PackedScene" uid="uid://bhfipsydwi0b2" path="res://Game/Enemies/ShowerShooterRL.tscn" id="6_d2f8k"]
+[ext_resource type="PackedScene" uid="uid://bgm5jgp6kyw7l" path="res://Game/Enemies/EnemyShotgun.tscn" id="7_l006i"]
+[ext_resource type="PackedScene" uid="uid://8rtuiq6td7wg" path="res://Game/Enemies/PlayerTracker.tscn" id="8_g6574"]
+[ext_resource type="PackedScene" uid="uid://dphgaso2l3hkj" path="res://Game/Enemies/EnemyBurst.tscn" id="9_cdjfp"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="ShowerShooter" parent="." instance=ExtResource("5_0efk6")]
+position = Vector2(115, 124)
+
+[node name="ShowerShooter2" parent="." instance=ExtResource("6_d2f8k")]
+position = Vector2(857, 163)
+
+[node name="EnemyShotgun" parent="." instance=ExtResource("7_l006i")]
+position = Vector2(226, 301)
+
+[node name="PlayerTracker" parent="." instance=ExtResource("8_g6574")]
+position = Vector2(225, 215)
+
+[node name="EnemyBurst" parent="." instance=ExtResource("9_cdjfp")]
+position = Vector2(844, 252)

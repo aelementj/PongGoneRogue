@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cucy41ofo5h06"]
+
+[ext_resource type="PackedScene" uid="uid://dbtweruceh6m3" path="res://Game/Enemies/EnemyTrooperDU.tscn" id="5_er03u"]
+[ext_resource type="PackedScene" uid="uid://dvnbbn4ixp5ky" path="res://Game/Enemies/EnemySniper.tscn" id="6_vyk27"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EnemyTrooperDU" parent="." instance=ExtResource("5_er03u")]
+position = Vector2(191, 162)
+
+[node name="EnemyTrooperDU2" parent="." instance=ExtResource("5_er03u")]
+position = Vector2(480, 105)
+
+[node name="EnemyTrooperDU3" parent="." instance=ExtResource("5_er03u")]
+position = Vector2(769, 162)
+
+[node name="EnemySniper" parent="." instance=ExtResource("6_vyk27")]
+position = Vector2(326, 222)
+
+[node name="EnemySniper2" parent="." instance=ExtResource("6_vyk27")]
+position = Vector2(667, 225)
