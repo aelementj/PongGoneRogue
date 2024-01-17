@@ -110,7 +110,6 @@ libraries = {
 }
 
 [node name="ColorRect" type="ColorRect" parent="Transition"]
-z_index = 5
 anchors_preset = -1
 anchor_left = -0.25
 anchor_top = -0.333333

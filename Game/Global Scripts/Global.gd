@@ -134,6 +134,18 @@ func increase_player_mana():
 	emit_signal("mana_increased")
 	print("Player mana increased. Remaining mana: ", mana_count)
 
+func increase_mana_cap():
+	max_mana_count += 1
+
+func reduce_mana_cd():
+	emit_signal("reduce_cd_mana")
+signal reduce_cd_mana
+
+func reset_mana_cd():
+	emit_signal("reset_cd_mana")
+	print("mana cd resetted")
+signal reset_cd_mana
+
 func reset_player_mana():
 	mana_count = 3
 	max_mana_count = 3

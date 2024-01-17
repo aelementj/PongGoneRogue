@@ -29,6 +29,8 @@ func _ready():
 	Global.connect("ball_decreased", removeBall)
 	Global.connect("mana_increased", addMana)
 	Global.connect("mana_decreased", removeMana)
+	Global.connect("reduce_cd_mana", reduce_mana_regen)
+	Global.connect("reset_cd_mana", reset_mana_regen)
 
 	# Create and connect the mana regeneration timer
 	regen_mana_timer = Timer.new()
@@ -105,3 +107,16 @@ func removeMana():
 	updateManaVisual()
 	if Global.mana_count < Global.max_mana_count:
 		regen_mana_timer.start()
+
+func reduce_mana_regen():
+	regen_mana_interval -= 0.1
+	regen_mana_timer.wait_time = regen_mana_interval
+
+func reset_mana_regen():
+	regen_mana_interval = 1
+	regen_mana_timer.wait_time = regen_mana_interval
+	
+
+func _process(delta):
+	if Input.is_action_just_pressed("test10"):
+		reduce_mana_regen()

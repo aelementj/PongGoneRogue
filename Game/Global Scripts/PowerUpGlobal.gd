@@ -1,6 +1,6 @@
 extends Node
 
-var playerPowerUps: Array = ["SpeedUp", "TeleportCooldown", "AddLife"]
+var playerPowerUps: Array = ["SpeedUp", "TeleportCooldown", "AddLife", "AddMana", "ManaRegen", "TeleportDistance"]
 var ballPowerUps: Array = ["AddBall", "BallSpeed"]
 var mixedPowerUps: Array = []  # Array to track assigned power-ups for both player and ball
 
@@ -54,11 +54,18 @@ func clearInitiatedDoors():
 func applyPowerUpToPlayer(player: PlayerBody, powerUpType: String):
 	match powerUpType:
 		"SpeedUp":
-			player.speed *= 1.5  # Increase player's speed by 50%
+			player.speed *= 1.05  # Increase player's speed by 50%
 		"TeleportCooldown":
-			player.teleport_cooldown /= 2  # Halve player's teleport cooldown
+			player.teleport_cooldown -= 0.2  # Halve player's teleport cooldown
+		"TeleportDistance":
+			player.teleport_distance += 10
 		"AddLife":
 			Global.increase_player_lives()
+		"AddMana":
+			Global.increase_mana_cap()
+		"ManaRegen":
+			Global.reduce_mana_cd()
+		
 
 func applyPowerUpToAllBalls(powerUpType: String):
 	for ball in Global.get_initiated_balls():

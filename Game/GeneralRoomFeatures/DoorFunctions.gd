@@ -66,6 +66,9 @@ func updatePowerUpIcon():
 		"TeleportCooldown":
 			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (3).png")
 			PowerUpIcon.scale = Vector2(1, 1)
+		"TeleportDistance":
+			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (8).png")
+			PowerUpIcon.scale = Vector2(1, 1)
 		"AddLife":
 			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (4).png")
 			PowerUpIcon.scale = Vector2(1, 1)
@@ -74,6 +77,12 @@ func updatePowerUpIcon():
 			PowerUpIcon.scale = Vector2(1, 1)
 		"AddBall":
 			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0.png")
+			PowerUpIcon.scale = Vector2(1, 1)
+		"AddMana":
+			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (6).png")
+			PowerUpIcon.scale = Vector2(1, 1)
+		"ManaRegen":
+			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (7).png")
 			PowerUpIcon.scale = Vector2(1, 1)
 
 
