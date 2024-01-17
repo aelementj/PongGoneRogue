@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctxa8g770piil"]
+[gd_scene load_steps=5 format=3 uid="uid://ctxa8g770piil"]
 
-[ext_resource type="PackedScene" uid="uid://c0i4vgrqne7di" path="res://Game/Enemies/Spawners/RandomEnemySpawner.tscn" id="2_evjwk"]
+[ext_resource type="PackedScene" uid="uid://fgu435c4o0f2" path="res://Game/Enemies/DetectDenShoot.tscn" id="1_hn6lg"]
+[ext_resource type="PackedScene" uid="uid://dphgaso2l3hkj" path="res://Game/Enemies/Spawners/EnemyBurst.tscn" id="2_ddp0l"]
+[ext_resource type="PackedScene" uid="uid://cnx5ho24c13vj" path="res://Game/Enemies/CommonShooter.tscn" id="3_cmnqg"]
+[ext_resource type="PackedScene" uid="uid://8rtuiq6td7wg" path="res://Game/Enemies/PlayerTracker.tscn" id="4_or8l0"]
 
 [node name="Node2D2" type="Node2D"]
 
-[node name="RandomEnemySpawner" parent="." instance=ExtResource("2_evjwk")]
-position = Vector2(472, 176)
+[node name="DetectDenShoot" parent="." instance=ExtResource("1_hn6lg")]
+position = Vector2(84, 112)
+
+[node name="EnemyBurst" parent="." instance=ExtResource("2_ddp0l")]
+position = Vector2(226, 178)
+
+[node name="CommonShooter" parent="." instance=ExtResource("3_cmnqg")]
+position = Vector2(711, 50)
+
+[node name="PlayerTracker" parent="." instance=ExtResource("4_or8l0")]
+position = Vector2(672, 250)
