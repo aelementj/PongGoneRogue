@@ -22,16 +22,23 @@ var boss_count : int = 0
 func _ready():
 	# Initialize available enemy template paths with your 12 enemy templates
 	available_enemy_templates = [
-		"res://Game/Stage 2/enemy templates stage 2/EnemyTemplate1.tscn",
-		"res://Game/Stage 2/enemy templates stage 2/EnemyTemplate2.tscn",
-		"res://Game/Stage 2/enemy templates stage 2/EnemyTemplate3.tscn",
-		"res://Game/Stage 2/enemy templates stage 2/EnemyTemplate4.tscn",
-		"res://Game/Stage 2/enemy templates stage 2/EnemyTemplate5.tscn"
+		"res://Game/Stage 2/room1.2.tscn",
+		"res://Game/Stage 2/room2.2.tscn",
+		"res://Game/Stage 2/room3.2.tscn",
+		"res://Game/Stage 2/room4.2.tscn",
+		"res://Game/Stage 2/room5.2.tscn",
+		"res://Game/Stage 2/room6.2.tscn",
+		"res://Game/Stage 2/room7.2.tscn",
+		"res://Game/Stage 2/room8.2.tscn",
+		"res://Game/Stage 2/room9.2.tscn",
+		"res://Game/Stage 2/room10.2.tscn",
+		"res://Game/Stage 2/room11.2.tscn",
+		"res://Game/Stage 2/room12.2.tscn"
 	]
 
 	# Initialize available boss template paths with your boss templates
 	boss_templates = [
-		"res://Game/Stage 1/Enemy Manager/BossTemplates/BossTemplate1.tscn",
+		"res://Game/Stage 2/enemyTemplates/bossTemplates/BossTemplate2.tscn",
 		# Add more boss templates as needed
 	]
 

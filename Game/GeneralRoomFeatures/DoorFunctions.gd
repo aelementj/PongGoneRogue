@@ -61,29 +61,29 @@ func updatePowerUpIcon():
 	# Assuming each power-up has a corresponding texture
 	match assignedPowerUp:
 		"SpeedUp":
-			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (2).png")
-			PowerUpIcon.scale = Vector2(1, 1)
+			PowerUpIcon.texture = preload("res://assets/Buttons by deo/PlayerSPD.png")
+			PowerUpIcon.scale = Vector2(0.2, 0.15)
 		"TeleportCooldown":
-			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (3).png")
-			PowerUpIcon.scale = Vector2(1, 1)
+			PowerUpIcon.texture = preload("res://assets/Buttons by deo/Teleport CD.png")
+			PowerUpIcon.scale = Vector2(0.2, 0.15)
 		"TeleportDistance":
-			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (8).png")
-			PowerUpIcon.scale = Vector2(1, 1)
+			PowerUpIcon.texture = preload("res://assets/Buttons by deo/Teleport.png")
+			PowerUpIcon.scale = Vector2(0.2, 0.15)
 		"AddLife":
-			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (4).png")
-			PowerUpIcon.scale = Vector2(1, 1)
+			PowerUpIcon.texture = preload("res://assets/Buttons by deo/Add Health.png")
+			PowerUpIcon.scale = Vector2(0.2, 0.15)
 		"BallSpeed":
-			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (1).png")
-			PowerUpIcon.scale = Vector2(1, 1)
+			PowerUpIcon.texture = preload("res://assets/Buttons by deo/Add BallSPD.png")
+			PowerUpIcon.scale = Vector2(0.2, 0.15)
 		"AddBall":
-			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0.png")
-			PowerUpIcon.scale = Vector2(1, 1)
+			PowerUpIcon.texture = preload("res://assets/Buttons by deo/AddBall.png")
+			PowerUpIcon.scale = Vector2(0.2, 0.15)
 		"AddMana":
-			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (6).png")
-			PowerUpIcon.scale = Vector2(1, 1)
+			PowerUpIcon.texture = preload("res://assets/Buttons by deo/Add Mana.png")
+			PowerUpIcon.scale = Vector2(0.2, 0.15)
 		"ManaRegen":
-			PowerUpIcon.texture = preload("res://assets/Doors/pixil-frame-0 (7).png")
-			PowerUpIcon.scale = Vector2(1, 1)
+			PowerUpIcon.texture = preload("res://assets/Buttons by deo/ManaCD.png")
+			PowerUpIcon.scale = Vector2(0.2, 0.15)
 
 
 

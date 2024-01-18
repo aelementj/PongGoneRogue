@@ -33,7 +33,7 @@ func _ready():
 		"res://Game/Stage 1/Enemy Manager/EnemyTemplates/EnemyTemplate9.tscn",
 		"res://Game/Stage 1/Enemy Manager/EnemyTemplates/EnemyTemplate10.tscn",
 		"res://Game/Stage 1/Enemy Manager/EnemyTemplates/EnemyTemplate11.tscn",
-		"res://Game/Stage 1/Enemy Manager/EnemyTemplates/EnemyTemplate12.tscn"
+		"res://Game/Stage 1/Enemy Manager/EnemyTemplates/EnemyTemplate12.tscn",
 	]
 
 	# Initialize available boss template paths with your boss templates
@@ -120,8 +120,10 @@ func _on_ball_entered_any_open_door():
 		# Load the next boss template
 		next_enemy_path = boss_templates.pop_back()
 		boss_count += 1
+		
 
 	if next_enemy_path != "":
 		instantiate_new_enemy(next_enemy_path)
 	else:
 		print("No available enemies")
+

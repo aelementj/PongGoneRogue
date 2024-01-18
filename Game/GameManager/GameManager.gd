@@ -10,6 +10,8 @@ func _ready():
 	PowerUpGlobal.reassignPowerUpToNullDoor()
 
 
+
+
 signal toggle_game_paused(is_paused : bool)
 var game_paused : bool = false:
 	get:
@@ -27,10 +29,15 @@ func _input(event : InputEvent):
 func _process(delta):
 	if not is_player_valid() and Global.player_lives == 0:
 		game_paused = !game_paused
+		$BGM.stop()
 		$Select.play()
 	if Global.player_reference == null and Global.player_lives > 0:
 		Global.spawn_player()
 		print("player spawned")
+	
+	if $BGM.playing == false:
+		$BGM.play()
+		print("replay")
 
 func is_player_valid() -> bool:
 	return Global.get_player_reference() != null

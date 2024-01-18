@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://yciq1ay6fqw7"]
+[gd_scene load_steps=12 format=3 uid="uid://yciq1ay6fqw7"]
 
 [ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_84d5v"]
 [ext_resource type="PackedScene" uid="uid://be6iwkoxg8t24" path="res://Game/Stage 2/Managers/Stage2RoomManager.tscn" id="2_g830j"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dhe740i8uowko" path="res://Game/Controls/TouchInputs.tscn" id="5_wajmn"]
 [ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="6_psvhs"]
 [ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="7_a2ibl"]
+[ext_resource type="AudioStream" uid="uid://d2yfej5bcd1v6" path="res://Music/Joshua McLean - Mountain Trials ♫ NO COPYRIGHT 8-bit Music.mp3" id="8_7rcjv"]
 [ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="8_mp1qb"]
 
 [sub_resource type="Animation" id="Animation_m2066"]
@@ -73,7 +74,7 @@ _data = {
 [node name="GameManagerv1" type="Node"]
 script = ExtResource("1_84d5v")
 
-[node name="Room Manager(Stage1)" parent="." instance=ExtResource("2_g830j")]
+[node name="Room Manager(Stage2)" parent="." instance=ExtResource("2_g830j")]
 
 [node name="Enemy Manager (Stage2)" parent="." instance=ExtResource("3_c4qas")]
 
@@ -121,6 +122,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_mp1qb")
 bus = &"SoundFX"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_7rcjv")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
 [connection signal="animation_started" from="Transition" to="." method="_on_transition_animation_started"]

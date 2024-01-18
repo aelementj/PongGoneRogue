@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://be6iwkoxg8t24"]
 
 [ext_resource type="Script" path="res://Game/Stage 2/Managers/Stage2RoomManager.gd" id="1_wid8d"]
-[ext_resource type="PackedScene" uid="uid://cadplmf1dy7v6" path="res://Game/Stage 1/Room 00.tscn" id="2_8cbyd"]
+[ext_resource type="PackedScene" uid="uid://ba020xh1158q2" path="res://Game/Stage 3/room0.3.tscn" id="2_gmtu0"]
 [ext_resource type="PackedScene" uid="uid://jshsl3wma2d6" path="res://Game/GeneralRoomFeatures/wall.tscn" id="3_6ety2"]
 [ext_resource type="PackedScene" uid="uid://7m1y0376rbvh" path="res://Game/GeneralRoomFeatures/ball_catcher.tscn" id="4_ag5cl"]
 
 [node name="Room Manager(Stage2)" type="Node"]
 script = ExtResource("1_wid8d")
 
-[node name="Room 0" parent="." instance=ExtResource("2_8cbyd")]
+[node name="Room 1" parent="." instance=ExtResource("2_gmtu0")]
 
 [node name="Wall" parent="." instance=ExtResource("3_6ety2")]
 

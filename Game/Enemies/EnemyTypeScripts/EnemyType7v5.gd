@@ -41,7 +41,7 @@ func _physics_process(delta):
 
 	# Move the character up and down
 	velocity = Vector2(0, direction * SPEED)
-	move_and_slide(velocity)
+	move_and_slide()
 
 # Function to aim towards the player's position
 func aim_towards_player():

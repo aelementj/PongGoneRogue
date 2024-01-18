@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dpkiiqbv67r36"
+path="res://.godot/imported/8 BIT RPG BATTLE 🕹️ Retro Game Music _ No Copyright Music.mp3-f02fcd47fbe14ca12fb8a99d18e492db.mp3str"
+
+[deps]
+
+source_file="res://Music/8 BIT RPG BATTLE 🕹️ Retro Game Music _ No Copyright Music.mp3"
+dest_files=["res://.godot/imported/8 BIT RPG BATTLE 🕹️ Retro Game Music _ No Copyright Music.mp3-f02fcd47fbe14ca12fb8a99d18e492db.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

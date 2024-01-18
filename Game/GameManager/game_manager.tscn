@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkcvk78b6vw02"]
+[gd_scene load_steps=12 format=3 uid="uid://dkcvk78b6vw02"]
 
 [ext_resource type="Script" path="res://Game/GameManager/GameManager.gd" id="1_6jii3"]
 [ext_resource type="PackedScene" uid="uid://c5nmurcads6mx" path="res://Game/Stage 1/Room Manager/Room Manager.tscn" id="2_6qa8x"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b5xy7t55ji1qe" path="res://Game/Player/Player_Info.tscn" id="5_s2c54"]
 [ext_resource type="PackedScene" uid="uid://d138lauggmjjj" path="res://Game/Pause/pause_menu.tscn" id="6_4jgd1"]
 [ext_resource type="AudioStream" uid="uid://b1kf4ix6tc4c8" path="res://assets/SoundEffects/blipSelect.wav" id="7_gti6i"]
+[ext_resource type="AudioStream" uid="uid://da5qwul4a0xto" path="res://Music/New Game Minus - RoccoW _ Chiptune [No Copyright Music].mp3" id="8_081yq"]
 
 [sub_resource type="Animation" id="Animation_m2066"]
 resource_name = "fade_in"
@@ -121,6 +122,12 @@ metadata/_edit_use_anchors_ = true
 [node name="Select" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_gti6i")
 bus = &"SoundFX"
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_081yq")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="animation_finished" from="Transition" to="." method="_on_transition_animation_finished"]
 [connection signal="animation_started" from="Transition" to="." method="_on_transition_animation_started"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://do1umi2g3i4js"
+path="res://.godot/imported/8 Bit Music - Action Man (Mega Man Style Chiptune).mp3-10dd88307a2e217161524a6c0a3f0806.mp3str"
+
+[deps]
+
+source_file="res://Music/8 Bit Music - Action Man (Mega Man Style Chiptune).mp3"
+dest_files=["res://.godot/imported/8 Bit Music - Action Man (Mega Man Style Chiptune).mp3-10dd88307a2e217161524a6c0a3f0806.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

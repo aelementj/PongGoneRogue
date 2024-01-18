@@ -19,21 +19,21 @@ var room_count : int = 0
 func _ready():
 	# Initialize available room paths with your 12 room scenes
 	available_rooms = [
-		"res://Game/Stage 2/room1.2.tscn",
-		"res://Game/Stage 2/room2.2.tscn",
-		"res://Game/Stage 2/room3.2.tscn",
-		"res://Game/Stage 2/room4.2.tscn",
-		"res://Game/Stage 2/room5.2.tscn",
-		"res://Game/Stage 2/room6.2.tscn",
-		"res://Game/Stage 2/room7.2.tscn",
-		"res://Game/Stage 2/room8.2.tscn",
-		"res://Game/Stage 2/room9.2.tscn",
-		"res://Game/Stage 2/room10.2.tscn",
-		"res://Game/Stage 2/room11.2.tscn",
-		"res://Game/Stage 2/room12.2.tscn"
+		"res://Game/Stage 3/room1.3.tscn",
+		"res://Game/Stage 3/room2.3.tscn",
+		"res://Game/Stage 3/room3.3.tscn",
+		"res://Game/Stage 3/room4.3.tscn",
+		"res://Game/Stage 3/room5.3.tscn",
+		"res://Game/Stage 3/room6.3.tscn",
+		"res://Game/Stage 3/room7.3.tscn",
+		"res://Game/Stage 3/room8.3.tscn",
+		"res://Game/Stage 3/room9.3.tscn",
+		"res://Game/Stage 3/room10.3.tscn",
+		"res://Game/Stage 3/room11.3.tscn",
+		"res://Game/Stage 3/room12.3.tscn"
 	]
 	
-	boss_room = ["res://Game/Stage 2/boss_room2tscn.tscn"]
+	boss_room = ["res://Game/Stage 3/boss_room3.tscn"]
 	
 	# Shuffle the available rooms
 	available_rooms.shuffle()

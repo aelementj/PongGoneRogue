@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://dphgaso2l3hkj"]
+
+[ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType5.gd" id="1_owyj6"]
+[ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="2_btset"]
+[ext_resource type="Texture2D" uid="uid://bg8stc3mi2i24" path="res://assets/enemies/Pig/PigNoShadow/1stPigNoShadow.png" id="2_jauda"]
+[ext_resource type="Texture2D" uid="uid://5v6d0mvc8smc" path="res://assets/enemies/Pig/PigNoShadow/2ndPigNoShadow.png" id="3_iq855"]
+[ext_resource type="Texture2D" uid="uid://b1d31o3qnkw8n" path="res://assets/enemies/Pig/PigNoShadow/3rdPigNoShadow.png" id="4_8ya3l"]
+[ext_resource type="Texture2D" uid="uid://bq1j7enn7atsg" path="res://assets/enemies/Pig/PigNoShadow/4thPigNoShadow.png" id="5_26y1r"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g72bp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jauda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iq855")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8ya3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_26y1r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1l2sv"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dcdo3"]
+radius = 12.0
+
+[node name="EnemyBurst" type="CharacterBody2D" groups=["Enemy"]]
+script = ExtResource("1_owyj6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0916677, 0.082079)
+sprite_frames = SubResource("SpriteFrames_g72bp")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.1, 1.1)
+shape = SubResource("CircleShape2D_p6g2v")
+
+[node name="ChangeDirection" type="Area2D" parent="." groups=["Enemy"]]
+scale = Vector2(1.05, 1.05)
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeDirection"]
+shape = SubResource("CircleShape2D_1l2sv")
+
+[node name="HitBox" type="Area2D" parent="." groups=["Enemy"]]
+scale = Vector2(1.1, 1.1)
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_dcdo3")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Bounce" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_btset")
+bus = &"SoundFX"
+
+[connection signal="area_entered" from="ChangeDirection" to="." method="_on_enemytype1_area_entered"]
+[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_shoot_timer_timeout"]

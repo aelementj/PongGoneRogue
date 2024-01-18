@@ -24,6 +24,7 @@ func _process(delta):
 		speed = player.speed
 		teleport_cooldown = player.teleport_cooldown
 		can_teleport = player.can_teleport
+		teleport_distance = player.teleport_distance
 		# Update previous position
 		previous_position = position
 	else:

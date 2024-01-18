@@ -33,7 +33,7 @@ func _ready():
 		"res://Game/Stage 2/room12.2.tscn"
 	]
 	
-	boss_room = ["res://Game/Stage 2/boss_room2tscn.tscn"]
+	boss_room = ["res://Game/Stage 2/boss_room2.tscn"]
 	
 	# Shuffle the available rooms
 	available_rooms.shuffle()

@@ -8,9 +8,9 @@
 [node name="Room Manager(Stage1)" type="Node"]
 script = ExtResource("1_ndnbu")
 
+[node name="Room 0" parent="." instance=ExtResource("4_13myg")]
+
 [node name="Wall" parent="." instance=ExtResource("2_521tg")]
 
 [node name="Ball Catcher" parent="." instance=ExtResource("7_upq1u")]
 position = Vector2(0, -8)
-
-[node name="Room 0" parent="." instance=ExtResource("4_13myg")]

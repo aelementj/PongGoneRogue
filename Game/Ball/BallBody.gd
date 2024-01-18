@@ -4,6 +4,8 @@ class_name BallBody
 var initial_ball_speed : float = 500
 var speed_reduction : float = 50
 var velocity : Vector2 = Vector2.ZERO
+var is_bouncing_towards_player : bool = false
+var bounce_timer : Timer
 
 var initial_player_x : float = 0
 var initial_player_y : float = 0
@@ -22,11 +24,16 @@ func _ready():
 	Global.set_ball_reference(self)
 	reset_to_initial_position()
 
+	# Initialize and connect the bounce timer
+	bounce_timer = Timer.new()
+	bounce_timer.one_shot = true
+	bounce_timer.connect("timeout", _on_bounce_timer_timeout)
+	add_child(bounce_timer)
 
 func _process(delta):
 	if not is_player_valid():
 		velocity = Vector2.ZERO
-	
+
 	var collision_info = move_and_collide(velocity * delta)
 	if collision_info:
 		var collision_normal = collision_info.get_normal()
@@ -34,22 +41,40 @@ func _process(delta):
 		velocity.x *= 1
 		velocity.y *= 1
 		print(velocity)
-		
+
 		if not $Bounce.is_playing():
 			$Bounce.play()
-		
+
 		var current_speed = velocity.length()
-		
+
 		if current_speed > initial_ball_speed:
 			velocity = velocity.normalized() * initial_ball_speed
 			if current_speed > initial_ball_speed:
 				velocity = velocity.normalized() * initial_ball_speed
-				
 
+	# Check for input press ("ui_accept")
+	if Input.is_action_pressed("ui_accept"):
+		if !is_bouncing_towards_player:
+			# Start the timer only if not already bouncing towards player
+			if not bounce_timer.is_queued_for_deletion():
+				bounce_timer.wait_time = 2.0
+				bounce_timer.start()
+			is_bouncing_towards_player = true
+	else:
+		# Reset the timer if "ui_accept" is released
+		bounce_timer.stop()
+		is_bouncing_towards_player = false
+
+func _on_bounce_timer_timeout():
+	is_bouncing_towards_player = false
+	# Bounce towards the direction of the player after the next bounce
+	var player_position = Global.get_player_reference().position
+	var bounce_direction = (player_position - position).normalized()
+	velocity = bounce_direction * initial_ball_speed
+	print("Bouncing towards player")
 
 func _integrate_forces(state):
 	state.linear_velocity = velocity
-
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("Player") and not Global.mana_count == 0:
