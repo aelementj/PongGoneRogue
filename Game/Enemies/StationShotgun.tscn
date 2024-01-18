@@ -1,9 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://cps0lq3iunjfe"]
+[gd_scene load_steps=11 format=3 uid="uid://bxet0duwmh3vi"]
 
 [ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType9.gd" id="1_0htp6"]
+[ext_resource type="Texture2D" uid="uid://ct35fhoni32lr" path="res://assets/enemies/Lizard/LizardNoShadow/1stLizardNoShadow.png" id="2_auhf8"]
 [ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="3_f1g4f"]
+[ext_resource type="Texture2D" uid="uid://c52ivcgdanyya" path="res://assets/enemies/Lizard/LizardNoShadow/2ndLizardNoShadow.png" id="3_vohag"]
+[ext_resource type="Texture2D" uid="uid://dqw51jhl6aql8" path="res://assets/enemies/Lizard/LizardNoShadow/3rdLizardNoShadow.png" id="4_o2qgi"]
+[ext_resource type="Texture2D" uid="uid://bc6a64oadu6sn" path="res://assets/enemies/Lizard/LizardNoShadow/4thLizardNoShadow.png" id="5_thq72"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8mpm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_auhf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vohag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_o2qgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_thq72")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
 radius = 12.0
@@ -14,16 +36,14 @@ radius = 12.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcdo3"]
 radius = 12.0
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_e85w8"]
-
 [node name="StationShotGun" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_0htp6")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, -4.76837e-07)
-rotation = 0.785398
-scale = Vector2(24, 24)
-texture = SubResource("CanvasTexture_1na0g")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.0917135, 0.119043)
+sprite_frames = SubResource("SpriteFrames_w8mpm")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.1, 1.1)
@@ -45,14 +65,6 @@ collision_mask = 32
 shape = SubResource("CircleShape2D_dcdo3")
 
 [node name="Timer" type="Timer" parent="."]
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.713726, 0, 0, 1)
-texture_filter = 1
-position = Vector2(-0.0119742, -0.11)
-rotation = -3.14159
-scale = Vector2(33.9281, -2.69892)
-texture = SubResource("CanvasTexture_e85w8")
 
 [node name="Bounce" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_f1g4f")

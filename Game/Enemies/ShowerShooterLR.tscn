@@ -2,10 +2,18 @@
 
 [ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType8.gd" id="1_rxyy7"]
 [ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="2_6dyc2"]
+[ext_resource type="Texture2D" uid="uid://criqxgdwvallv" path="res://assets/trooper/Shower.png" id="2_iuovo"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_kn10g"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlejx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_iuovo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
 radius = 12.0
@@ -19,19 +27,9 @@ radius = 12.0
 [node name="ShowerShooter" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_rxyy7")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, -4.76837e-07)
-rotation = 0.785398
-scale = Vector2(24, 24)
-texture = SubResource("CanvasTexture_1na0g")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.34902, 0.34902, 0.34902, 1)
-texture_filter = 1
-position = Vector2(-0.0119742, -0.11)
-rotation = 3.14159
-scale = Vector2(33.9281, -2.69892)
-texture = SubResource("CanvasTexture_kn10g")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0744747, 0.0913035)
+sprite_frames = SubResource("SpriteFrames_jlejx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.1, 1.1)

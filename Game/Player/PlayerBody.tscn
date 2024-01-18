@@ -1,12 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cl6yptsb1vtb5"]
+[gd_scene load_steps=7 format=3 uid="uid://cl6yptsb1vtb5"]
 
 [ext_resource type="Script" path="res://Game/Player/PlayerBody.gd" id="1_p3u1d"]
+[ext_resource type="Texture2D" uid="uid://ctt451akfyfxi" path="res://Game/Legion-20240118T000005Z-001/Legion/LegionNoShadow/IngameLegionNoShadow.png" id="2_3e1v3"]
 [ext_resource type="AudioStream" uid="uid://dugylqicfuet6" path="res://assets/SoundEffects/random.wav" id="2_63oum"]
 [ext_resource type="AudioStream" uid="uid://bydo5wwaqmfo1" path="res://assets/SoundEffects/hitHurt.wav" id="3_5u8ht"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_g77fi"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_mdfa8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mhnc"]
 size = Vector2(16, 16)
@@ -18,37 +15,11 @@ collision_layer = 0
 script = ExtResource("1_p3u1d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(16, 16)
-texture = SubResource("CanvasTexture_g77fi")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0, 0.176471, 1, 1)
-position = Vector2(0, -8)
-scale = Vector2(18.15, 1.1)
-texture = SubResource("CanvasTexture_mdfa8")
-
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-modulate = Color(0, 0.176471, 1, 1)
-position = Vector2(8, 0)
-rotation = 1.5708
-scale = Vector2(18.15, 1.1)
-texture = SubResource("CanvasTexture_mdfa8")
-
-[node name="Sprite2D5" type="Sprite2D" parent="."]
-modulate = Color(0, 0.176471, 1, 1)
-position = Vector2(-8, 0)
-rotation = -1.5708
-scale = Vector2(18.15, 1.1)
-texture = SubResource("CanvasTexture_mdfa8")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(0, 0.176471, 1, 1)
-position = Vector2(0, 8)
-scale = Vector2(18.15, 1.1)
-texture = SubResource("CanvasTexture_mdfa8")
+texture_filter = 1
+scale = Vector2(0.125358, 0.0832187)
+texture = ExtResource("2_3e1v3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 shape = SubResource("RectangleShape2D_2mhnc")
 
 [node name="Timer" type="Timer" parent="."]

@@ -24,7 +24,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
@@ -40,6 +40,7 @@ radius = 12.0
 script = ExtResource("1_vr4yp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 scale = Vector2(0.0917135, 0.119043)
 sprite_frames = SubResource("SpriteFrames_g2t7w")
 autoplay = "default"

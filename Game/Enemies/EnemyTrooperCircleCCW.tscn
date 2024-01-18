@@ -1,10 +1,28 @@
-[gd_scene load_steps=14 format=3 uid="uid://7xrj702ugpk1"]
+[gd_scene load_steps=16 format=3 uid="uid://7xrj702ugpk1"]
 
 [ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType7v4.gd" id="1_fqecg"]
 [ext_resource type="Texture2D" uid="uid://crmbhq34wgn16" path="res://assets/Effects/Free  Effect Bullet Impact Explosion 32x32 V1/Red Effect Bullet Impact Explosion 32x32.png" id="2_1e4to"]
+[ext_resource type="Texture2D" uid="uid://dmkydxn8ynobv" path="res://assets/trooper/PUMP01.png" id="2_554d3"]
 [ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="3_p3q7f"]
+[ext_resource type="Texture2D" uid="uid://bdgcrnx7gu8qe" path="res://assets/trooper/PUMP02.png" id="3_xy02a"]
+[ext_resource type="Texture2D" uid="uid://tux1n8gjmamd" path="res://assets/trooper/PUMP03.png" id="4_y8jo6"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ab52i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_554d3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_xy02a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_y8jo6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.3
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
 radius = 12.0
@@ -57,16 +75,15 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_e85w8"]
-
 [node name="EnemyTrooperCircle" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_fqecg")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, -4.76837e-07)
-rotation = 0.785398
-scale = Vector2(24, 24)
-texture = SubResource("CanvasTexture_1na0g")
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+rotation = -1.55769
+scale = Vector2(0.082725, 0.0762259)
+sprite_frames = SubResource("SpriteFrames_ab52i")
+autoplay = "default"
+frame_progress = 0.463407
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.1, 1.1)
@@ -94,14 +111,6 @@ position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_bi42w")
 autoplay = "default"
 frame_progress = 0.0566564
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.713726, 0, 0, 1)
-texture_filter = 1
-position = Vector2(-0.0119742, -0.11)
-rotation = -3.14159
-scale = Vector2(33.9281, -2.69892)
-texture = SubResource("CanvasTexture_e85w8")
 
 [node name="Bounce" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_p3q7f")

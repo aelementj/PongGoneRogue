@@ -1,10 +1,32 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvnbbn4ixp5ky"]
+[gd_scene load_steps=17 format=3 uid="uid://dvnbbn4ixp5ky"]
 
 [ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType6.gd" id="1_7pnuv"]
 [ext_resource type="Texture2D" uid="uid://crmbhq34wgn16" path="res://assets/Effects/Free  Effect Bullet Impact Explosion 32x32 V1/Red Effect Bullet Impact Explosion 32x32.png" id="2_0k6t7"]
+[ext_resource type="Texture2D" uid="uid://10ce5j78yk76" path="res://assets/sniper/001Skeleton.png" id="2_14lgk"]
 [ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="3_3dytq"]
+[ext_resource type="Texture2D" uid="uid://d2qto0wodsimw" path="res://assets/sniper/002Skeleton.png" id="3_ym38v"]
+[ext_resource type="Texture2D" uid="uid://d0l8lkd6uau5b" path="res://assets/sniper/003Skeleton.png" id="4_a02c4"]
+[ext_resource type="Texture2D" uid="uid://b6hejfyw4qo1e" path="res://assets/sniper/004Skeleton.png" id="5_w8dqk"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_joe2m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_14lgk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ym38v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_a02c4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_w8dqk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
 radius = 12.0
@@ -57,16 +79,16 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_e85w8"]
-
 [node name="EnemySniper" type="CharacterBody2D" groups=["Enemy"]]
 script = ExtResource("1_7pnuv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, -4.76837e-07)
-rotation = 0.785398
-scale = Vector2(24, 24)
-texture = SubResource("CanvasTexture_1na0g")
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+rotation = -1.56929
+scale = Vector2(0.0942528, 0.0801149)
+sprite_frames = SubResource("SpriteFrames_joe2m")
+autoplay = "default"
+frame_progress = 0.99823
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.1, 1.1)
@@ -94,14 +116,6 @@ position = Vector2(16, 0)
 sprite_frames = SubResource("SpriteFrames_bi42w")
 autoplay = "default"
 frame_progress = 0.0566564
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.713726, 0, 0, 1)
-texture_filter = 1
-position = Vector2(-0.0119742, -0.11)
-rotation = -3.14159
-scale = Vector2(33.9281, -2.69892)
-texture = SubResource("CanvasTexture_e85w8")
 
 [node name="Bounce" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3dytq")
