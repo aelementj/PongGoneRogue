@@ -1,26 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://bxet0duwmh3vi"]
+[gd_scene load_steps=11 format=3 uid="uid://bpsrro7kkb78n"]
 
 [ext_resource type="Script" path="res://Game/Enemies/EnemyTypeScripts/EnemyType9.gd" id="1_0htp6"]
-[ext_resource type="Texture2D" uid="uid://ct35fhoni32lr" path="res://assets/enemies/Lizard/LizardNoShadow/1stLizardNoShadow.png" id="2_auhf8"]
+[ext_resource type="Texture2D" uid="uid://ct35fhoni32lr" path="res://assets/enemies/Lizard/LizardNoShadow/1stLizardNoShadow.png" id="2_rcnie"]
 [ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="3_f1g4f"]
-[ext_resource type="Texture2D" uid="uid://c52ivcgdanyya" path="res://assets/enemies/Lizard/LizardNoShadow/2ndLizardNoShadow.png" id="3_vohag"]
-[ext_resource type="Texture2D" uid="uid://dqw51jhl6aql8" path="res://assets/enemies/Lizard/LizardNoShadow/3rdLizardNoShadow.png" id="4_o2qgi"]
-[ext_resource type="Texture2D" uid="uid://bc6a64oadu6sn" path="res://assets/enemies/Lizard/LizardNoShadow/4thLizardNoShadow.png" id="5_thq72"]
+[ext_resource type="Texture2D" uid="uid://c52ivcgdanyya" path="res://assets/enemies/Lizard/LizardNoShadow/2ndLizardNoShadow.png" id="3_vo8p5"]
+[ext_resource type="Texture2D" uid="uid://dqw51jhl6aql8" path="res://assets/enemies/Lizard/LizardNoShadow/3rdLizardNoShadow.png" id="4_egcil"]
+[ext_resource type="Texture2D" uid="uid://bc6a64oadu6sn" path="res://assets/enemies/Lizard/LizardNoShadow/4thLizardNoShadow.png" id="5_1co8k"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w8mpm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_diw5s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_auhf8")
+"texture": ExtResource("2_rcnie")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_vohag")
+"texture": ExtResource("3_vo8p5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_o2qgi")
+"texture": ExtResource("4_egcil")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_thq72")
+"texture": ExtResource("5_1co8k")
 }],
 "loop": true,
 "name": &"default",
@@ -41,8 +41,9 @@ script = ExtResource("1_0htp6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+rotation = -1.57079
 scale = Vector2(0.0917135, 0.119043)
-sprite_frames = SubResource("SpriteFrames_w8mpm")
+sprite_frames = SubResource("SpriteFrames_diw5s")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 const SPEED = 50
 const SPEED_MULTIPLIER = 2.0
-const BULLET_COOLDOWN = 10
-const MAX_BULLETS = 50
-const BULLET_DELAY = 0.3
+const BULLET_COOLDOWN = 4
+const MAX_BULLETS = 10
+const BULLET_DELAY = 0.1
 
 var custom_velocity = Vector2()
 var enemy_position = Vector2()
@@ -19,13 +19,15 @@ var summon_instantiated : bool = false
 func _ready():
 	EnemyGlobal.instance.addInitiatedEnemy(self)
 	EnemyGlobal.instance.updateInitiatedEnemiesCount(EnemyGlobal.instance.initiatedEnemiesCount + 1)
+	initial_position = global_position
 
 	# Initialize and connect the bullet timer
 	bullet_timer.wait_time = BULLET_COOLDOWN
 	bullet_timer.one_shot = true
 	bullet_timer.connect("timeout", _on_bullet_timer_timeout)
 	add_child(bullet_timer)
-
+	
+	$ToggleMovement.start()
 
 
 func _on_bullet_timer_timeout():
@@ -42,8 +44,27 @@ func _process(delta):
 
 	enemy_position = global_position
 
+	if Input.is_action_just_pressed("test7"):
+		track_player = !track_player
 
-	aim_towards_player()
+	if Input.is_action_just_pressed("test8"):
+		instantiate_top_summon()
+		instantiate_bot_summon()
+
+	if track_player:
+		summon_instantiated = false
+		update_velocity()
+		aim_towards_player()
+	else:
+		can_shoot = false
+		move_to_initial_position()
+		if velocity == Vector2(0, 0) and summon_instantiated == false:
+			instantiate_top_summon()
+			instantiate_bot_summon()
+			summon_instantiated = true
+
+	velocity = custom_velocity
+	move_and_slide()
 
 	# Check if the enemy can shoot
 	if can_shoot and bullets_fired < MAX_BULLETS:
@@ -53,6 +74,16 @@ func _process(delta):
 		can_shoot = false
 		bullet_timer.start()
 
+func update_velocity():
+	var player_position = Global.get_player_reference().global_position
+	var distance_to_player = player_position.x - enemy_position.x
+	var speed_multiplier = lerp(1.0, SPEED_MULTIPLIER, abs(distance_to_player) / 100.0)
+	custom_velocity.x = sign(distance_to_player) * SPEED * speed_multiplier
+
+func move_to_initial_position():
+	custom_velocity.x = sign(initial_position.x - enemy_position.x) * 400
+	if abs(enemy_position.x - initial_position.x) < 4.0:
+		custom_velocity = Vector2(0, 0)
 
 func is_player_valid() -> bool:
 	return Global.get_player_reference() != null
@@ -71,7 +102,7 @@ func _on_bullet_delay_timeout():
 	bullets_fired += 1
 
 func instantiate_bullet():
-	var bullet_instance = preload("res://Game/Enemies/Bullet/BossBulletType3.tscn").instantiate()
+	var bullet_instance = preload("res://Game/Enemies/Bullet/BossBulletType2.tscn").instantiate()
 	bullet_instance.position = global_position
 	get_parent().add_child(bullet_instance)
 

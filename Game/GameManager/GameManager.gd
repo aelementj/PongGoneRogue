@@ -27,7 +27,7 @@ func _input(event : InputEvent):
 		$Select.play()
 
 func _process(delta):
-	if not is_player_valid() and Global.player_lives == 0:
+	if not is_player_valid() and Global.player_lives <= 0:
 		game_paused = !game_paused
 		$BGM.stop()
 		$Select.play()

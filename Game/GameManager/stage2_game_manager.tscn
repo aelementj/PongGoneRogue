@@ -71,7 +71,7 @@ _data = {
 "fade_out": SubResource("Animation_ydolu")
 }
 
-[node name="GameManagerv1" type="Node"]
+[node name="GameManagerv2" type="Node"]
 script = ExtResource("1_84d5v")
 
 [node name="Room Manager(Stage2)" parent="." instance=ExtResource("2_g830j")]

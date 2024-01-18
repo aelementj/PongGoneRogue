@@ -1,20 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bved57ew1uwnh"]
+[gd_scene load_steps=7 format=3 uid="uid://bvfadp1355gev"]
 
 [ext_resource type="Script" path="res://Game/Boss/BossScript2.gd" id="1_xm22v"]
+[ext_resource type="Texture2D" uid="uid://cla3bq3rhag8r" path="res://assets/Monster00.png" id="2_cj4s4"]
 [ext_resource type="AudioStream" uid="uid://cj1imoycxevqm" path="res://assets/SoundEffects/hitHurt (1).wav" id="2_x6yen"]
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_1na0g"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_w4kcy"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6g2v"]
-radius = 12.0
+radius = 37.0838
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1l2sv"]
-radius = 12.0
+radius = 38.8497
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dcdo3"]
-radius = 12.0
+radius = 37.0838
 
 [node name="BossType2" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 32
@@ -22,25 +19,9 @@ script = ExtResource("1_xm22v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4.76837e-07, -4.76837e-07)
-rotation = 0.785398
-scale = Vector2(24, 24)
-texture = SubResource("CanvasTexture_1na0g")
-
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-modulate = Color(0.34902, 0.34902, 0.34902, 1)
-texture_filter = 1
-position = Vector2(-0.0119742, -0.11)
-rotation = -3.14159
-scale = Vector2(33.9281, -2.69892)
-texture = SubResource("CanvasTexture_w4kcy")
-
-[node name="Sprite2D3" type="Sprite2D" parent="."]
-modulate = Color(0.34902, 0.34902, 0.34902, 1)
-texture_filter = 1
-position = Vector2(0.0093255, -8)
-rotation = -3.14159
-scale = Vector2(20.6877, -2.69892)
-texture = SubResource("CanvasTexture_w4kcy")
+rotation = 3.14159
+scale = Vector2(0.329433, 0.326025)
+texture = ExtResource("2_cj4s4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.1, 1.1)

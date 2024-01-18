@@ -1,39 +1,36 @@
-[gd_scene load_steps=10 format=3 uid="uid://diiwt77f0o4t4"]
+[gd_scene load_steps=10 format=3 uid="uid://c7i863l4h8vfy"]
 
 [ext_resource type="Script" path="res://Game/Enemies/Bullet/BossBulletType2.gd" id="1_c3v3j"]
-[ext_resource type="Texture2D" uid="uid://crmbhq34wgn16" path="res://assets/Effects/Free  Effect Bullet Impact Explosion 32x32 V1/Red Effect Bullet Impact Explosion 32x32.png" id="2_icel5"]
+[ext_resource type="Texture2D" uid="uid://dgmuf00mvb235" path="res://assets/Effects/Water_Effect (1)/02/Water__01.png" id="2_ccdpb"]
 [ext_resource type="AudioStream" uid="uid://cspwyr8uybqpy" path="res://assets/SoundEffects/laserShoot (1).wav" id="3_j7ego"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5chv7"]
-atlas = ExtResource("2_icel5")
-region = Rect2(448, 256, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bn11x"]
-atlas = ExtResource("2_icel5")
-region = Rect2(416, 256, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gqyjm"]
-atlas = ExtResource("2_icel5")
-region = Rect2(384, 256, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mlnod"]
-atlas = ExtResource("2_icel5")
-region = Rect2(352, 256, 32, 32)
+[ext_resource type="Texture2D" uid="uid://cpbqpouf7m23k" path="res://assets/Effects/Water_Effect (1)/02/Water__02.png" id="3_uklsk"]
+[ext_resource type="Texture2D" uid="uid://wj2s8yh3cuf1" path="res://assets/Effects/Water_Effect (1)/02/Water__03.png" id="4_r4w8a"]
+[ext_resource type="Texture2D" uid="uid://duljw6kx0l7v3" path="res://assets/Effects/Water_Effect (1)/02/Water__04.png" id="5_q545v"]
+[ext_resource type="Texture2D" uid="uid://cnbb4oeaxchun" path="res://assets/Effects/Water_Effect (1)/02/Water__05.png" id="6_4r1q0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6s537"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5chv7")
+"texture": ExtResource("2_ccdpb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bn11x")
+"texture": ExtResource("3_uklsk")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gqyjm")
+"texture": ExtResource("4_r4w8a")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mlnod")
+"texture": ExtResource("5_q545v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_4r1q0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r4w8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_uklsk")
 }],
 "loop": true,
 "name": &"default",
@@ -50,10 +47,11 @@ script = ExtResource("1_c3v3j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(0.75, 0.75)
+position = Vector2(-3.8147e-06, 3.8147e-06)
+scale = Vector2(0.321667, 0.321667)
 sprite_frames = SubResource("SpriteFrames_6s537")
 autoplay = "default"
-frame_progress = 0.0891242
+frame_progress = 0.838104
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_mr456")

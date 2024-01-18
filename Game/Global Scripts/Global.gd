@@ -10,7 +10,7 @@ var player_lives : int = 3  # Initial number of lives
 var ball_reference : Node = null  # Declare ball_reference as a class member
 var current_ball_index : int = 0  # Track the current index in the array
 var max_ball_count : int = 0
-var mana_count : int = 1
+var mana_count : int = 3
 var max_mana_count : int = 3
 
 # Signals
@@ -135,7 +135,8 @@ func increase_player_mana():
 	print("Player mana increased. Remaining mana: ", mana_count)
 
 func increase_mana_cap():
-	max_mana_count += 1
+	if max_mana_count < 7:
+		max_mana_count += 1
 
 func reduce_mana_cd():
 	emit_signal("reduce_cd_mana")

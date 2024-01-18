@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dp6y6i64hyldx"]
+
+[ext_resource type="PackedScene" uid="uid://cdj35yqsdllwt" path="res://Game/Boss/BossType3.tscn" id="1_7v73u"]
+[ext_resource type="Script" path="res://Game/Boss/Boss3HPbar.gd" id="2_kfuwl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2t50b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqlhy"]
+bg_color = Color(0.827451, 0.113725, 0.0823529, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="BossType3" parent="." instance=ExtResource("1_7v73u")]
+position = Vector2(480, 152)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 424.0
+offset_top = 200.0
+offset_right = 536.0
+offset_bottom = 208.0
+theme_override_styles/background = SubResource("StyleBoxFlat_2t50b")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xqlhy")
+max_value = 8.0
+step = 1.0
+value = 8.0
+show_percentage = false
+script = ExtResource("2_kfuwl")

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const BULLET_COOLDOWN = 6.0
+const BULLET_COOLDOWN = 3.0
 const PAUSE = 2
 
 var can_shoot = true

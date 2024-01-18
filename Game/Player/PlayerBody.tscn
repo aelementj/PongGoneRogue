@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://cl6yptsb1vtb5"]
 
 [ext_resource type="Script" path="res://Game/Player/PlayerBody.gd" id="1_p3u1d"]
-[ext_resource type="Texture2D" uid="uid://ctt451akfyfxi" path="res://Game/Legion-20240118T000005Z-001/Legion/LegionNoShadow/IngameLegionNoShadow.png" id="2_3e1v3"]
 [ext_resource type="AudioStream" uid="uid://dugylqicfuet6" path="res://assets/SoundEffects/random.wav" id="2_63oum"]
+[ext_resource type="Texture2D" uid="uid://ctt451akfyfxi" path="res://Game/Legion-20240118T000005Z-001/Legion/LegionNoShadow/IngameLegionNoShadow.png" id="2_hee7e"]
 [ext_resource type="AudioStream" uid="uid://bydo5wwaqmfo1" path="res://assets/SoundEffects/hitHurt.wav" id="3_5u8ht"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2mhnc"]
@@ -15,9 +15,8 @@ collision_layer = 0
 script = ExtResource("1_p3u1d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(0.125358, 0.0832187)
-texture = ExtResource("2_3e1v3")
+scale = Vector2(0.119039, 0.0941531)
+texture = ExtResource("2_hee7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2mhnc")
@@ -31,6 +30,7 @@ collision_layer = 272
 collision_mask = 272
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 shape = SubResource("RectangleShape2D_kadhn")
 
 [node name="AngleResetTimer" type="Timer" parent="."]

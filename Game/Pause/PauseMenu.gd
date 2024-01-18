@@ -17,7 +17,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Global.player_lives == 0:
+	if Global.player_lives <= 0:
 		show()
 		panel.visible = false
 		gameover_menu.set_process(true)

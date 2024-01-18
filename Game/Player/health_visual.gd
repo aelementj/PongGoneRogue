@@ -11,7 +11,7 @@ var currentHearts: int = 0
 var currentBalls: int = 0
 var currentMana: int = 0
 var regen_mana_timer: Timer
-var regen_mana_interval: float = 1.0  # Regenerate mana every 1 second
+var regen_mana_interval: float = 2.0  # Regenerate mana every 1 second
 
 func _ready():
 	heartVisual = $VBoxContainer/HealthVisualRow1
@@ -109,14 +109,17 @@ func removeMana():
 		regen_mana_timer.start()
 
 func reduce_mana_regen():
-	regen_mana_interval -= 0.1
+	regen_mana_interval -= 0.4
 	regen_mana_timer.wait_time = regen_mana_interval
 
 func reset_mana_regen():
-	regen_mana_interval = 1
+	regen_mana_interval = 3
 	regen_mana_timer.wait_time = regen_mana_interval
 	
 
 func _process(delta):
 	if Input.is_action_just_pressed("test10"):
 		reduce_mana_regen()
+	
+	if Global.max_mana_count == 7:
+		PowerUpGlobal.removePowerUp(PowerUpGlobal.maxManaPowerUp)

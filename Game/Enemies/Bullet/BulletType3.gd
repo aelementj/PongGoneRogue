@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 200  # Adjust the speed as needed
+const SPEED = 400  # Adjust the speed as needed
 
 func _ready():
 	$Fire.play()

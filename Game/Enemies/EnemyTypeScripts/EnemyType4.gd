@@ -73,15 +73,27 @@ func _on_bullet_timer_timeout():
 func is_player_valid() -> bool:
 	return Global.get_player_reference() != null
 
+var lives: int = 2  # Initial number of lives
+
 func _on_hit_box_area_entered(area):
 	if area.is_in_group("Ball"):
-		# Start a delay timer before calling queue_free()
-		var delay_timer = Timer.new()
-		delay_timer.wait_time = 0.01  # Adjust the delay duration as needed
-		delay_timer.one_shot = true
-		delay_timer.connect("timeout", _on_delay_timer_timeout)
-		add_child(delay_timer)
-		delay_timer.start()
+		lives -= 1
+
+		# Check if there are still lives remaining
+		if lives > 0:
+			print("Lives remaining:", lives)
+		else:
+			print("No more lives!")
+			# Trigger game over or reset logic here
+
+		# Wait for 8 hits before calling the timer
+		if lives <= 0:
+			var delay_timer = Timer.new()
+			delay_timer.wait_time = 0.01
+			delay_timer.one_shot = true
+			delay_timer.connect("timeout", _on_delay_timer_timeout)
+			add_child(delay_timer)
+			delay_timer.start()
 
 # Function called when the delay timer times out
 func _on_delay_timer_timeout():

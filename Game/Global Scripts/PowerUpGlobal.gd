@@ -82,6 +82,7 @@ func applyPowerUpToBall(ball: BallBody, powerUpType: String):
 
 
 var ballAddedPowerUp: String = "AddBall"
+var maxManaPowerUp: String = "AddMana"
 
 # Function to remove a power-up from the array
 func removePowerUp(powerUp: String):
